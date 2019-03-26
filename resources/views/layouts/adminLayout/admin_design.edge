@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Matrix Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ style('css/backend_css/bootstrap.min.css') }}
+{{ style('css/backend_css/bootstrap-responsive.min.css') }}
+{{ style('css/backend_css/select2.css') }}
+{{ style('css/backend_css/fullcalendar.css') }}
+{{ style('css/backend_css/matrix-style.css') }}
+{{ style('css/backend_css/matrix-media.css') }}
+{{ style('fonts/backend_fonts/css/font-awesome.css') }}
+{{ style('css/backend_css/jquery.gritter.css') }}
+{{ style('http://fonts.googleapis.com/css?family=Open+Sans:400,700,800') }}
+</head>
+<body>
+
+@include('layouts/adminLayout/admin_header')    
+
+@include('layouts/adminLayout/admin_sidebar')   
+
+@!section('content')
+
+@include('layouts/adminLayout/admin_footer')  
+
+{{ script('js/backend_js/jquery.min.js') }}
+{{ script('js/backend_js/jquery.ui.custom.js') }}
+{{ script('js/backend_js/bootstrap.min.js') }}
+{{ script('js/backend_js/jquery.uniform.js') }}
+{{ script('js/backend_js/select2.min.js') }}
+{{ script('js/backend_js/jquery.dataTables.min.js') }}
+{{ script('js/backend_js/jquery.validate.js') }}
+{{ script('js/backend_js/matrix.js') }}
+{{ script('js/backend_js/matrix.tables.js') }}
+{{ script('js/backend_js/matrix.form_validation.js') }}
+
+</body>
+</html>

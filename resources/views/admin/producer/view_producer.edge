@@ -1,0 +1,67 @@
+@layout('layouts.adminLayout.admin_design')
+
+@section('content')
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Catalog</a> <a href="#" class="current">View catalog</a> </div>
+        <h1>Thương Hiệu</h1>
+        @if(old('add_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('add_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('update_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('update_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('delete_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('delete_notification') }}</strong>
+          </div>
+        @endif
+    </div>
+    <div class="container-fluid">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Thương Hiệu</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên thương hiệu</th>
+                    <th>Danh mục</th>
+                    <th>Thông tin thương hiệu</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @each(producer in producers)
+                        <tr class="gradeX">
+                            <td>{{ producer.id }}</td>
+                            <td>{{ producer.ten_th }}</td>
+                            <td>{{ producer.parent_id }}</td>
+                            <td>{{ producer.mo_ta_th }}</td>
+                            <td class="center">
+                              <a href="{{ route('Admin/ProducerController.editProducer', {id: producer.id})}}" class="btn btn-primary btn-mini">Edit</a>
+                              <a href="{{ route('Admin/ProducerController.deleteProducer', {id: producer.id})}}" class="btn btn-danger btn-mini">Delete</a>
+                            </td>
+                        </tr>
+                    @endeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
