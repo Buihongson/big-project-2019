@@ -19,7 +19,7 @@
                     <strong>{{ flashMessage('loginError') }}</strong>
                 </div>
             @endif
-            <form id="loginform" class="form-vertical" action="{{ route('admin/AdminController.login') }}" method="POST">
+            <form id="loginform" class="form-vertical" action="{{ route('Admin/AdminController.login') }}" method="POST">
                 {{ csrfField() }}
 
 				<div class="control-group normal_text"> <h3><img src="{{ assetsUrl('images/backend_image/logo.png') }}" alt="Logo" /></h3></div>

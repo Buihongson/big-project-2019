@@ -31,12 +31,16 @@ Route.post('/admin', 'Admin/AdminController.login').validator('LoginAdmin');
 Route.get('/admin/dashboard', 'Admin/Admincontroller.showDashboard');
 Route.get('/admin/settings', 'Admin/Admincontroller.showSettings');
 
-// Catalog (Admin)
+
 Route.group(() => {
-    Route.get('/add-catalog', 'Admin/ProducerController.viewAddProducer');
-    Route.post('/add-catalog', 'Admin/ProducerController.addProducer');
-    Route.get('/view-catalog', 'Admin/ProducerController.viewAllProducer');
-    Route.get('/delete-catalog/:id', 'Admin/ProducerController.deleteProducer');
-    Route.get('/edit-catalog/:id', 'Admin/ProducerController.editProducer');
-    Route.post('/update-catalog/:id', 'Admin/ProducerController.updateProducer');
-}).prefix('/admin/catalog');
+    // Catalog (Admin)
+    Route.get('/catalog/add-catalog', 'Admin/ProducerController.viewAddProducer');
+    Route.post('/catalog/add-catalog', 'Admin/ProducerController.addProducer');
+    Route.get('/catalog/view-catalog', 'Admin/ProducerController.viewAllProducer');
+    Route.get('/catalog/delete-catalog/:id', 'Admin/ProducerController.deleteProducer');
+    Route.get('/catalog/edit-catalog/:id', 'Admin/ProducerController.editProducer');
+    Route.post('/catalog/update-catalog/:id', 'Admin/ProducerController.updateProducer');
+
+    // Product (Admin)
+    Route.get('/product/add-product', 'Admin/ProductController.viewAddProduct');
+}).prefix('/admin');
