@@ -45,7 +45,11 @@
                 <div class="control-group">
                     <label class="control-label" for="gender_product">Giới tính</label>
                     <div class="controls">
-                        <input type="text" name="gender_product" id="gender_product" value="{{ old('gioi_tinh'), '' }}">
+                        <select name="gender_product" style="width: 220px">
+                            <option value="0" disabled selected>Giới tính</option>
+                            <option value="{{ old('gioi_tinh'), '' }}">&nbsp;--&nbsp;Nam</option>
+                            <option value="{{ old('gioi_tinh'), '' }}">&nbsp;--&nbsp;Nữ</option>
+                        </select>
                     </div>
                 </div>
                 <div class="control-group">
@@ -85,12 +89,6 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="image_product">Hình ảnh</label>
-                    <div class="controls">
-                        <input type="text" name="image_product" id="image_product" value="{{ old('hinh_anh'), '' }}">
-                    </div>
-                </div>
-                <div class="control-group">
                     <label class="control-label" for="guarantee_product">Bảo hành</label>
                     <div class="controls">
                         <input type="text" name="guarantee_product" id="guarantee_product" value="{{ old('bao_hanh'), '' }}">
@@ -100,6 +98,12 @@
                     <label class="control-label" for="status_product">Tình trạng</label>
                     <div class="controls">
                         <input type="text" name="status_product" id="status_product" value="{{ old('tinh_trang'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="image_product">Hình ảnh</label>
+                    <div class="controls">
+                        <input type="file" name="image_product" id="image_product" value="{{ old('hinh_anh'), '' }}">
                     </div>
                 </div>
                 <div class="form-actions">

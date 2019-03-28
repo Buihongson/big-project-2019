@@ -58,6 +58,58 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	// Add product validation
+	$("#add_product").validate({
+		rules:{
+			parent_id:{
+				required:true
+			},
+			name_product:{
+				required:true
+			},
+			code_product:{
+				required:true,
+			},
+			gender_product:{
+				required:true,
+			},
+			glass_product:{
+				required:true,
+			},
+			diameter_product:{
+				required:true,
+			},
+			thickness_product:{
+				required:true,
+			},
+			water_resistance_product:{
+				required:true,
+			},
+			origin_product:{
+				required:true,
+			},
+			price_product:{
+				required:true,
+				number:true
+			},
+			guarantee_product:{
+				required:true,
+			},
+			status_product:{
+				required:true,
+			},
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
 	
 	$("#number_validate").validate({
 		rules:{
