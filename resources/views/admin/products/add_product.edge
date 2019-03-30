@@ -6,6 +6,11 @@
       <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Product</a> <a href="#" class="current">Add product</a> </div>
       <h1>Sản Phẩm</h1>
     </div>
+    @if(old('success'))
+        <div class="alert alert-success">{{old('success')}}</div>
+    @elseif(old('error'))
+        <div class="alert alert-danger">{{old('error')}}</div>
+    @endif
     <div class="container-fluid"><hr>
       <div class="row-fluid">
         <div class="span12">
@@ -14,7 +19,7 @@
               <h5>Thêm Sản Phẩm</h5>
             </div>
             <div class="widget-content nopadding">
-            <form class="form-horizontal" method="POST" action="{{ route('Admin/ProductController.addProduct') }}" name="add_product" id="add_product" novalidate="novalidate">
+            <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ route('Admin/ProductController.addProduct') }}" name="add_product" id="add_product" novalidate="novalidate">
                 {{ csrfField() }}
                 <div class="control-group">
                     <label class="control-label" for="name_product">Danh mục</label>
