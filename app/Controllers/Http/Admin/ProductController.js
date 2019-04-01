@@ -17,6 +17,16 @@ class ProductController {
         });
     }
 
+    // view all product
+    async viewAllProduct({ view }) {
+        // get all product from database
+        const products = await Product.all();
+
+        return view.render('admin.products.view_product', {
+            products: products.toJSON(),
+        });
+    }
+
     // add a new product
     async addProduct ({ request, response, session, auth }) {
         const product = new Product();

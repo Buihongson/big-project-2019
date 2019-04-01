@@ -6,7 +6,6 @@ class ProducerController {
     // show form add new catalog
     async viewAddProducer({ view }) {
         const levels = await Producer.query().where('parent_id', '=', 0).fetch();
-        const a = "<div> aaaaa</div>";
 
         return view.render('admin.producer.add_producer', {
             levels: levels.toJSON()

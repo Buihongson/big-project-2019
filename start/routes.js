@@ -44,6 +44,5 @@ Route.group(() => {
     // Product (Admin)
     Route.get('/product/add-product', 'Admin/ProductController.viewAddProduct');
     Route.post('/product/add-product', 'Admin/ProductController.addProduct');
+    Route.get('/product/view-product', 'Admin/ProductController.viewAllProduct')
 }).prefix('/admin');
-
-Route.get('test', 'Admin/ProductController.testViewProduct');

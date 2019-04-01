@@ -1,0 +1,84 @@
+@layout('layouts.adminLayout.admin_design')
+
+@section('content')
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Product</a> <a href="#" class="current">View products</a> </div>
+        <h1>Sản phẩm</h1>
+        @if(old('add_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('add_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('update_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('update_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('delete_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('delete_notification') }}</strong>
+          </div>
+        @endif
+    </div>
+    <div class="container-fluid">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Thương Hiệu</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Danh mục</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giới tính</th>
+                    <th>Kính</th>
+                    <th>Đường kính vỏ</th>
+                    <th>Độ dày vỏ</th>
+                    <th>Áp suất nước</th>
+                    <th>Xuất xứ</th>
+                    <th>Giá tiền</th>
+                    <th>Bảo hành</th>
+                    <th>Tình trạng</th>
+                    <th>Hình ảnh</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @each(product in products)
+                        <tr class="gradeX">
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.ten_san_pham }}</td>
+                            <td>{{ product.ma_san_pham }}</td>
+                            <td>{{ product.gioi_tinh }}</td>
+                            <td>{{ product.kinh }}</td>
+                            <td>{{ product.duong_kinh_vo }}</td>
+                            <td>{{ product.do_day_vo }}</td>
+                            <td>{{ product.ap_suat_nuoc }}</td>
+                            <td>{{ product.xuat_su }}</td>
+                            <td>{{ product.gia_tien }}</td>
+                            <td>{{ product.bao_hanh }}</td>
+                            <td>{{ product.tinh_trang }}</td>
+                            <td><img src="{{ product.hinh_anh }}" alt="" style="width: 75px; height: 75px"></td>
+                            <td class="center">
+                              <a href="{{ route('Admin/ProducerController.editProducer', {id: product.id})}}" class="btn btn-primary btn-mini">Edit</a>
+                              <a href="{{ route('Admin/ProducerController.deleteProducer', {id: product.id})}}" class="btn btn-danger btn-mini">Delete</a>
+                            </td>
+                        </tr>
+                    @endeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
