@@ -3,6 +3,7 @@
 const Catelog = use('App/Models/NhaSanXuat');
 const Product = use('App/Models/SanPham');
 const CloudinaryService = use('App/Services/CloudinaryService');
+const Database = use('Database');
 
 class ProductController {
     // show form add product
@@ -19,8 +20,8 @@ class ProductController {
 
     // view all product
     async viewAllProduct({ view }) {
-        // get all product from database
-        const products = await Product.all();
+        // get all product from database with san_phams and nha_san_xuats
+        const products = await Catelog.query().where('parent_id', '>', 0).with('san_phams').fetch();
 
         return view.render('admin.products.view_product', {
             products: products.toJSON(),
@@ -36,7 +37,7 @@ class ProductController {
         try {
             const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(file.tmpPath, {folder: 'images-for-product-2019'});
 
-            product.dm_id = request.input('parent_id');
+            product.nha_san_xuat_id = request.input('parent_id');
             product.ten_san_pham = request.input('name_product');
             product.ma_san_pham = request.input('code_product');
             product.gioi_tinh = request.input('gender_product');
@@ -54,6 +55,8 @@ class ProductController {
 
             // notify when add success
             session.flash({ add_notification: 'Thêm thành công.' });
+
+            return response.redirect('/admin/product/view-product');
         } catch (e){
             session.flash({ error: 'Tải ảnh không thành công.' });
         }

@@ -7,8 +7,7 @@ class SanPhamSchema extends Schema {
   up () {
     this.create('san_phams', (table) => {
       table.increments()
-      table.integer('dm_id')
-      table.foreign('dm_id').references('nha_san_xuats.id').onDelete('cascade')
+      table.integer('nha_san_xuat_id')
       table.string('ten_san_pham')
       table.string('ma_san_pham')
       table.string('gioi_tinh')

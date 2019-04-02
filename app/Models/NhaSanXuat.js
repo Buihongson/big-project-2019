@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class NhaSanXuat extends Model {
     san_phams () {
-        return this.hasMany('App/Model/SanPham')
+        return this.hasMany('App/Models/SanPham')
     }
 }
 
