@@ -33,10 +33,11 @@
               <h5>Thương Hiệu</h5>
             </div>
             <div class="widget-content nopadding">
-              <table class="table table-bordered data-table" style="counter-reset: rowNumber">
+              <table class="table table-bordered data-table">
                 <thead>
                   <tr>
                     <th>Danh mục</th>
+                    <th>ID</th>
                     <th>Tên sản phẩm</th>
                     <th>Mã sản phẩm</th>
                     <th>Giới tính</th>
@@ -52,6 +53,7 @@
                         @each(detail in product.san_phams)
                           <tr class="gradeX">
                                 <td></td>
+                                <td>{{ detail.id }}</td>
                                 <td>{{ detail.ten_san_pham }}</td>
                                 <td>{{ detail.ma_san_pham }}</td>
                                 <td>{{ detail.gioi_tinh }}</td>
@@ -60,8 +62,8 @@
                                 <td><img src="{{ detail.hinh_anh }}" alt="" style="width: 75px; height: 75px"></td>
                                 <td class="center">
                                   <a href="#myModal{{ detail.id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
-                                  <a href="{{ route('Admin/ProducerController.editProducer', {id: detail.id})}}" class="btn btn-primary btn-mini">Edit</a>
-                                  <a href="{{ route('Admin/ProducerController.deleteProducer', {id: detail.id})}}" class="btn btn-danger btn-mini">Delete</a>
+                                  <a href="{{ route('Admin/ProductController.editProduct', {id: detail.id})}}" class="btn btn-primary btn-mini">Edit</a>
+                                  <a href="{{ route('Admin/ProductController.deleteProduct', {id: detail.id})}}" class="btn btn-danger btn-mini">Delete</a>
                                 </td>
                           </tr>
 
@@ -72,6 +74,7 @@
                             </div>
                             <div class="modal-body">
                               <p>ID: {{ detail.id }}</p>
+                              <p>ID danh mục: {{ detail.nha_san_xuat_id }}</p>
                               <p>Tên sản phẩm: {{ detail.ten_san_pham }}</p>
                               <p>Mã sản phẩm: {{ detail.ma_san_pham }}</p>
                               <p>Giới tính: {{ detail.gioi_tinh }}</p>
@@ -84,7 +87,7 @@
                               <p>Bảo hành: {{ detail.bao_hanh }}</p>
                               <p>Tình trạng: {{ detail.tinh_trang }}</p>
                               <p>Hình ảnh:</p>
-                              <p><img src="{{ detail.hinh_anh }}" alt=""></p>
+                              <p><img src="{{ detail.hinh_anh }}" alt="detail.ten_san_pham" style="width: 230px;"></p>
                           </div>
 
                           @endeach

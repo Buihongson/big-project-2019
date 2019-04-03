@@ -3,7 +3,7 @@
 @section('content')
 <div id="content">
     <div id="content-header">
-      <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Product</a> <a href="#" class="current">Add product</a> </div>
+      <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Product</a> <a href="#" class="current">Edit product</a> </div>
       <h1>Sản Phẩm</h1>
     </div>
     @if(old('success'))
@@ -16,10 +16,10 @@
         <div class="span12">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-              <h5>Thêm Sản Phẩm</h5>
+              <h5>Chỉnh Sửa Sản Phẩm</h5>
             </div>
             <div class="widget-content nopadding">
-            <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ route('Admin/ProductController.addProduct') }}" name="add_product" id="add_product" novalidate="novalidate">
+            <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ route('Admin/ProductController.editProduct', {id: product.id}) }}" name="edit_product" id="edit_product" novalidate="novalidate">
                 {{ csrfField() }}
                 <div class="control-group">
                     <label class="control-label" for="name_product">Danh mục</label>
@@ -28,8 +28,11 @@
                           <option value="0">Danh mục</option>
                             {{--  @each(catelog in catelogs)  --}}
                                 {{--  <option value="{{ catelog.id }}">{{ catelog.ten_th }}</option>  --}}
-                                @each(sub_catelog in sub_catelog)
+                                @each(sub_catelog in sub_catelogs)
                                     <option value="{{ sub_catelog.id }}" >&nbsp;--&nbsp;{{ sub_catelog.ten_th }}</option>
+                                    @if(product.nha_san_xuat_id === sub_catelog.id) 
+                                        <option value="{{ sub_catelog.id }}" selected >&nbsp;--&nbsp;{{ sub_catelog.ten_th }}</option>
+                                    @endif
                                 @endeach
                             {{--  @endeach  --}}
                         </select>
@@ -38,13 +41,13 @@
                 <div class="control-group">
                     <label class="control-label" for="name_product">Tên sản phẩm</label>
                     <div class="controls">
-                        <input type="text" name="name_product" id="name_product" value="{{ old('ten_san_pham'), '' }}">
+                        <input type="text" name="name_product" id="name_product" value="{{ product.ten_san_pham ? product.ten_san_pham : old('ten_san_pham'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="code_product">Mã sản phẩm</label>
                     <div class="controls">
-                        <input type="text" name="code_product" id="code_product" value="{{ old('ma_san_pham'), '' }}">
+                        <input type="text" name="code_product" id="code_product" value="{{ product.ma_san_pham ? product.ma_san_pham : old('ma_san_pham'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
@@ -52,67 +55,69 @@
                     <div class="controls">
                         <select name="gender_product" style="width: 220px">
                             <option value="0" disabled selected>Giới tính</option>
-                            <option value="Nam">&nbsp;--&nbsp;Nam</option>
-                            <option value="Nữ">&nbsp;--&nbsp;Nữ</option>
+                            <option value="Nam" >&nbsp;--&nbsp;Nam</option>
+                            <option value="Nữ" >&nbsp;--&nbsp;Nữ</option>
                         </select>
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="glass_product">Kính</label>
                     <div class="controls">
-                        <input type="text" name="glass_product" id="glass_product" value="{{ old('kinh'), '' }}">
+                        <input type="text" name="glass_product" id="glass_product" value="{{ product.kinh ? product.kinh : old('kinh'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="diameter_product">Đường kính vỏ</label>
                     <div class="controls">
-                        <input type="text" name="diameter_product" id="diameter_product" value="{{ old('duong_kinh_vo'), '' }}">
+                        <input type="text" name="diameter_product" id="diameter_product" value="{{ product.duong_kinh_vo ? product.duong_kinh_vo : ('duong_kinh_vo'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="thickness_product">Độ dày vỏ</label>
                     <div class="controls">
-                        <input type="text" name="thickness_product" id="thickness_product" value="{{ old('do_day_vo'), '' }}">
+                        <input type="text" name="thickness_product" id="thickness_product" value="{{ product.do_day_vo ? product.do_day_vo : old('do_day_vo'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="water_resistance_product">Áp suất nước</label>
                     <div class="controls">
-                        <input type="text" name="water_resistance_product" id="water_resistance_product" value="{{ old('ap_suat_nuoc'), '' }}">
+                        <input type="text" name="water_resistance_product" id="water_resistance_product" value="{{ product.ap_suat_nuoc ? product.ap_suat_nuoc :old('ap_suat_nuoc'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="origin_product">Xuất xứ</label>
                     <div class="controls">
-                        <input type="text" name="origin_product" id="origin_product" value="{{ old('xuat_su'), '' }}">
+                        <input type="text" name="origin_product" id="origin_product" value="{{ product.xuat_su ? product.xuat_su : old('xuat_su'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="price_product">Giá</label>
                     <div class="controls">
-                        <input type="text" name="price_product" id="price_product" value="{{ old('gia_tien'), '' }}">
+                        <input type="text" name="price_product" id="price_product" value="{{ product.gia_tien ? product.gia_tien : old('gia_tien'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="guarantee_product">Bảo hành</label>
                     <div class="controls">
-                        <input type="text" name="guarantee_product" id="guarantee_product" value="{{ old('bao_hanh'), '' }}">
+                        <input type="text" name="guarantee_product" id="guarantee_product" value="{{ product.bao_hanh ? product.bao_hanh : old('bao_hanh'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="status_product">Tình trạng</label>
                     <div class="controls">
-                        <input type="text" name="status_product" id="status_product" value="{{ old('tinh_trang'), '' }}">
+                        <input type="text" name="status_product" id="status_product" value="{{ product.tinh_trang ? product.tinh_trang : old('tinh_trang'), '' }}">
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="image_product">Hình ảnh</label>
                     <div class="controls">
-                        <input type="file" name="image_product" id="image_product" value="{{ old('hinh_anh'), '' }}">
+                        <input type="file" name="image_product" id="image_product" value="{{ product.hinh_anh ? product.hinh_anh : old('hinh_anh'), '' }}">
+                        <br>
+                        <img src="{{ product.hinh_anh }}" alt="product.ten_san_pham" style="width: 100px;">
                     </div>
                 </div>
                 <div class="form-actions">
-                  <input type="submit" value="Thêm" class="btn btn-success">
+                  <input type="submit" value="Cập nhập" class="btn btn-success">
                 </div>
               </form>
             </div>

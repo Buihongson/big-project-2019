@@ -44,5 +44,8 @@ Route.group(() => {
     // Product (Admin)
     Route.get('/product/add-product', 'Admin/ProductController.viewAddProduct');
     Route.post('/product/add-product', 'Admin/ProductController.addProduct');
-    Route.get('/product/view-product', 'Admin/ProductController.viewAllProduct')
+    Route.get('/product/view-product', 'Admin/ProductController.viewAllProduct');
+    Route.get('/product/delete-product/:id', 'Admin/ProductController.deleteProduct');
+    Route.get('/product/edit-product/:id', 'Admin/ProductController.editProduct');
+    Route.post('/product/edit-product/:id', 'Admin/ProductController.updateProduct');
 }).prefix('/admin');
