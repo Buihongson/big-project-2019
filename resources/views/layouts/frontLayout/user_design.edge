@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Matrix Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{ style('https://fonts.googleapis.com/css?family=Roboto:400,700') }}
+{{ style('https://use.fontawesome.com/releases/v5.8.1/css/all.css') }}
+{{ style('css/frontend_css/main.css') }}
+{{ style('plugin/slick/slick.css') }}
+{{ style('plugin/slick/slick-theme.css') }}
+
+</head>
+<body>
+
+@include('layouts/frontLayout/user_header')
+
+@!section('content')
+
+@include('layouts/frontLayout/user_footer')
+
+{{ script('https://code.jquery.com/jquery-1.11.0.min.js') }}
+{{ script('https://code.jquery.com/jquery-migrate-1.2.1.min.js') }}
+{{ script('plugin/slick/slick.min.js') }}
+{{ script('js/slideshow_js/slideshow.js') }}
+</body>
+</html>

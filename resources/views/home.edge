@@ -1,15 +1,471 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Matrix Admin</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-{{ style('css/frontend_css/main.css') }}
-{{ style('https://fonts.googleapis.com/css?family=Roboto:400,700') }}
-</head>
-<body>
+@layout('layouts.frontLayout.user_design')
 
-@include('layouts/frontLayout/footer')
+@section('content')
+<main class="main">
+        <!-- slideshow top -->
+        <section class="section slideshow__top">
+          <div class="slideshow__top__img"><a href="#"><img src="{{ assetsUrl('images/slideshow_image/Banner-Sale.jpg') }}" alt=""></a></div>
+          <div class="slideshow__top__img"><a href="#"><img src="{{ assetsUrl('images/slideshow_image/banner_sale.jpg') }}" alt=""></a></div>
+        </section>
+        <!-- end slideshow top -->
+    
+        <!-- banner -->
+        <section class="section banner">
+          <div class="container">
+            <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-thanh-la') }}p.jpg" alt=""></a></div>
+            <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-vi-tri.j') }}pg" alt=""></a></div>
+            <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-ky-thuat') }}.jpg" alt=""></a></div>
+          </div>
+        </section>
+        <!-- end banner -->
+    
+        <!-- title đh thụy sĩ-->
+        <section class="section">
+          <div class="container">
+            <h3 class="section__title">
+              <b></b>
+              <span>Đồng hồ thụy sĩ</span>
+              <b></b>
+            </h3>
+          </div>
+        </section>
+        <!-- end title -->
+        
+        <!--  product hot đh thụy sĩ  -->
+        <section class="section prodhot">
+          <div class="container slideshow__prodhot">
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96K101_grande.j') }}pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96R215_grande.j') }}pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}ng" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!--  end product hot đh thụy sĩ  -->
 
-</body>
-</html>
+        <!-- logo đh thụy sĩ -->
+        <section class="section logo">
+          <div class="container">
+            <ul class="logo__content">
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/omega.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/longines.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/Logo165x97-02-1.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/RADO-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/mido.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/tissot.png') }}" alt=""><a href="#"></a></li>
+            </ul>
+          </div>
+        </section>
+        <section class="section logo">
+          <div class="container">
+            <ul class="logo__content">
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/ALFEX-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/GROVANA-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/ENICAR-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/GUCCI-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/RAYMOND-WEIL-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/FREDERIQUE-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- end logo đh thụy sĩ -->
+    
+        <!-- title đh citizen-->
+        <section class="section">
+          <div class="container">
+            <h3 class="section__title">
+              <b></b>
+              <span>Đồng hồ citizen</span>
+              <b></b>
+            </h3>
+          </div>
+        </section>
+        <!-- end title -->
+        
+        <!--  product hot đh citizen  -->
+        <section class="section prodhot">
+          <div class="container slideshow__prodhot">
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96K101_grande.j') }}"pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96R215_grande.j') }}"pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}"ng" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!--  end product hot đh citizen  -->
+    
+        <!-- title đh chính hãng-->
+        <section class="section">
+          <div class="container">
+            <h3 class="section__title">
+              <b></b>
+              <span>Đồng hồ citizen</span>
+              <b></b>
+            </h3>
+          </div>
+        </section>
+        <!-- end title đh chính hãng-->
+    
+        <!--  product hot đh chính hãng  -->
+        <section class="section prodhot">
+          <div class="container slideshow__prodhot">
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96K101_grande.j') }}"pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/96R215_grande.j') }}"pg" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}"ng" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+            <article class="box">
+              <div class="box__img">
+                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
+              </div>
+              <div class="box__body">
+                <ul>
+                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
+                  <li class="box__body__price">22.222.222</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!--  end product hot đh chính hãng  -->
+
+        <!-- logo dh citizen vs chính hãng -->
+        <section class="section logo">
+          <div class="container">
+            <ul class="logo__content">
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/citizen-2.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/Logo-bulova.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/caravelle.png') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/SEIKO-1-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/LACOSTE-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/CALVIN-KLEIN-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- end logo dh citizen vs chính hãng -->
+    
+        <!-- section title -->
+        <section class="section">
+          <div class="container">
+            <h3 class="section__title">
+              <b></b>
+              <span>Tại sao khánh hàng lại lựa chọn chúng tôi ?</span>
+              <b></b>
+            </h3>
+          </div>
+        </section>
+        <!-- end section title -->
+    
+        <!-- section service -->
+        <section class="section service">
+          <div class="container service__body">
+            <article class="service__box">
+              <div class="service__box__icon"><i class="fas fa-history"></i></div>
+              <div class="service__box__title">UY TÍN NHẤT TRONG NGÀNH</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>Chúng tôi là nhà phân phối lâu năm và uy tín nhất hơn 30 năm qua.</li>
+                  <li>Chúng tôi am hiểu chuyên sâu về kỹ thuật, dịch vụ và bảo hành sau bán sẽ làm khách hàng hài lòng .
+                  </li>
+                </ul>
+              </div>
+            </article>
+            <article class="service__box">
+              <div class="service__box__icon"><i class="fas fa-folder-open"></i></div>
+              <div class="service__box__title">Dịch vụ bảo trì sau bán</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>Chúng tôi có chế độ hậu mãi sau bán tốt nhất hiện nay với đội ngũ kỹ thuật được huấn luyện bới các
+                    chuyên gia của các hãng đồng hồ nổi tiếng </li>
+                  <li>Chúng tôi có phòng sữa chữa được trang bị theo tiêu chuẩn quốc tế.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="service__box">
+              <div class="service__box__icon"><i class="fas fa-sync-alt"></i></div>
+              <div class="service__box__title">Thuận tiện mua sắm</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>Cửa hàng của chúng tôi tọa lạc tại trung tâm thành phố Quận 1, TP Hồ Chí Minh</li>
+                  <li>Các trung tâm thương mại ( Diamond Plaza, Saigon Center..) thuận tiện cho khách đi đến mua sắm.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="service__box">
+              <div class="service__box__icon"><i class="far fa-credit-card"></i></div>
+              <div class="service__box__title">Thành toán - đổi hàng</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>'...' hỗ trợ bạn đổi hàng dễ dàng trong vòng 7 ngày khi mua đồng hồ tại hệ thống Tân Tân.</li>
+                  <li>Tại tất cả cửa hàng hệ thống đồng hồ Tân Tân đề hỗ trợ bạn thanh toán thông minh qua nhiều hình thức:
+                    visa, master card … khi mua và sử dụng dịch vụ.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="service__box">
+              <div class="service__box__icon"><i class="fas fa-shopping-basket"></i></div>
+              <div class="service__box__title">Giao hàng tại nhà</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>Bạn ở tỉnh? Bạn không có thời gian ra cửa hàng mua sắm ?</li>
+                  <li>Bạn đang muốn mua đồng hồ làm quà cho bạn bè, người thân.</li>
+                  <li>'...' sẽ hỗ trợ bạn giao hàng và thu tiền tại nhà. (Bạn được kiểm tra đồng hồ trước khi thanh
+                    toán)</li>
+                </ul>
+              </div>
+            </article>
+            <article class="service__box">
+              <div class="service__box__icon"><i class="fas fa-cogs"></i></div>
+              <div class="service__box__title">Sửa chữa chuyện nghiệp</div>
+              <div class="service__box__content">
+                <ul>
+                  <li>Chúng tôi có đội ngũ kỹ thuật tay nghề cao và chuyên nghiệp.</li>
+                  <li>Chúng tôi có kinh nghiệm lâu năm trong sữa chữa, bảo trì lâu năm cho các hãng thương hiệu nổi tiếng:
+                    ROLEX, OMEGA, LONGINES, MOVADO, TISSOT, RAYMOND WEIL ..</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+        <!-- end section service -->
+      </main>
+    
+@endsection
