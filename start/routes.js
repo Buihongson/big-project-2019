@@ -16,7 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('home');
+Route.get('/', 'Admin/ProductController.home');
 
 // Route.on('/signupAdmin').render('admin.signup_test_admin');
 // Route.post('/signupAdmin', 'admin/AdminController.signupAdmin');

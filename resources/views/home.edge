@@ -34,95 +34,21 @@
         <!--  product hot đh thụy sĩ  -->
         <section class="section prodhot">
           <div class="container slideshow__prodhot">
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96K101_grande.j') }}pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96R215_grande.j') }}pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}ng" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}.00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
+            @each(product in hotThuySis)
+              <article class="box">
+                <div class="box__img">
+                  <a href=""><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}"></a>
+                </div>
+                <div class="box__body">
+                  <ul>
+                    <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
+                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                  </ul>
+                </div>
+              </article>
+            @endeach
           </div>
+          
         </section>
         <!--  end product hot đh thụy sĩ  -->
 
@@ -168,94 +94,19 @@
         <!--  product hot đh citizen  -->
         <section class="section prodhot">
           <div class="container slideshow__prodhot">
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96K101_grande.j') }}"pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96R215_grande.j') }}"pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}"ng" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
+            @each(product in hotCitizens)
+              <article class="box">
+                <div class="box__img" style="display: flex;justify-content: center;align-items: center;">
+                  <a href="#"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 55%"></a>
+                </div>
+                <div class="box__body">
+                  <ul>
+                    <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
+                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                  </ul>
+                </div>
+              </article>
+            @endeach
           </div>
         </section>
         <!--  end product hot đh citizen  -->
@@ -265,7 +116,7 @@
           <div class="container">
             <h3 class="section__title">
               <b></b>
-              <span>Đồng hồ citizen</span>
+              <span>Đồng hồ chính hãng</span>
               <b></b>
             </h3>
           </div>
@@ -275,94 +126,19 @@
         <!--  product hot đh chính hãng  -->
         <section class="section prodhot">
           <div class="container slideshow__prodhot">
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96K101_grande.j') }}"pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/96R215_grande.j') }}"pg" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/L2.893.4.92.2.p') }}"ng" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
-            <article class="box">
-              <div class="box__img">
-                <img src="{{ assetsUrl('images/T099.407.16.048') }}".00.png" alt="">
-              </div>
-              <div class="box__body">
-                <ul>
-                  <li class="box__body__name"><a href="#">Đồng Hồ TISSOT T099 407 16 048 00</a></li>
-                  <li class="box__body__price">22.222.222</li>
-                </ul>
-              </div>
-            </article>
+            @each(product in hotChinhHangs)
+              <article class="box">
+                <div class="box__img" style="display: flex;justify-content: center;align-items: center;">
+                  <a href="#"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}"></a>
+                </div>
+                <div class="box__body">
+                  <ul>
+                    <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
+                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                  </ul>
+                </div>
+              </article>
+            @endeach
           </div>
         </section>
         <!--  end product hot đh chính hãng  -->
