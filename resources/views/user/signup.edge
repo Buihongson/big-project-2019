@@ -1,0 +1,62 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <!-- main -->
+
+    <main class="main">
+        <section class="container section signup">
+            <h1 class="signup__title">Đăng ký tài khoản</h1>
+            <div class="signup__content">
+                <form action="">
+                    <div class="signup__cotent__left">
+                        <div class="row">
+                            <label for="">Tên</label>
+                            <input required type="text" placeholder="Tên" class="input-text"
+                                onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="row">
+                            <label for="">Email</label>
+                            <input required type="email" placeholder="Email"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email không đúng định dạng!"
+                                class="input-text" onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="row">
+                            <label for="">Mật khẩu</label>
+                            <input required type="text" class="input-text" placeholder=" "
+                                onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="row">
+                            <label for="">Nhập lại mật khẩu</label>
+                            <input required type="text" class="input-text" placeholder=" "
+                                onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="row">
+                            <label for="">Địa chỉ</label>
+                            <input required type="text" placeholder="Địa Chỉ" class="input-text"
+                                onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="row">
+                            <label for="">Số điện thoại</label>
+                            <input required type="text" placeholder="Số Điện Thoại" class="input-text"
+                                onfocus="this.style.backgroundColor='#fbfbfb'"
+                                onblur="this.style.backgroundColor='#ffffff'">
+                        </div>
+                        <div class="signup__footer">
+                            <button type="submit" class="signup__footer__btn">Đăng ký</button>
+                        </div>
+                    </div>
+                    <div class="signup__cotent__right">
+
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- end main -->
+@endsection

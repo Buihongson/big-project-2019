@@ -49,3 +49,8 @@ Route.group(() => {
     Route.get('/product/edit-product/:id', 'Admin/ProductController.editProduct');
     Route.post('/product/edit-product/:id', 'Admin/ProductController.updateProduct');
 }).prefix('/admin');
+
+
+Route.on('/signin').render('user.signin');
+
+Route.on('/signup').render('user.signup');
