@@ -6,45 +6,64 @@
     <main class="main">
         <section class="container section signup">
             <h1 class="signup__title">Đăng ký tài khoản</h1>
+            @if(old('signupSuccess'))
+                <div style="display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 20px 0;
+                background-color: #0ebd0e;
+                height: 60px;
+                color: #fff;">
+                    <strong>{{ old('signupSuccess') }}</strong>
+                    <span><a href="/signin" style="text-decoration: underline; color:#fff" onmouseover="this.style.color='#2b2b2b'; this.style.textDecoration='none';" onmouseout="this.style.color='#fff'; this.style.textDecoration='underline';">Nhấp vào đây </a> để quay về trang đăng nhập.</span>
+                </div>
+            @endif
             <div class="signup__content">
-                <form action="">
+                <form action="{{ route('User/UserController.signup') }}" method="POST">
+                    {{ csrfField() }}
                     <div class="signup__cotent__left">
                         <div class="row">
                             <label for="">Tên</label>
                             <input required type="text" placeholder="Tên" class="input-text"
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" 
+                                value="{{ old('ten'), '' }}"
+                                name="ten">
                         </div>
                         <div class="row">
                             <label for="">Email</label>
                             <input required type="email" placeholder="Email"
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email không đúng định dạng!"
                                 class="input-text" onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" value="{{ old('email'), '' }}"
+                                name="email">
                         </div>
                         <div class="row">
                             <label for="">Mật khẩu</label>
                             <input required type="text" class="input-text" placeholder=" "
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" id="password" value="{{ old('password'), '' }}"
+                                name="password">
                         </div>
                         <div class="row">
                             <label for="">Nhập lại mật khẩu</label>
                             <input required type="text" class="input-text" placeholder=" "
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" id="confirm_password">
                         </div>
                         <div class="row">
                             <label for="">Địa chỉ</label>
                             <input required type="text" placeholder="Địa Chỉ" class="input-text"
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" value="{{ old('dia_chi'), '' }}"
+                                name="dia_chi">
                         </div>
                         <div class="row">
                             <label for="">Số điện thoại</label>
                             <input required type="text" placeholder="Số Điện Thoại" class="input-text"
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" value="{{ old('so_dien_thoai'), '' }}"
+                                name="so_dien_thoai">
                         </div>
                         <div class="signup__footer">
                             <button type="submit" class="signup__footer__btn">Đăng ký</button>
