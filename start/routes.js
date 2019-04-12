@@ -18,8 +18,8 @@ const Route = use('Route')
 
 Route.get('/', 'Admin/ProductController.home');
 
-Route.on('/signupAdmin').render('admin.signup_test_admin');
-Route.post('/signupAdmin', 'admin/AdminController.signupAdmin');
+// Route.on('/signupAdmin').render('admin.signup_test_admin');
+// Route.post('/signupAdmin', 'admin/AdminController.signupAdmin');
 
 Route.get('/logout', async({ auth, response }) => {
     await auth.logout();
@@ -52,6 +52,12 @@ Route.group(() => {
 
 
 Route.on('/signin').render('user.signin');
+Route.post('/signin', 'User/UserController.signin')
+Route.get('/logoutUser', async({ auth, response }) => {
+    await auth.logout();
+    return response.redirect('/');
+});
+
 
 Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');

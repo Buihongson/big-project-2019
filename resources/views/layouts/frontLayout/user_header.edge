@@ -27,9 +27,23 @@
       <div class="header__info">
         <div class="header__info__right">
           <ul>
-            <li class="header__info__item header__info__item--bold"><a class="header__link" href="/signin"><i
-                  class="fas fa-user"></i>Tài khoản</a></li>
-            <li class="header__info__item header__info__item--divider">|</li>
+            @loggedIn
+              <li class="header__info__item header__info__item--bold header__info__item--hover"><a class="header__link"
+                href="signin.html"><i class="fas fa-user"></i>Tài khoản</a>
+                <ul class="header__info__item__sub">
+                  <li><a href="#">Thông tin tài khoản</a></li>
+                  <li><a href="#">Đổi mật khẩu</a></li>
+                  <li><a href="/logoutUser">Thoát</a></li>
+                </ul>
+              </li>
+              <li class="header__info__item header__info__item--divider">|</li>
+            @else
+              <li class="header__info__item header__info__item--bold"><a class="header__link" href="/signin">
+                <i class="fas fa-user"></i>Tài khoản</a>
+              </li>
+              <li class="header__info__item header__info__item--divider">|</li>
+            @endloggedIn
+          </ul>
         </div>
         <div class="header__info__left">
           <ul>

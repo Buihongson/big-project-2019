@@ -5,7 +5,8 @@
         <section class="container section signin">
             <h1 class="signin__title">Đăng nhập hoặc đăng ký</h1>
             <div class="signin__body">
-                <form action="">
+                <form action="{{ route('User/UserController.signin') }}" method="POST">
+                    {{ csrfField() }}
                     <div class="signin__body__content signin__body__content--left">
                         <h3 class="signin__title__column">
                             Đăng nhập
@@ -16,13 +17,13 @@
                             <input required type="email" placeholder="Email"
                                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email không đúng định dạng!"
                                 class="input-text" onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" name="email" value="{{ old('email'), '' }}">
                         </div>
                         <div class="row">
                             <label for="">Mật khẩu</label>
                             <input required type="text" placeholder="Mật khẩu" class="input-text" pattern=".{6,}"
                                 title="Mật khẩu phải trên 6 ký tự" onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'">
+                                onblur="this.style.backgroundColor='#ffffff'" name="password">
                         </div>
                         <div class="signin__link"><a href="#">Quên mật khẩu?</a></div>
                         <div class="signin__btn"><button type="submit">Đăng nhập</button></div>
