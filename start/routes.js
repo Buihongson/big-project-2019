@@ -62,5 +62,7 @@ Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');
 
 Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/UserController.viewPageCitizenEco');
-Route.get('/product/:id', 'User/UserController.viewProduct')
+Route.get('/citizen-eco-drive/:id', 'User/UserController.viewProductCitizenEco')
+
 Route.get('/dong-ho-thuy-si/movado', 'User/UserController.viewPageMovado');
+Route.get('/movado/:id', 'User/UserController.viewProductMovado');

@@ -6,7 +6,8 @@ const Product = use('App/Models/SanPham');
 const Hash = use('Hash');
 
 class UserController {
-    // view page citizen eco
+
+    /*-----------> view page citizen eco and view detail-citizen-eco <----------- */
     async viewPageCitizenEco({ view }) {
         // query all product citizen eco
         const products = await Product.query().where('nha_san_xuat_id', '=', 4).fetch();
@@ -16,7 +17,19 @@ class UserController {
         });
     }
 
-    // view page movado
+    async viewProductCitizenEco({ params, view }) {
+        // query product
+        const product = await Product.find(params.id);
+        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 4).fetch();
+
+        return view.render('user.product_detail.detail_citizen_eco_drive', {
+            product: product.toJSON(),
+            allProducts: allProducts.toJSON()
+        });
+    }
+    /*-----------> end citizen eco <----------- */
+
+    /*-----------> view page movado and view detail movado <----------- */
     async viewPageMovado({ view }) {
         const products = await Product.query().where('nha_san_xuat_id', '=', 7).fetch();
 
@@ -26,16 +39,19 @@ class UserController {
     }
 
     // view detail 1 product
-    async viewProduct({ params, view }) {
+    async viewProductMovado({ params, view }) {
         // query product
         const product = await Product.find(params.id);
+        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 7).fetch();
 
-        console.log(product.toJSON());
-
-        return view.render('user.product.product_deital', {
-            product: product.toJSON()
+        return view.render('user.product_detail.detail_movado', {
+            product: product.toJSON(),
+            allProducts: allProducts.toJSON()
         });
     }
+    /*-----------> end movado <----------- */
+
+
 
     async signup({ request, response, session}) {
         // get all email of user

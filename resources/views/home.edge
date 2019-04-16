@@ -14,7 +14,7 @@
           <div class="container">
             <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-thanh-lap.jpg') }}" alt=""></a></div>
             <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-vi-tri.jpg') }}" alt=""></a></div>
-            <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-ky-thuat'.jpg) }}" alt=""></a></div>
+            <div class="banner__img"><a href="#"><img src="{{ assetsUrl('images/banner_image/banner-ky-thuat.jpg') }}" alt=""></a></div>
           </div>
         </section>
         <!-- end banner -->
@@ -37,12 +37,12 @@
             @each(product in hotThuySis)
               <article class="box">
                 <div class="box__img">
-                  <a href=""><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}"></a>
+                  <a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}"></a>
                 </div>
                 <div class="box__body">
                   <ul>
-                    <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
-                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                    <li class="box__body__name"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}">{{ product.ten_san_pham }}</a></li>
+                    <li class="box__body__price" style="color: #000">{{ product.gia_tien }}</li>
                   </ul>
                 </div>
               </article>
@@ -97,12 +97,12 @@
             @each(product in hotCitizens)
               <article class="box">
                 <div class="box__img" style="display: flex;justify-content: center;align-items: center;">
-                  <a href="#"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 55%"></a>
+                  <a href="{{ route('User/UserController.viewProductCitizenEco', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 55%"></a>
                 </div>
                 <div class="box__body">
                   <ul>
-                    <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
-                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                    <li class="box__body__name"><a href="{{ route('User/UserController.viewProductCitizenEco', {id: product.id}) }}">{{ product.ten_san_pham }}</a></li>
+                    <li class="box__body__price" style="color: #000">{{ product.gia_tien }}</li>
                   </ul>
                 </div>
               </article>
@@ -134,7 +134,7 @@
                 <div class="box__body">
                   <ul>
                     <li class="box__body__name"><a href="#">{{ product.ten_san_pham }}</a></li>
-                    <li class="box__body__price">{{ product.gia_tien }}</li>
+                    <li class="box__body__price" style="color: #000">{{ product.gia_tien }}</li>
                   </ul>
                 </div>
               </article>

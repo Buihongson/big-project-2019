@@ -5,7 +5,7 @@
         <section class="section info">
             <div class="container">
                 <h1 class="info__title">Citizen Eco-Drive</h1>
-                <div class="info__banner"><img src="../images/banner_image/citizen-ecodrive.jpg" alt=""></div>
+                <div class="info__banner"><img src="../images/banner_image/movado-bann.jpg" alt=""></div>
                 <div class="info__content">
                     <p>Công nghệ Eco-drive mà Citizen sử dụng trong các mẫu đồng hồ citizen eco-drive cao cấp của mình
                         nhằm vào các vấn đề nan giải về môi trường mà thế giới ngày nay đang phải đối mặt.</p>
@@ -50,10 +50,10 @@
             <div class="product__body">
                 @each(product in products)
                     <article class="box box--hidden">
-                        <div class="box__img"><a href="{{ route('User/UserController.viewProduct', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__img"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
                         <div class="box__body">
                             <ul>
-                                <li class="box__body__name"><a href="{{ route('User/UserController.viewProduct', {id: product.id}) }}">Đồng hồ {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
+                                <li class="box__body__name"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}">Đồng hồ {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
                                 <li class="box__body__price">{{ product.gia_tien }}</li>
                             </ul>
                         </div>

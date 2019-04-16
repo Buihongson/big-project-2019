@@ -3,11 +3,10 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class AddNewGiaTienSchema extends Schema {
+class AddColumnMoTaSanPhamSchema extends Schema {
   up () {
     this.alter('san_phams', (table) => {
-      // alter table
-      table.decimal('gia_tien', 15, 2);
+      table.string('mo_ta')
     })
   }
 
@@ -16,4 +15,4 @@ class AddNewGiaTienSchema extends Schema {
   }
 }
 
-module.exports = AddNewGiaTienSchema
+module.exports = AddColumnMoTaSanPhamSchema

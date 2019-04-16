@@ -1,0 +1,98 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+     <main class="main">
+        <section class="section detail">
+            <div class="container">
+                <div class="detail__top">
+                    <div class="detail__column detail__column--left">
+                        <div class="detail__img" style="display: flex;justify-content: center;align-items: center;">
+                            <img src="{{ product.hinh_anh }}" alt="" style="width: 60%">
+                        </div>
+                    </div>
+                    <div class="detail__column detail__column--right">
+                        <h1 class="detail__title">{{ product.ten_san_pham }} {{ product.gioi_tinh }}</h1>
+                        <div class="divider"></div>
+                        <div class="detail__price">{{ product.gia_tien }}</div>
+                        <div class="detail__desc">{{ product.ten_san_pham }} mang một vẻ đẹp hiện đại, độc đáo, thanh lịch.
+                            {{ product.ten_san_pham }} được thiết kế chất liệu dây bằng thép không gỉ cao cấp, có độ thẩm mỹ
+                            cao, khả năng chống nước 3 bar đủ để chịu nước khi đi mưa nhẹ, rửa tay.</div>
+                        <form action="">
+                            <button class="detail__btn">Thêm vào giỏ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section detail">
+            <div class="container">
+                <div class="detail__bottom">
+                    <div class="detail__bottom__column detail__bottom__column--left">
+                        <h2 class="detail__bottom__title">Chi tiết thông số kỹ thuật đồng hồ:</h2>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Thương hiệu:</td>
+                                    <td>CITIZEN</td>
+                                </tr>
+                                <tr>
+                                    <td>Mã sản phẩm:</td>
+                                    <td>{{ product.ma_san_pham }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Xuất xữ:</td>
+                                    <td>{{ product.xuat_su }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giới tính:</td>
+                                    <td>{{ product.gioi_tinh }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kính:</td>
+                                    <td>{{ product.kinh }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Đường kính vỏ:</td>
+                                    <td>{{ product.duong_kinh_vo }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Độ dày của vỏ:</td>
+                                    <td>{{ product.do_day_vo}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Độ chịu áp suất nước</td>
+                                    <td>{{ product.ap_suat_nuoc}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail__bottom__column detail__bottom__column--right">
+                        <img src="../images/banner_detail_page/CITIZEN-desc.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section same__product">
+            <div class="container">
+                <h2 class="same__product__title">Sản phẩm tượng tự</h2>
+                <div class="slideshow__prodhot">
+                    @each(sameProduct in allProducts)
+                        <article class="box">
+                            <div class="box__img">
+                                <a href="{{ route('User/UserController.viewProductCitizenEco', {id: sameProduct.id}) }}"><img src="{{ sameProduct.hinh_anh }}" alt="" style="width: 55%"></a>
+                            </div>
+                            <div class="box__body">
+                                <ul>
+                                    <li class="box__body__name"><a href="{{ route('User/UserController.viewProductCitizenEco', {id: sameProduct.id}) }}">{{ sameProduct.ten_san_pham }}</a></li>
+                                    <li class="box__body__price">{{ sameProduct.gia_tien }}</li>
+                                </ul>
+                            </div>
+                        </article>
+                    @endeach
+                </div>
+            </div>
+        </section>
+    </main>
+@endsection
