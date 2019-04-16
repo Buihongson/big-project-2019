@@ -1,10 +1,42 @@
 'use strict'
 
 const User = use('App/Models/User');
+const Product = use('App/Models/SanPham');
 
 const Hash = use('Hash');
 
 class UserController {
+    // view page citizen eco
+    async viewPageCitizenEco({ view }) {
+        // query all product citizen eco
+        const products = await Product.query().where('nha_san_xuat_id', '=', 4).fetch();
+
+        return view.render('user.pages.page_citizen_eco', {
+            products: products.toJSON()
+        });
+    }
+
+    // view page movado
+    async viewPageMovado({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 7).fetch();
+
+        return view.render('user.pages.movado', {
+            products: products.toJSON()
+        });
+    }
+
+    // view detail 1 product
+    async viewProduct({ params, view }) {
+        // query product
+        const product = await Product.find(params.id);
+
+        console.log(product.toJSON());
+
+        return view.render('user.product.product_deital', {
+            product: product.toJSON()
+        });
+    }
+
     async signup({ request, response, session}) {
         // get all email of user
         const emailUser = await User.all();

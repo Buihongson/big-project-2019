@@ -58,6 +58,9 @@ Route.get('/logoutUser', async({ auth, response }) => {
     return response.redirect('/');
 });
 
-
 Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');
+
+Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/UserController.viewPageCitizenEco');
+Route.get('/product/:id', 'User/UserController.viewProduct')
+Route.get('/dong-ho-thuy-si/movado', 'User/UserController.viewPageMovado');
