@@ -48,8 +48,13 @@ Route.group(() => {
     Route.get('/product/delete-product/:id', 'Admin/ProductController.deleteProduct');
     Route.get('/product/edit-product/:id', 'Admin/ProductController.editProduct');
     Route.post('/product/edit-product/:id', 'Admin/ProductController.updateProduct');
-}).prefix('/admin');
 
+    // User (Admin)
+    Route.get('/user/add-user', 'Admin/UserController.viewAddUser');
+    Route.post('/user/add-user', 'Admin/UserController.addUser');
+    Route.get('/user/view-user', 'Admin/UserController.viewAllUser');
+    Route.get('/user/delete-user/:id', 'Admin/UserController.deleteUser');
+}).prefix('/admin');
 
 Route.on('/signin').render('user.signin');
 Route.post('/signin', 'User/UserController.signin')

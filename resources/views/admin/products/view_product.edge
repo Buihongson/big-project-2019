@@ -63,7 +63,7 @@
                                 <td class="center">
                                   <a href="#myModal{{ detail.id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
                                   <a href="{{ route('Admin/ProductController.editProduct', {id: detail.id})}}" class="btn btn-primary btn-mini">Edit</a>
-                                  <a href="{{ route('Admin/ProductController.deleteProduct', {id: detail.id})}}" class="btn btn-danger btn-mini">Delete</a>
+                                  <a id="delProduct" href="{{ route('Admin/ProductController.deleteProduct', {id: detail.id})}}" class="btn btn-danger btn-mini">Delete</a>
                                 </td>
                           </tr>
 

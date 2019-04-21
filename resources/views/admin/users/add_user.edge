@@ -1,0 +1,64 @@
+@layout('layouts.adminLayout.admin_design')
+
+@section('content')
+<div id="content">
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">User</a> <a href="#" class="current">Add user</a> </div>
+      <h1>Khách Hàng</h1>
+    </div>
+    @if(old('success'))
+        <div class="alert alert-success">{{old('success')}}</div>
+    @elseif(old('error'))
+        <div class="alert alert-danger">{{old('error')}}</div>
+    @endif
+    <div class="container-fluid"><hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+              <h5>Thêm Khách Hàng</h5>
+            </div>
+            <div class="widget-content nopadding">
+            <form enctype="multipart/form-data" class="form-horizontal" method="POST" action="{{ route('Admin/UserController.addUser') }}" name="add_user" id="add_user" novalidate="novalidate">
+                {{ csrfField() }}
+                <div class="control-group">
+                    <label class="control-label" for="user_name">Tên khách hàng</label>
+                    <div class="controls">
+                        <input type="text" name="user_name" id="user_name" value="{{ old('ten'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user_email">Email</label>
+                    <div class="controls">
+                        <input type="email" name="user_email" id="user_email" value="{{ old('email'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user_password">Mật khẩu</label>
+                    <div class="controls">
+                        <input type="text" name="user_password" id="user_password" value="{{ old('password'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user_address">Địa chỉ</label>
+                    <div class="controls">
+                        <input type="text" name="user_address" id="user_address" value="{{ old('dia_chi'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="user_tel">Số điện thoại</label>
+                    <div class="controls">
+                        <input type="text" name="user_tel" id="user_tel" value="{{ old('so_dien_thoai'), '' }}">
+                    </div>
+                </div>
+                <div class="form-actions">
+                  <input type="submit" value="Thêm" class="btn btn-success">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+@endsection 

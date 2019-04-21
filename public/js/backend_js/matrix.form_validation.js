@@ -110,6 +110,38 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	// Add user validation
+	$("#add_user").validate({
+		rules:{
+			user_name:{
+				required:true
+			},
+			user_email:{
+				required:true,
+			},
+			user_password:{
+				required:true,
+				minlength:6,
+				maxlength:20
+			},
+			user_address:{
+				required:true,
+			},
+			user_tel:{
+				required:true,
+			},
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		}
+	});
 	
 	$("#number_validate").validate({
 		rules:{
@@ -166,4 +198,28 @@ $(document).ready(function(){
 			$(element).parents('.control-group').addClass('success');
 		}
 	});
+
+	$("#delProduct").click(function() {
+		alert('test');
+		if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+			return true
+		}
+		return false;
+	});
+
+	$("#delUser").on('click', function(e) {
+		e.preventdefault();
+		alert('test');
+	})
 });
+
+var delUser = document.getElementById('delUser');
+delUser.addEventListener('click', delUser);
+
+function delUser() {
+	alert('test');
+	if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+		return true
+	}
+	return false;
+}
