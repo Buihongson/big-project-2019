@@ -18,6 +18,16 @@ class UserController {
         })
     }
 
+    // view edit user
+    async viewEditUser({ view, params }) {
+        // get user by id
+        const user = await User.find(params.id);
+
+        return view.render('admin.users.edit_user', {
+            user: user.toJSON()
+        })
+    }
+
     // add new user
     async addUser({ request, response, session, auth }) {
         const user = new User();
@@ -51,6 +61,26 @@ class UserController {
         session.flash({ delete_notification: 'Xóa thành công'});
 
         // redirect back view all user
+        return response.redirect('/admin/user/view-user');
+    }
+
+    // update user
+    async updateUser({ request, response, session }) {
+        // get user by id
+        const user = await User.find(parent.id);
+
+        // get value from input
+        user.ten = request.input('user_name');
+        user.email = request.input('user_email');
+        user.dia_chi = request.input('user_address');
+        user.so_dien_thoai = request.input('user_tel');
+
+        // save user
+        await user.save();
+
+        // notify when update success
+        session.flash({ update_notification: 'Cập nhập thành công'});
+
         return response.redirect('/admin/user/view-user');
     }
 }

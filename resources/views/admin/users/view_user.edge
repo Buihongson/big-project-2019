@@ -55,7 +55,7 @@
                             <td>{{ user.dia_chi }}</td>
                             <td>{{ user.so_dien_thoai }}</td>
                             <td class="center">
-                              <a href="{{ route('Admin/UserController.editUser', {id: user.id})}}" class="btn btn-primary btn-mini">Edit</a>
+                              <a href="{{ route('Admin/UserController.viewEditUser', {id: user.id})}}" class="btn btn-primary btn-mini">Edit</a>
                               <a id="delUser" href="{{ route('Admin/UserController.deleteUser', {id: user.id})}}" class="btn btn-danger btn-mini">Delete</a>
                             </td>
                         </tr>

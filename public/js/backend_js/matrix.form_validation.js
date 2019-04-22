@@ -200,16 +200,16 @@ $(document).ready(function(){
 	});
 
 	$("#delProduct").click(function() {
-		alert('test');
-		if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
-			return true
-		}
-		return false;
+		// alert('test');
+		// if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+		// 	return true
+		// }
+		// return false;
+		confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')
 	});
 
 	$("#delUser").on('click', function(e) {
-		e.preventdefault();
-		alert('test');
+		confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
 	})
 });
 
@@ -217,9 +217,10 @@ var delUser = document.getElementById('delUser');
 delUser.addEventListener('click', delUser);
 
 function delUser() {
-	alert('test');
-	if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
-		return true
-	}
-	return false;
+	// alert('test');
+	// if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+	// 	return true
+	// }
+	// return false;
+	confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')
 }

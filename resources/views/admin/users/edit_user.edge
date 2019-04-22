@@ -3,40 +3,42 @@
 @section('content')
 <div id="content">
     <div id="content-header">
-      <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Catalog</a> <a href="#" class="current">Edit catalog</a> </div>
-      <h1>Thương Hiệu</h1>
+      <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">User</a> <a href="#" class="current">Edit user</a> </div>
+      <h1>Khách Hàng</h1>
     </div>
     <div class="container-fluid"><hr>
       <div class="row-fluid">
         <div class="span12">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-              <h5>Cập nhập thương hiệu</h5>
+              <h5>Cập nhập khách hàng</h5>
             </div>
             <div class="widget-content nopadding">
-            <form class="form-horizontal" method="POST" action="{{ route('Admin/ProducerController.updateProducer', {id: producer.id}) }}" name="add_producer" id="add_producer" novalidate="novalidate">
+            <form class="form-horizontal" method="POST" action="{{ route('Admin/UserController.updateUser', {id: user.id}) }}" name="update_user" id="update_user" novalidate="novalidate">
                 {{ csrfField() }}
                 <div class="control-group">
-                    <label class="control-label" for="name_producer">Tên thương hiệu</label>
+                    <label class="control-label" for="user_name">Tên khách hàng</label>
                     <div class="controls">
-                        <input type="text" name="name_producer" id="name_producer" value="{{ producer.ten_th ? producer.ten_th : old('ten_th', '') }}">
+                        <input type="text" name="user_name" id="user_name" value="{{ user.ten ? user.ten : old('ten', '') }}">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="name_producer">Danh mục</label>
+                    <label class="control-label" for="user_email">Email</label>
                     <div class="controls">
-                        <select name="parent_id" style="width: 220px">
-                            <option value="0">Danh mục</option>
-                            @each(level in levels)
-                              <option value="{{ level.id }}" @if( level.id == producer.parent_id ) selected @endif>{{ level.ten_th }}</option>
-                            @endeach
-                          </select>
+                        <input type="email" name="user_email" id="user_email" value="{{ user.email ? user.email : old('email', '') }}">
+                    </div>
+                </div>
+               
+                <div class="control-group">
+                    <label class="control-label" for="user_address">Địa chỉ</label>
+                    <div class="controls">
+                        <input type="text" name="user_address" id="user_address" value="{{ user.dia_chi ? user.dia_chi : old('dia_chi', '') }}">
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="info_producer">Thông tin thương hiệu</label>
+                    <label class="control-label" for="user_tel">Số điện thoại</label>
                     <div class="controls">
-                      <textarea name="info_producer" id="info_producer" value="{{ old('mo_ta_th', '') }}">{{ producer.mo_ta_th }}</textarea>
+                        <input type="text" name="user_tel" id="user_tel" value="{{ user.so_dien_thoai ? user.so_dien_thoai : old('so_dien_thoai', '') }}">
                     </div>
                 </div>
                 <div class="form-actions">

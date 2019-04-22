@@ -54,6 +54,8 @@ Route.group(() => {
     Route.post('/user/add-user', 'Admin/UserController.addUser');
     Route.get('/user/view-user', 'Admin/UserController.viewAllUser');
     Route.get('/user/delete-user/:id', 'Admin/UserController.deleteUser');
+    Route.get('/user/edit-user/:id', 'Admin/UserController.viewEditUser');
+    Route.post('/user/edit-iser/:id', 'Admin/UserController.updateUser')
 }).prefix('/admin');
 
 Route.on('/signin').render('user.signin');
