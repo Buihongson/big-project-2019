@@ -19,9 +19,12 @@
         </a>
       </div>
       <div class="header__input header__input--pc">
-        <form action="search.php" method="get">
-          <input type="text" placeholder="Tìm kiếm…" name="search" />
-          <a href="#"><i class="fas fa-search"></i></a>
+        <form action="{{ route('User/SearchController.search') }}" method="POST">
+          {{ csrfField() }}
+          <div>
+            <input type="text" placeholder="Tìm kiếm…" name="search" value="{{ old('ten_san_pham'), '' }}"/>
+            <button type="submit" style="position: absolute;top: 0;right: 0;"><i class="fas fa-search"></i></button>
+          </div>
         </form>
       </div>
       <div class="header__info">

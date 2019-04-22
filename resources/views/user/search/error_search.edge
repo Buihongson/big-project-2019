@@ -1,0 +1,30 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title">Không tìm thấy kết quả cho: {{ valueInput }}</h1>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in product)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}">Đồng hồ {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore" style="width: 330px">
+                <a href="/" class="btn__load">Quay về trang chủ</a>
+            </div>
+        </section>
+    </main>
+@endsection

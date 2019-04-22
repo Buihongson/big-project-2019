@@ -1,0 +1,58 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title">Kết quả tìm kết cho: {{ valueInput }}</h1>
+            </div>
+        </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dưới 5 Triệu</a></li>
+                    <li><a href="#">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="#">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="#">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Nam</a></li>
+                    <li><a href="#">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li>a</li>
+                    <li>b</li>
+                    <li>c</li>
+                    <li>d</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in product)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}">Đồng hồ {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection
