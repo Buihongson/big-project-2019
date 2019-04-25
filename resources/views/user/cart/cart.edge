@@ -1,0 +1,71 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+
+<main class="main">
+        <div class="container cart product">
+            <section class="cart__column cart__column--left test-find">
+                <form action="#">
+                    <table class="cart__column__content " cellspacing="0">
+                        <thead>
+                            <tr class="product__head">
+                                <th class="product__head__name title" colspan="3">Sản phẩm</th>
+                                <th class="product__head__price title">Giá</th>
+                                <th class="product__head__quantity title">Số lượng</th>
+                                <th class="product__head__subtotal title">Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody class="show-cart">
+
+                        </tbody>
+                        <tfoot>
+                            <tr class="product__bottom">
+                                <td colspan="6" class="product__bottom__content">
+                                    <div class="product__bottom__content__item product__bottom--link">
+                                        <a class="link" href="#">← Tiếp tục xem sản phẩm </a>
+                                    </div>
+
+                                    <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce"
+                                        value="b2c671ec63"><input type="hidden" name="_wp_http_referer"
+                                        value="/gio-hang/">
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </form>
+            </section>
+
+            <section class="cart__column cart__column--right">
+                <div class="cart__total">
+                    <table cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="title" colspan="2" style="border-width: 3px">Tổng số lượng</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <table cellspacing="0" class="cart__total__detail">
+                        <tbody>
+                            <tr class="cart__total__quantity">
+                                <th>Số lượng</th>
+                                <td data-title="Số lượng"><span class="price__amount quantity-cart"></span></td>
+                            </tr>
+                            <tr class="cart__total__sum">
+                                <th>Tồng tiền</th>
+                                <td data-title="Tổng tiền"><span class="price__amount amount total-cart">&nbsp;<span
+                                            class="price__currencySymbol">₫</span></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="cart__total__checkout">
+                        <a href="#" class="link">Thanh toán</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+@endsection

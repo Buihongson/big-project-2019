@@ -75,3 +75,6 @@ Route.get('/citizen-eco-drive/:id', 'User/UserController.viewProductCitizenEco')
 
 Route.get('/dong-ho-thuy-si/movado', 'User/UserController.viewPageMovado');
 Route.get('/movado/:id', 'User/UserController.viewProductMovado');
+
+// cart
+Route.get('/cart', 'User/CartController.viewCart');
