@@ -67,6 +67,12 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label" for="wire_product">Kính</label>
+                    <div class="controls">
+                        <input type="text" name="wire_product" id="wire_product" value="{{ product.loai_day ? product.loai_day : old('loai_day'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
                     <label class="control-label" for="diameter_product">Đường kính vỏ</label>
                     <div class="controls">
                         <input type="text" name="diameter_product" id="diameter_product" value="{{ product.duong_kinh_vo ? product.duong_kinh_vo : ('duong_kinh_vo'), '' }}">

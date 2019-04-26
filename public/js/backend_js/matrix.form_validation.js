@@ -99,6 +99,9 @@ $(document).ready(function(){
 			status_product:{
 				required:true,
 			},
+			wire_product:{
+				required:true,
+			},
 		},
 		errorClass: "help-inline",
 		errorElement: "span",

@@ -32,6 +32,11 @@ class ProductController {
         const product = new Product();
         const file = request.file('image_product');
 
+        // method uppercase first char in string
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+
         // get value from input
         try {
             const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(file.tmpPath, { folder: 'images-for-product-2019' });
@@ -41,6 +46,7 @@ class ProductController {
             product.ma_san_pham = request.input('code_product');
             product.gioi_tinh = request.input('gender_product');
             product.kinh = request.input('glass_product');
+            product.loai_day = request.input('wire_product').capitalize();
             product.duong_kinh_vo = request.input('diameter_product') + " millimeters";
             product.do_day_vo = request.input('thickness_product') + " millimeters";
             product.ap_suat_nuoc = request.input('water_resistance_product') + " bar";
@@ -79,6 +85,10 @@ class ProductController {
         const product = await Product.find(params.id);
         const file = request.file('image_product');
 
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+
         // get value from input
         try {
             const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(file.tmpPath, { folder: 'images-for-product-2019' });
@@ -86,8 +96,9 @@ class ProductController {
             product.nha_san_xuat_id = request.input('parent_id');
             product.ten_san_pham = request.input('name_product');
             product.ma_san_pham = request.input('code_product');
-            product.gioi_tinh = request.input('gender_product');
+            product.gioi_tinh = request.input('gender_product').capitalize();
             product.kinh = request.input('glass_product');
+            product.loai_day = request.input('wire_product').capitalize();
             product.duong_kinh_vo = request.input('diameter_product');
             product.do_day_vo = request.input('thickness_product');
             product.ap_suat_nuoc = request.input('water_resistance_product');
