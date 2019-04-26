@@ -51,7 +51,27 @@ class UserController {
     }
     /*-----------> end movado <----------- */
 
+    /*-----------> view page bulova and view detail bulova <----------- */
+    async viewPageBulova({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 12).fetch();
 
+        return view.render('user.pages.bulova', {
+            products: products.toJSON()
+        });
+    }
+
+    // view detail 1 product
+    async viewProductBulova({ params, view }) {
+        // query product
+        const product = await Product.find(params.id);
+        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 12).fetch();
+
+        return view.render('user.product_detail.detail_bulova', {
+            product: product.toJSON(),
+            allProducts: allProducts.toJSON()
+        });
+    }
+    /*-----------> end bulova <----------- */
 
     async signup({ request, response, session}) {
         // get all email of user
