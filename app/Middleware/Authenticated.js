@@ -13,7 +13,7 @@ class Authenticated {
     try {
       await auth.check();
 
-      return response.redirect('/admin/dashboard');
+      return response.redirect('/thanh-toan');
     } catch (error) {
         // response.send(error.message)
         await next();

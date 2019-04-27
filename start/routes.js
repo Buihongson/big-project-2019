@@ -80,5 +80,11 @@ Route.get('/dong-ho-thuy-si/movado/:id', 'User/UserController.viewProductMovado'
 Route.get('/dong-ho-chinh-hang/bulova', 'User/UserController.viewPageBulova');
 Route.get('/dong-ho-chinh-hang/bulova/:id', 'User/UserController.viewProductBulova');
 
+Route.group(() => {
+    Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNamController.viewDH5tr');
+    Route.get('/min_price=5000000&max_price=15000000', 'User/DongHoNamController.viewDH5tr_15tr');
+    Route.get('/min_price=15000001&max_price=30000000', 'User/DongHoNamController.viewDH15tr_30tr');
+    Route.get('/max_price=30000001', 'User/DongHoNamController.viewDH30tr')
+}).prefix('/dong-ho-nam');
 // cart
 Route.get('/cart', 'User/CartController.viewCart');
