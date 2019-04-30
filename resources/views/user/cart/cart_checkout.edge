@@ -1,0 +1,58 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <!-- main -->
+
+    <main class="main">
+        <section class="container section signup">
+            <h1 class="signup__title">Xác nhận thanh toán</h1>
+            <div class="signup__content">
+                <form action="{{ route('User/CartController.checkOut') }}" method="POST">
+                    {{ csrfField() }}
+                    <div class="signup__cotent__left">
+                        <div class="row">
+                            <label for="">Tên</label>
+                            <input disabled type="text" placeholder="Tên" class="input-text"
+                                value="{{ user.ten }}"
+                                name="ten">
+                        </div>
+                        <div class="row">
+                            <label for="">Email</label>
+                            <input disabled type="email" placeholder="Email" class="input-text"
+                                value="{{ user.email }}"
+                                name="email">
+                        </div>
+                        <div class="row">
+                            <label for="">Địa chỉ</label>
+                            <input disabled type="text" placeholder="Địa Chỉ" class="input-text"
+                                value="{{ user.dia_chi }}"
+                                name="dia_chi">
+                        </div>
+                        <div class="row">
+                            <label for="">Số điện thoại</label>
+                            <input disabled type="text" placeholder="Số Điện Thoại" class="input-text"
+                                value="{{ user.so_dien_thoai }}"
+                                name="so_dien_thoai">
+                        </div>
+                        <div class="row">
+                            <label for="">Số tiền</label>
+                            <input type="text" placeholder="Tổng tiền" class="input-text" id="paycheck"
+                                name="tong_tien">
+                        </div>
+                        <div class="row">
+                            <label for="">Ghi chú</label>
+                            <input type="text" placeholder="Ghi chu" class="input-text"
+                                value="{{ old(ghi_chu),'' }}"
+                                name="ghi_chu">
+                        </div>
+                        <div class="signup__footer">
+                            <button type="submit" class="signup__footer__btn" id="checkOut">Xác nhận</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- end main -->
+@endsection

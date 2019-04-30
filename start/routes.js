@@ -25,8 +25,8 @@ Route.get('/logout', async({ auth, response }) => {
     await auth.logout();
     return response.redirect('/admin');
 });
-Route.get('/admin', 'Admin/Admincontroller.showFormLogin').middleware(['authenticated']);
-Route.post('/admin', 'Admin/AdminController.login').validator('LoginAdmin');
+Route.get('/admin', 'Admin/Admincontroller.showFormLogin');
+Route.post('/admin', 'Admin/AdminController.login').validator('LoginAdmin').middleware(['authenticated']);
 
 Route.get('/admin/dashboard', 'Admin/Admincontroller.showDashboard');
 Route.get('/admin/settings', 'Admin/Admincontroller.showSettings');
@@ -80,11 +80,21 @@ Route.get('/dong-ho-thuy-si/movado/:id', 'User/UserController.viewProductMovado'
 Route.get('/dong-ho-chinh-hang/bulova', 'User/UserController.viewPageBulova');
 Route.get('/dong-ho-chinh-hang/bulova/:id', 'User/UserController.viewProductBulova');
 
+// watch men
 Route.group(() => {
+    Route.get('', 'User/DongHoNamController.viewDHNam')
     Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNamController.viewDH5tr');
     Route.get('/min_price=5000000&max_price=15000000', 'User/DongHoNamController.viewDH5tr_15tr');
     Route.get('/min_price=15000001&max_price=30000000', 'User/DongHoNamController.viewDH15tr_30tr');
     Route.get('/max_price=30000001', 'User/DongHoNamController.viewDH30tr')
 }).prefix('/dong-ho-nam');
+
+
 // cart
-Route.get('/cart', 'User/CartController.viewCart');
+Route.group(() => {
+    Route.get('', 'User/CartController.viewCart');
+
+Route.get('/thanh-toan', 'User/CartController.viewCheckOut').middleware(['auth']);
+Route.post('/thanh-toan', 'User/CartController.checkOut');
+Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
+}).prefix('/gio-hang');

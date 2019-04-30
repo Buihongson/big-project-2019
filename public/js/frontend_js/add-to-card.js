@@ -127,9 +127,10 @@ var shoppingCart = (function() {
     var price = Number($(this).data('price'));
 
     shoppingCart.addItemToCart(name, image, price, 1);
-    
+
     displayCart();
-    // window.location.href="http://localhost:9000/cart.html";
+    alert('Thêm vào giỏ hàng thành công.')
+    window.location.href="http://127.0.0.1:3333/cart";
   })
 
   function displayCart() {
@@ -140,17 +141,18 @@ var shoppingCart = (function() {
             + '<td class=\'product__top__remove item\'><button class=\'delete-item\' data-name=\'' + cartArray[i].name + '\'>x</button></td>'
             + '<td class=\'product__thumbnail item\'><a href=\'#\'><img src=\'' + cartArray[i].image + '\'></a></td>'
             + '<td class=\'product__top__name item\'>' + cartArray[i].name + '</td>'
-            + '<td class=\'product__top__price item\'>' + cartArray[i].price + '</td>'
+            + '<td class=\'product__top__price item\'>' + cartArray[i].price + '<span class=\'price__currencySymbol\'>&nbsp;₫</span></td>'
             + '<td class=\'product__top__quantity item\'><div class=\'product__top__quantity--body\'><button class=\'minus-item value__button\' id=\'decrease\' value=\'Decrease Value\' data-name=\'' + cartArray[i].name + '\'>-</button>'
             + '<input class=\'input-text item-count\' type=\'number\' min=\'1\' max=\'99\' step=\'1\' id=\'item-count\' data-name=\''+cartArray[i].name+'\' value=\''+cartArray[i].count+'\'>'
             + '<button class=\'plus-item value__button\' id=\'increase\' value=\'Decrease Value\' data-name=\'' + cartArray[i].name + '\'>+</button></div></td>'
-            + '<td class=\'product__top__subtotal item\'><span class=\'price__amount amount\'>' +cartArray[i].total+ '</span><span class=\'price__currencySymbol\'>₫</span></span></td>'
+            + '<td class=\'product__top__subtotal item\'><span class=\'price__amount amount\'>' +cartArray[i].total+ '</span><span class=\'price__currencySymbol\'>&nbsp;₫</span></span></td>'
             + '</tr>';
     }
 
     $('.show-cart').html(output);
     $('.total-cart').html(shoppingCart.totalCart());
     $('.quantity-cart').html(shoppingCart.totalCount());
+    $('#paycheck').val(shoppingCart.totalCart());
   }
 
   // delete item form cart
@@ -191,4 +193,9 @@ var shoppingCart = (function() {
   });
 
   displayCart();
+
+  // $('#checkOut').on('click', function(e) {
+  //   e.preventDefault();
+  //   window.location.href = "http://127.0.0.1:3333/thanh-toan-thanh-cong";
+  // });
 });

@@ -15,6 +15,6 @@ hooks.after.providersBooted(() => {
 
     // Xử lý `InvalidSession`
     Exception.handle('InvalidSessionException', (error, { response }) => {
-        return response.redirect('/admin');
+        return response.redirect('/signin');
     })
 });
