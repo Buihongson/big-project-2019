@@ -1,0 +1,69 @@
+@layout('layouts.adminLayout.admin_design')
+
+@section('content')
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Order</a> <a href="#" class="current">View order</a> </div>
+        <h1>Đơn Hàng</h1>
+        @if(old('add_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('add_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('update_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('update_notification') }}</strong>
+          </div>
+        @endif
+        @if(old('delete_notification'))
+            <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>{{ old('delete_notification') }}</strong>
+          </div>
+        @endif
+    </div>
+    <div class="container-fluid">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Đơn Hàng</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Tổng tiền</th>
+                    <th>Tình trạng</th>
+                    <th>Ghi chú</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @each(order in orders)
+                        <tr class="gradeX">
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.users.ten }}</td>
+                            <td>{{ order.tong_tien }}</td>
+                            <td>{{ order.tinh_trang }}</td>
+                            <td>{{ order.ghi_chu }}</td>
+                            <td class="center">
+                              {{--  <a href="{{ route('Admin/ProducerController.editProducer', {id: producer.id})}}" class="btn btn-primary btn-mini">Edit</a>  --}}
+                              <a href="{{ route('Admin/ProducerController.deleteProducer', {id: order.id})}}" class="btn btn-danger btn-mini">Delete</a>
+                            </td>
+                        </tr>
+                    @endeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection

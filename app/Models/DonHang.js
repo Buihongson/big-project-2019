@@ -4,9 +4,9 @@
 const Model = use('Model')
 
 class DonHang extends Model {
-    san_phams () {
-        return this.hasMany('App/Models/SanPham')
-    }
+  users () {
+    return this.belongsTo('App/Models/User')
+  }
 }
 
 module.exports = DonHang

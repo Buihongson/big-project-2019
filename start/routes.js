@@ -55,7 +55,10 @@ Route.group(() => {
     Route.get('/user/view-user', 'Admin/UserController.viewAllUser');
     Route.get('/user/delete-user/:id', 'Admin/UserController.deleteUser');
     Route.get('/user/edit-user/:id', 'Admin/UserController.viewEditUser');
-    Route.post('/user/edit-iser/:id', 'Admin/UserController.updateUser')
+    Route.post('/user/edit-iser/:id', 'Admin/UserController.updateUser');
+
+    // Order (Amin)
+    Route.get('/order/view-order', 'Admin/OrderController.viewOrder');
 }).prefix('/admin');
 
 Route.on('/signin').render('user.signin');
@@ -93,8 +96,7 @@ Route.group(() => {
 // cart
 Route.group(() => {
     Route.get('', 'User/CartController.viewCart');
-
-Route.get('/thanh-toan', 'User/CartController.viewCheckOut').middleware(['auth']);
-Route.post('/thanh-toan', 'User/CartController.checkOut');
-Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
+    Route.get('/thanh-toan', 'User/CartController.viewCheckOut').middleware(['auth']);
+    Route.post('/thanh-toan', 'User/CartController.checkOut');
+    Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
 }).prefix('/gio-hang');

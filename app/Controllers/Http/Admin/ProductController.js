@@ -22,6 +22,10 @@ class ProductController {
         // get all product from database with san_phams and nha_san_xuats
         const products = await Catelog.query().where('parent_id', '>', 0).with('san_phams').fetch();
 
+        // const products = await Product.query().with('nha_san_xuats').fetch();
+
+        // // console.log(products.toJSON());
+
         return view.render('admin.products.view_product', {
             products: products.toJSON(),
         });
