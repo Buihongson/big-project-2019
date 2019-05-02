@@ -130,7 +130,7 @@ var shoppingCart = (function() {
 
     displayCart();
     alert('Thêm vào giỏ hàng thành công.')
-    window.location.href="http://127.0.0.1:3333/cart";
+    window.location.href="http://127.0.0.1:3333/gio-hang";
   })
 
   function displayCart() {

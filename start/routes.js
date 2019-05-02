@@ -86,10 +86,17 @@ Route.get('/dong-ho-chinh-hang/bulova/:id', 'User/UserController.viewProductBulo
 // watch men
 Route.group(() => {
     Route.get('', 'User/DongHoNamController.viewDHNam')
+
+    // prices
     Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNamController.viewDH5tr');
     Route.get('/min_price=5000000&max_price=15000000', 'User/DongHoNamController.viewDH5tr_15tr');
     Route.get('/min_price=15000001&max_price=30000000', 'User/DongHoNamController.viewDH15tr_30tr');
-    Route.get('/max_price=30000001', 'User/DongHoNamController.viewDH30tr')
+    Route.get('/max_price=30000001', 'User/DongHoNamController.viewDH30tr');
+
+    // albert
+    Route.get('/day-da', 'User/DongHoNamController.viewDayDa')
+    Route.get('/day-kim-loai', 'User/DongHoNamController.viewDayKimLoai')
+    Route.get('/thep-khong-ri', 'User/DongHoNamController.viewThepKhongRi')
 }).prefix('/dong-ho-nam');
 
 
