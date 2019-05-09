@@ -73,7 +73,15 @@ class UserController {
     }
     /*-----------> end bulova <----------- */
 
-    async signup({ request, response, session}) {
+    async viewRepair({ view }) {
+        return view.render('user.repair')
+    }
+
+    async viewContact({ view }) {
+        return view.render('user.contact')
+    }
+
+    async signup({ request, response, session }) {
         // get all email of user
         const emailUser = await User.all();
         const convertJson = emailUser.toJSON();
@@ -85,9 +93,9 @@ class UserController {
         let dia_chi = request.input('dia_chi');
         let so_dien_thoai = request.input('so_dien_thoai')
 
-        for(let key in convertJson) {
+        for (let key in convertJson) {
             // if email had exist in database then notify error
-            if(convertJson[key].email === email) {
+            if (convertJson[key].email === email) {
                 // notify when email had exist
                 session.flash({ signupError: 'Email đã tồn tại.' });
 
@@ -111,14 +119,14 @@ class UserController {
 
     async signin({ request, response, session, auth }) {
         // get email and passwrod from page signin
-        const {email, password} = request.all();
+        const { email, password } = request.all();
 
         try {
             // compare with email and password in database
             await auth.attempt(email, password);
             return response.redirect('/');
         } catch {
-            session.flash({loginError: 'Email hoặc mật khẩu sai.'})
+            session.flash({ loginError: 'Email hoặc mật khẩu sai.' })
             return response.redirect('/signin');
         }
     }

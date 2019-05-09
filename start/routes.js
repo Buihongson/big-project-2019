@@ -108,3 +108,6 @@ Route.group(() => {
     Route.post('/thanh-toan', 'User/CartController.checkOut');
     Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
 }).prefix('/gio-hang');
+
+Route.get('/sua-chua', 'User/UserController.viewRepair')
+Route.get('/lien-he', 'User/UserController.viewContact')
