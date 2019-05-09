@@ -202,28 +202,20 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#delProduct").click(function() {
+	$("#delProduct").click(function(e) {
 		// alert('test');
-		// if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
-		// 	return true
-		// }
-		// return false;
-		confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')
+		e.preventdefault();
+		if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+			return true
+		}
+		return false;
 	});
 
 	$("#delUser").on('click', function(e) {
-		confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
+		e.preventdefault()
+		if(confirm('Bạn có chắc chắn muốn xóa khánh hàng này không?')) {
+			return true
+		}
+		return false;
 	})
 });
-
-var delUser = document.getElementById('delUser');
-delUser.addEventListener('click', delUser);
-
-function delUser() {
-	// alert('test');
-	// if(confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
-	// 	return true
-	// }
-	// return false;
-	confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')
-}

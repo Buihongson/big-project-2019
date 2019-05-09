@@ -9,6 +9,7 @@ class DonHangSchema extends Schema {
       table.increments()
       table.integer('user_id')
       table.integer('tinh_trang').default(0)
+      table.integer('so_luong')
       table.float('tong_tien', 10, 2)
       table.string('ghi_chu')
       table.timestamps()

@@ -153,6 +153,7 @@ var shoppingCart = (function() {
     $('.total-cart').html(shoppingCart.totalCart());
     $('.quantity-cart').html(shoppingCart.totalCount());
     $('#paycheck').val(shoppingCart.totalCart());
+    $('#amount').val(shoppingCart.totalCount())
   }
 
   // delete item form cart

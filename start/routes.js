@@ -25,14 +25,14 @@ Route.get('/logout', async({ auth, response }) => {
     await auth.logout();
     return response.redirect('/admin');
 });
-Route.get('/admin', 'Admin/Admincontroller.showFormLogin');
-Route.post('/admin', 'Admin/AdminController.login').validator('LoginAdmin').middleware(['authenticated']);
-
-Route.get('/admin/dashboard', 'Admin/Admincontroller.showDashboard');
-Route.get('/admin/settings', 'Admin/Admincontroller.showSettings');
-
 
 Route.group(() => {
+    Route.get('', 'Admin/Admincontroller.showFormLogin');
+    Route.post('', 'Admin/AdminController.login').validator('LoginAdmin').middleware(['authenticated']);
+
+    Route.get('/dashboard', 'Admin/Admincontroller.showDashboard');
+    Route.get('/settings', 'Admin/Admincontroller.showSettings');
+
     // Catalog (Admin)
     Route.get('/catalog/add-catalog', 'Admin/ProducerController.viewAddProducer');
     Route.post('/catalog/add-catalog', 'Admin/ProducerController.addProducer');
@@ -59,6 +59,7 @@ Route.group(() => {
 
     // Order (Amin)
     Route.get('/order/view-order', 'Admin/OrderController.viewOrder');
+    Route.get('/order/view-order-detail', 'Admin/OrderController.viewOrderDetail');
 }).prefix('/admin');
 
 Route.on('/signin').render('user.signin');

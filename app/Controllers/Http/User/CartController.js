@@ -19,6 +19,7 @@ class CartController {
 
         order.user_id = auth.user.id
         order.tong_tien = request.input('tong_tien')
+        order.so_luong = request.input('so_luong')
         order.ghi_chu = request.input('ghi_chu')
 
         await order.save();
