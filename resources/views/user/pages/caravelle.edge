@@ -4,16 +4,12 @@
     <main class="main">
         <section class="section info">
             <div class="container">
-                <h1 class="info__title">Đồng hồ movado</h1>
-                <div class="info__banner"><img src="../images/banner_image/movado-bann.jpg" alt=""></div>
+                <h1 class="info__title" >Đồng hồ CARAVELLE</h1>
+                <div class="info__banner"><img src="#" alt=""></div>
                 <div class="info__content">
-                    <p>Công nghệ Eco-drive mà Citizen sử dụng trong các mẫu đồng hồ citizen eco-drive cao cấp của mình
-                        nhằm vào các vấn đề nan giải về môi trường mà thế giới ngày nay đang phải đối mặt.</p>
-                    <p>Với những chiếc đồng hồ Eco-drive chính hãng, bạn sẽ không phải thay pin, thay vào đó ánh sáng –
-                        của cả mặt trời lẫn nhân tạo – được khai thác nhằm cung cấp nguồn năng lượng tự nhiên cho cơ cấu
-                        chuyển động của đồng hồ.</p>
-                    <p>Bên trong chiếc đồng hồ Citizen Eco-drive là silic vô định hình giúp chuyển ánh sáng thành năng
-                        lượng để vận hành cơ cấu chuyển động vô cùng chính xác và ổn định.</p>
+                    <p><strong>Đồng hồ Caravelle New York</strong> là một thương hiệu riêng của hãng đồng hồ Bulova, và hãng đồng hồ citizen. Hãng đồng hồ của sự đẳng cấp và công nghệ hiện đại.</p>
+                    <p>Thành lập vào <strong>năm 2013</strong>, với tên gọi <strong>“Caravelle by Bulova”</strong>, sau này đổi tên thành <strong>“Caravelle New York”</strong>. Các mẫu đồng hồ Caravelle lấy cảm hứng từ vẻ đẹp phồn hoa của thành phố New York hiện đại, trẻ trung; một nơi mà vẻ đẹp thời trang được sản sinh từng ngày, từng giờ trên mỗi con phố; một nơi mà vỉa hè có thể được sánh với một sàn catwalk chân thực nhất, luôn tràn đầy năng lượng và sự nhộn nhịp, sôi động.</p>
+                    <p>Các mẫu <strong>đồng hồ Caravelle</strong> được chú ý đầu tư kỹ lưỡng về mẫu mã, thiết kế và công nghệ,với mức giá cả vừa phải, đã thu hút rất nhiều người tiêu dùng không chỉ ở nước Mỹ mà cả trên toàn thế giới.</p>
                 </div>
             </div>
         </section>
@@ -36,7 +32,7 @@
                 </ul>
             </div>
             <div class="filter__item">
-                <div class="filter__item__title">Loại Dây</div>
+                <div class="filter__item__title">Loại Dây </div>
                 <ul class="filter--hover">
                     <li><a href="#">Dây da</a></li>
                     <li><a href="#">Dây kim loại</a></li>
@@ -49,10 +45,10 @@
             <div class="product__body">
                 @each(product in products)
                     <article class="box box--hidden">
-                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewProductCaravelle', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
                         <div class="box__body">
                             <ul>
-                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewProductCaravelle', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
                                 <li class="box__body__price">{{ product.gia_tien }}</li>
                             </ul>
                         </div>

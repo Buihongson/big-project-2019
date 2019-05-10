@@ -11,6 +11,16 @@ class DongHoNamController {
         });
     }
 
+    async viewDetailDHNam({ params, view }) {
+        const product = await Product.find(params.id);
+        const allProducts = await Product.all();
+
+        return view.render('user.product_detail.detail_dhNam', {
+            product: product.toJSON(),
+            allProducts: allProducts.toJSON()
+        });
+    }
+
     async viewDH5tr({ view }) {
         //query all product <= 4999999
         const products = await Product.query().where('gia_tien', '<=', 4999999).where('gioi_tinh', '=', 'Nam').fetch();

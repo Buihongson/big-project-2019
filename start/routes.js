@@ -75,18 +75,29 @@ Route.post('/signup', 'User/UserController.signup');
 Route.post('/search', 'User/SearchController.search');
 
 // detail page and detail product
-Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/UserController.viewPageCitizenEco');
-Route.get('/dong-ho-citizen/citizen-eco-drive/:id', 'User/UserController.viewProductCitizenEco');
+Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
+Route.get('/dong-ho-citizen/citizen-eco-drive/:id', 'User/DongHoController.viewProductCitizenEco');
 
-Route.get('/dong-ho-thuy-si/movado', 'User/UserController.viewPageMovado');
-Route.get('/dong-ho-thuy-si/movado/:id', 'User/UserController.viewProductMovado');
+Route.group(() => {
+    Route.get('/movado', 'User/DongHoController.viewPageMovado');
+    Route.get('/movado/:id', 'User/DongHoController.viewProductMovado');
 
-Route.get('/dong-ho-chinh-hang/bulova', 'User/UserController.viewPageBulova');
-Route.get('/dong-ho-chinh-hang/bulova/:id', 'User/UserController.viewProductBulova');
+    Route.get('/longines', 'User/DongHoController.viewPageLongines');
+    Route.get('/longines/:id', 'User/DongHoController.viewProductLongines');
+}).prefix('/dong-ho-thuy-si')
+
+Route.group(() => {
+    Route.get('/bulova', 'User/DongHoController.viewPageBulova');
+    Route.get('/bulova/:id', 'User/DongHoController.viewProductBulova');
+
+    Route.get('/caravelle', 'User/DongHoController.viewPageCaravelle');
+    Route.get('/caravelle/:id', 'User/DongHoController.viewProductCaravelle');
+}).prefix('/dong-ho-chinh-hang');
 
 // watch men
 Route.group(() => {
     Route.get('', 'User/DongHoNamController.viewDHNam')
+    Route.get('/:id', 'User/DongHoNamController.viewDetailDHNam');
 
     // prices
     Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNamController.viewDH5tr');

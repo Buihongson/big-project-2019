@@ -4,10 +4,10 @@
     <main class="main">
         <section class="section info">
             <div class="container">
-                <h1 class="info__title" >Đồng hồ BULOVA</h1>
-                <div class="info__banner"><img src="../images/banner_image/bulova-bann.jpg" alt=""></div>
+                <h1 class="info__title" >Đồng hồ LONGINES</h1>
+                <div class="info__banner"><img src="../images/banner_image/longines-ban.jpg" alt=""></div>
                 <div class="info__content">
-                    <p><strong>Đồng hồ Bulova<strong> là một thương hiệu đồng hồ nổi tiếng bậc nhất tại Mỹ, trụ sở được đặt tại New York. Có bề dày lịch sử thương hiệu 140 năm hình thành và phát triển, thương hiệu Bulova được biết đến rộng rãi trên thế giới về những đồng hồ mang phong cách năng động và xa hoa của Mỹ với chất lượng theo chuẩn Thuỵ Sỹ và đã chiếm được nhiều cảm tình và sự tin tưởng ở khắp các quốc gia.</p>
+                    <p>Hãng <strong>đồng hồ Longines</strong> thành lập từ năm 1832 tại ngôi làng Saint-Imier của vùng núi Jura – nằm trong danh sách những hãng đồng hồ Thuỵ Sỹ lâu đời nhất, nổi tiếng qua những chiếc đồng hồ mang vẻ sang trọng với nét thanh nhã cổ điển cùng nghệ thuật chế tác đồng hồ tinh xảo, là một thành viên của tập đoàn Swatch, nhà sản xuất hàng đầu thế giới về các sản phẩm đo thời gian.</p>
                 </div>
             </div>
         </section>
@@ -30,12 +30,11 @@
                 </ul>
             </div>
             <div class="filter__item">
-                <div class="filter__item__title">Giới Tính</div>
+                <div class="filter__item__title">Loại Dây </div>
                 <ul class="filter--hover">
-                    <li>a</li>
-                    <li>b</li>
-                    <li>c</li>
-                    <li>d</li>
+                    <li><a href="#">Dây da</a></li>
+                    <li><a href="#">Dây kim loại</a></li>
+                    <li><a href="#">Thép không rỉ</a></li>
                 </ul>
             </div>
         </section>
@@ -44,10 +43,10 @@
             <div class="product__body">
                 @each(product in products)
                     <article class="box box--hidden">
-                        <div class="box__img"><a href="{{ route('User/DongHoController.viewProductBulova', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewProductLongines', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
                         <div class="box__body">
                             <ul>
-                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewProductBulova', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewProductLongines', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
                                 <li class="box__body__price">{{ product.gia_tien }}</li>
                             </ul>
                         </div>
