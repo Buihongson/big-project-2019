@@ -1,0 +1,60 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title" >Đồng hồ nữ</h1>
+                <div class="info__content" style="padding-top: 20px;">
+                    <p>Tân Tân Watch là nơi cung cấp đồng hồ nữ chính hãng cao cấp, nhập khẩu trực tiếp từ các thương hiệu nổi tiếng trên thế giới, như Thuỵ Sỹ, Đức, Mỹ…. được chế tác từ các chất liệu cao cấp như da, vàng,… Không những thế chúng tôi còn có các mẫu mã đồng hồ nữ đa dạng, phong phú, thời trang,… là sự lựa chọn hàng đầu của các Sao, trong nước cũng như thế giới, trong phân khúc thị trường đồng hồ chính hãng.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nu/min_price=0000000&max_price=4999999">Dưới 5 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/min_price=5000000&max_price=15000000">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/min_price=15000001&max_price=30000000">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/max_price=30000001">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nam">Nam</a></li>
+                    <li><a href="/dong-ho-nu">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Loại dây</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nu/day-da">Dây da</a></li>
+                    <li><a href="/dong-ho-nu/day-kim-loai">Dây kim loại</a></li>
+                    <li><a href="/dong-ho-nu/thep-khong-ri">Thép không rỉ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in products)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/DongHoNuController.viewDetailDHNu', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoNuController.viewDetailDHNu', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection

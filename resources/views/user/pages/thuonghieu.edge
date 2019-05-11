@@ -1,0 +1,115 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title">Thương hiệu</h1>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+              <h3 class="section__title">
+                <b></b>
+                <span>Đồng hồ thụy sĩ</span>
+                <b></b>
+              </h3>
+            </div>
+          </section>
+
+          <section class="section logo">
+            <div class="container">
+              <ul class="logo__content">
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/omega.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/longines.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/Logo165x97-02-1.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/RADO-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/mido.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/tissot.png') }}" alt=""><a href="#"></a></li>
+              </ul>
+            </div>
+          </section>
+          <section class="section logo">
+            <div class="container">
+              <ul class="logo__content">
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/ALFEX-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/GROVANA-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/ENICAR-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/GUCCI-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/RAYMOND-WEIL-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/FREDERIQUE-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="container">
+              <h3 class="section__title">
+                <b></b>
+                <span>Đồng hồ chính hãng</span>
+                <b></b>
+              </h3>
+            </div>
+          </section>
+
+          <section class="section logo">
+            <div class="container">
+              <ul class="logo__content">
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/citizen-2.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/Logo-bulova.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/caravelle.png') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/SEIKO-1-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/LACOSTE-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+                <li class="logo__item"><img src="{{ assetsUrl('images/logo_image/CALVIN-KLEIN-2-170x100.jpg') }}" alt=""><a href="#"></a></li>
+              </ul>
+            </div>
+          </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dưới 5 Triệu</a></li>
+                    <li><a href="#">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="#">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="#">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Nam</a></li>
+                    <li><a href="#">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dây da</a></li>
+                    <li><a href="#">Dây kim loại</a></li>
+                    <li><a href="#">Thép không rỉ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in products)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 180px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">Đồng hồ {{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }}</a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection

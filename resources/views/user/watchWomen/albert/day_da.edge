@@ -1,0 +1,66 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title"><span style="opacity: .3;">Đồng hồ Nữ</span><span>&nbsp;/&nbsp;</span>Dây da</h1>
+                <div class="info__content" style="padding-top: 20px;">
+                    <p>Ngày nay đồng hồ dây da nữ không đơn thuần chỉ mang ý nghĩa xem giờ mà còn là phụ kiện trang sức cho bạn. Thông qua chiếc đồng hồ phần nào đó nói lên tính cách, đẳng cấp và phong cách của chính bạn.</p>
+
+                    <p>Hiện nay, hầu hết đồng hồ dây da nữ không chỉ hãng đồng hồ thời trang như <a href="#">Gucci</a>, <a href="#">Lacoste</a>,… mà cả các hãng đồng hồ cao cấp, đồng hồ Thụy Sỹ  như <a href="#">Omega</a>, <a href="/dong-ho-bu/longines">Longines</a>, <a href="#">Rado</a>, <a href="#">Mido</a>, Movado, <a href="/dong-ho-nu/tissot">Tissot</a>; hay các hãng đồng hồ Nhật Bản nổi tiếng như <a href="#">Seiko</a>, <a href="#">Citizen</a> cũng có rất nhiều bộ sưu tập dành cho đồng hồ dây da nữ.</p>
+
+                    <p>Có rất nhiều lý do cho điều này. Trước hết, một chiếc đồng hồ dây da nữ giúp cho người đeo cảm thấy thỏa mái và mềm mại hơn dây đeo bằng kim loại, cùng với đó là dây da nhẹ, tạo độ ấm áp khi chạm vào. Đồng hồ dây da thoáng khí và dễ dàng điều chỉnh hơn.</p>
+
+                    <p>Thứ hai, dây da cung cấp nhiều hơn về màu sắc và kết cấu giúp bạn dễ phối trang sức theo từng ngữ cảnh để thể hiện phong cách</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nu/min_price=0000000&max_price=4999999">Dưới 5 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/min_price=5000000&max_price=15000000">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/min_price=15000001&max_price=30000000">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="/dong-ho-nu/max_price=30000001">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nam">Nam</a></li>
+                    <li><a href="/dong-ho-nu">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Loại dây</div>
+                <ul class="filter--hover">
+                    <li><a href="/dong-ho-nu/day-da">Dây da</a></li>
+                    <li><a href="/dong-ho-nu/day-kim-loai">Dây kim loại</a></li>
+                    <li><a href="/dong-ho-nu/thep-khong-ri">Thép không rỉ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in products)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/DongHoNuController.viewDetailDHNu', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoNuController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection

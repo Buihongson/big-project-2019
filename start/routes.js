@@ -21,14 +21,14 @@ Route.get('/', 'Admin/ProductController.home');
 // Route.on('/signupAdmin').render('admin.signup_test_admin');
 // Route.post('/signupAdmin', 'admin/AdminController.signupAdmin');
 
-Route.get('/logout', async({ auth, response }) => {
+Route.get('/logout', async ({ auth, response }) => {
     await auth.logout();
     return response.redirect('/admin');
 });
 
 Route.group(() => {
     Route.get('', 'Admin/Admincontroller.showFormLogin');
-    Route.post('', 'Admin/AdminController.login').validator('LoginAdmin').middleware(['authenticated']);
+    Route.post('', 'Admin/AdminController.login').validator('LoginAdmin');
 
     Route.get('/dashboard', 'Admin/Admincontroller.showDashboard');
     Route.get('/settings', 'Admin/Admincontroller.showSettings');
@@ -64,7 +64,7 @@ Route.group(() => {
 
 Route.on('/signin').render('user.signin');
 Route.post('/signin', 'User/UserController.signin')
-Route.get('/logoutUser', async({ auth, response }) => {
+Route.get('/logoutUser', async ({ auth, response }) => {
     await auth.logout();
     return response.redirect('/');
 });
@@ -73,6 +73,9 @@ Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');
 
 Route.post('/search', 'User/SearchController.search');
+
+Route.get('/thuong-hieu', 'User/DongHoController.viewThuongHieu');
+Route.get('/thuong-hieu/:id', 'User/DongHoController.viewDetailDHNam')
 
 // detail page and detail product
 Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
@@ -121,6 +124,32 @@ Route.group(() => {
     Route.get('/:id', 'User/DongHoNamController.viewDetailDHNam');
 }).prefix('/dong-ho-nam');
 
+// watch women
+Route.group(() => {
+    Route.get('', 'User/DongHoNuController.viewDHNu')
+
+    // prices
+    Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNuController.viewDH5tr');
+    Route.get('/min_price=5000000&max_price=15000000', 'User/DongHoNuController.viewDH5tr_15tr');
+    Route.get('/min_price=15000001&max_price=30000000', 'User/DongHoNuController.viewDH15tr_30tr');
+    Route.get('/max_price=30000001', 'User/DongHoNuController.viewDH30tr');
+
+    // albert
+    Route.get('/day-da', 'User/DongHoNuController.viewDayDa')
+    Route.get('/day-kim-loai', 'User/DongHoNuController.viewDayKimLoai')
+    Route.get('/thep-khong-ri', 'User/DongHoNuController.viewThepKhongRi')
+
+    // movado
+    Route.get('/movado', 'User/DongHoNuController.viewMovado')
+    // longines
+    Route.get('/longines', 'User/DongHoNuController.viewLongines')
+    // bulova
+    Route.get('/bulova', 'User/DongHoNuController.viewBulova')
+    // caravelle
+    Route.get('/caravelle', 'User/DongHoNuController.viewCaravelle')
+
+    Route.get('/:id', 'User/DongHoNuController.viewDetailDHNu');
+}).prefix('/dong-ho-nu');
 
 // cart
 Route.group(() => {
