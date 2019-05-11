@@ -14,11 +14,36 @@ class DongHoNamController {
     async viewDetailDHNam({ params, view }) {
         const product = await Product.find(params.id);
         const allProducts = await Product.all();
+        const cvProductJson = product.toJSON();
 
-        return view.render('user.product_detail.detail_dhNam', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
-        });
+        if(cvProductJson.ten_san_pham.slice(0,14) === "Đồng hồ BULOVA") {
+            return view.render('user.product_detail.detail_bulova', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
+        } else if(cvProductJson.ten_san_pham.slice(0,14) === "Đồng hồ MOVADO") {
+            return view.render('user.product_detail.detail_movado', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
+        } else if(cvProductJson.ten_san_pham.slice(0,17) === "Citizen Eco-drive"){
+            return view.render('user.product_detail.detail_citizen_eco_drive', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
+        } else if(cvProductJson.ten_san_pham.slice(0,15) === "Đồng Hồ Longines") {
+            return view.render('user.product_detail.detail_longines', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
+        } else if(cvProductJson.ten_san_pham.slice(0,17) === "Đồng Hồ Caravelle") {
+            return view.render('user.product_detail.detail_caravelle', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
+        } else {
+            return false;
+        }
     }
 
     async viewDH5tr({ view }) {
@@ -80,6 +105,38 @@ class DongHoNamController {
         const products = await Product.query().where('loai_day', '=', 'Thép không rỉ').where('gioi_tinh', '=', 'Nam').fetch();
 
         return view.render('user.watchMen.albert.thep_khong_ri', {
+            products: products.toJSON()
+        });
+    }
+
+    async viewMovado({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 7).where('gioi_tinh', '=', 'Nam').fetch();
+
+        return view.render('user.pages.movado', {
+            products: products.toJSON()
+        });
+    }
+
+    async viewLongines({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 8).where('gioi_tinh', '=', 'Nam').fetch();
+
+        return view.render('user.pages.longines', {
+            products: products.toJSON()
+        });
+    }
+
+    async viewBulova({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 12).where('gioi_tinh', '=', 'Nam').fetch();
+
+        return view.render('user.pages.bulova', {
+            products: products.toJSON()
+        });
+    }
+
+    async viewCaravelle({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 13).where('gioi_tinh', '=', 'Nam').fetch();
+
+        return view.render('user.pages.caravelle', {
             products: products.toJSON()
         });
     }

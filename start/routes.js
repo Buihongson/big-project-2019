@@ -97,7 +97,6 @@ Route.group(() => {
 // watch men
 Route.group(() => {
     Route.get('', 'User/DongHoNamController.viewDHNam')
-    Route.get('/:id', 'User/DongHoNamController.viewDetailDHNam');
 
     // prices
     Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoNamController.viewDH5tr');
@@ -109,6 +108,17 @@ Route.group(() => {
     Route.get('/day-da', 'User/DongHoNamController.viewDayDa')
     Route.get('/day-kim-loai', 'User/DongHoNamController.viewDayKimLoai')
     Route.get('/thep-khong-ri', 'User/DongHoNamController.viewThepKhongRi')
+
+    // movado
+    Route.get('/movado', 'User/DongHoNamController.viewMovado')
+    // longines
+    Route.get('/longines', 'User/DongHoNamController.viewLongines')
+    // bulova
+    Route.get('/bulova', 'User/DongHoNamController.viewBulova')
+    // caravelle
+    Route.get('/caravelle', 'User/DongHoNamController.viewCaravelle')
+
+    Route.get('/:id', 'User/DongHoNamController.viewDetailDHNam');
 }).prefix('/dong-ho-nam');
 
 
