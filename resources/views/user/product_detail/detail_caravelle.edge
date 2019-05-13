@@ -9,12 +9,12 @@
                         <div class="detail__img"><img src="{{ product.hinh_anh }}" alt=""></div>
                     </div>
                     <div class="detail__column detail__column--right">
-                        <h1 class="detail__title">{{ product.ten_san_pham }} {{ product.gioi_tinh}} {{ product.loai_day }} {{ product.duong_kinh_vo }}</h1>
+                        <h1 class="detail__title">{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh}} {{ product.loai_day }} {{ product.duong_kinh_vo }}</h1>
                         <div class="divider"></div>
                         <div class="detail__price">{{ product.gia_tien}}</div>
                         <div class="detail__desc">{{ product.mo_ta }}</div>
                         <form action="">
-                            <a href="#" class="detail__btn add-to-cart" data-image="{{ product.hinh_anh }}" data-name="{{ product.ten_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} {{ product.duong_kinh_vo }}" data-price="{{ product.gia_tien }}">Thêm vào giỏ</a>
+                            <a href="#" class="detail__btn add-to-cart" data-image="{{ product.hinh_anh }}" data-name="{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} {{ product.duong_kinh_vo }}" data-price="{{ product.gia_tien }}">Thêm vào giỏ</a>
                         </form>
                     </div>
                 </div>

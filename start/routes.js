@@ -60,6 +60,9 @@ Route.group(() => {
     // Order (Amin)
     Route.get('/order/view-order', 'Admin/OrderController.viewOrder');
     Route.get('/order/view-order-detail', 'Admin/OrderController.viewOrderDetail');
+
+    // Statistical
+    Route.get('/statistic/product', 'Admin/StatisticController.product')
 }).prefix('/admin');
 
 Route.on('/signin').render('user.signin');

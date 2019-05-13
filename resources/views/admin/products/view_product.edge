@@ -54,7 +54,7 @@
                           <tr class="gradeX">
                                 <td></td>
                                 <td>{{ detail.id }}</td>
-                                <td>{{ detail.ten_san_pham }}</td>
+                                <td>{{ detail.ten_san_pham }} {{ detail.ma_san_pham }}</td>
                                 <td>{{ detail.ma_san_pham }}</td>
                                 <td>{{ detail.gioi_tinh }}</td>
                                 <td>{{ detail.gia_tien }}</td>
@@ -75,7 +75,7 @@
                             <div class="modal-body">
                               <p>ID: {{ detail.id }}</p>
                               <p>ID danh mục: {{ detail.nha_san_xuat_id }}</p>
-                              <p>Tên sản phẩm: {{ detail.ten_san_pham }}</p>
+                              <p>Tên sản phẩm: {{ detail.ten_san_pham }} {{ detail.ma_san_pham }}</p>
                               <p>Mã sản phẩm: {{ detail.ma_san_pham }}</p>
                               <p>Giới tính: {{ detail.gioi_tinh }}</p>
                               <p>Kính: {{ detail.kinh }}</p>

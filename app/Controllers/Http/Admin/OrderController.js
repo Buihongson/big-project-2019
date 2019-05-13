@@ -7,7 +7,10 @@ const Product = use('App/Models/SanPham')
 class OrderController {
     // view order
     async viewOrder ({ view }) {
-        const orders = await Order.query().with('users').fetch();
+        const orders = await Order
+            .query()
+            .with('users')
+            .fetch();
 
         return view.render('admin.orders.view_order', {
             orders: orders.toJSON()
@@ -15,7 +18,10 @@ class OrderController {
     }
 
     async viewOrderDetail ({ view }) {
-        const details = await Order.query().with('san_phams').fetch();
+        const details = await Order
+            .query()
+            .with('san_phams')
+            .fetch();
 
         console.log(details.toJSON());
 

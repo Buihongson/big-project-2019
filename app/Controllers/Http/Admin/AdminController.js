@@ -33,7 +33,10 @@ class AdminController {
     async login({ request, auth, response, session }) {
         const { email, password } = request.all();
 
-        const admin = await Admin.query().where('email', email).first();
+        const admin = await Admin
+            .query()
+            .where('email', email)
+            .first();
         
         if(admin) {
             const passwordVerifued = await Hash.verify(password, admin.password);

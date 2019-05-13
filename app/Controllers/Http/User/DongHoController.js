@@ -135,7 +135,7 @@ class DongHoController {
                 product: cvProductJson,
                 allProducts: allProducts.toJSON()
             });
-        } else if(cvProductJson.ten_san_pham.slice(0,17) === "Citizen Eco-drive"){
+        } else if(cvProductJson.ten_san_pham.slice(0,7) === "Citizen"){
             return view.render('user.product_detail.detail_citizen_eco_drive', {
                 product: cvProductJson,
                 allProducts: allProducts.toJSON()
