@@ -139,20 +139,6 @@ class ProductController {
 
         return response.redirect('/admin/product/view-product');
     }
-
-    // query product with keyword 'hot' for home
-    async home ({ view }) {
-        // query product from database
-        const hotThuySis = await Product.query().where('nha_san_xuat_id', '=' , 7).where('tinh_trang', '=', 'hot').fetch();
-        const hotCitizens = await Product.query().where('nha_san_xuat_id', '=' , 4).where('tinh_trang', '=', 'hot').fetch();
-        const hotChinhHangs = await Product.query().where('nha_san_xuat_id', '=', 15).where('tinh_trang', '=', 'hot').fetch();
-
-        return view.render('home', {
-            hotThuySis: hotThuySis.toJSON(),
-            hotCitizens: hotCitizens.toJSON(),
-            hotChinhHangs: hotChinhHangs.toJSON()
-        });
-    }
 }
 
 module.exports = ProductController

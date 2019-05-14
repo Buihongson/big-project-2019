@@ -16,7 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', 'Admin/ProductController.home');
+Route.get('/', 'User/DongHoController.home');
 
 // Route.on('/signupAdmin').render('admin.signup_test_admin');
 // Route.post('/signupAdmin', 'admin/AdminController.signupAdmin');
@@ -26,6 +26,7 @@ Route.get('/logout', async ({ auth, response }) => {
     return response.redirect('/admin');
 });
 
+// group admin
 Route.group(() => {
     Route.get('', 'Admin/Admincontroller.showFormLogin');
     Route.post('', 'Admin/AdminController.login').validator('LoginAdmin');
@@ -81,8 +82,12 @@ Route.get('/thuong-hieu', 'User/DongHoController.viewThuongHieu');
 Route.get('/thuong-hieu/:id', 'User/DongHoController.viewDetailDHNam')
 
 // detail page and detail product
-Route.get('/dong-ho-citizen/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
-Route.get('/dong-ho-citizen/citizen-eco-drive/:id', 'User/DongHoController.viewProductCitizenEco');
+Route.group(() => {
+    Route.get('/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
+    Route.get('/citizen-automatic', 'User/DongHoController.viewPageCitizenAuto');
+
+    Route.get('/product/:id', 'User/DongHoController.viewProductCitizenEco');
+}).prefix('/dong-ho-citizen')
 
 Route.group(() => {
     Route.get('/movado', 'User/DongHoController.viewPageMovado');

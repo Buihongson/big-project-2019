@@ -3,8 +3,21 @@
 const Product = use('App/Models/SanPham');
 
 class DongHoController {
+    // query product with keyword 'hot' for home
+    async home ({ view }) {
+        // query product from database
+        const hotThuySis = await Product.query().where('nha_san_xuat_id', '=' , 7).where('tinh_trang', '=', 'hot').fetch();
+        const hotCitizens = await Product.query().where('nha_san_xuat_id', '=' , 4).where('tinh_trang', '=', 'hot').fetch();
+        const hotChinhHangs = await Product.query().where('nha_san_xuat_id', '=', 15).where('tinh_trang', '=', 'hot').fetch();
 
-    /*-----------> view page citizen eco and view detail-citizen-eco <----------- */
+        return view.render('home', {
+            hotThuySis: hotThuySis.toJSON(),
+            hotCitizens: hotCitizens.toJSON(),
+            hotChinhHangs: hotChinhHangs.toJSON()
+        });
+    }
+    
+    /*-----------> view page citizen and view detail-citizen <----------- */
     async viewPageCitizenEco({ view }) {
         // query all product citizen eco
         const products = await Product.query().where('nha_san_xuat_id', '=', 4).fetch();
@@ -24,7 +37,15 @@ class DongHoController {
             allProducts: allProducts.toJSON()
         });
     }
-    /*-----------> end citizen eco <----------- */
+
+    async viewPageCitizenAuto({ view }) {
+        const products = await Product.query().where('nha_san_xuat_id', '=', 5).fetch();
+
+        return view.render('user.pages.citizen_auto', {
+            products: products.toJSON()
+        });
+    }
+    /*-----------> end citizen <----------- */
 
     /*-----------> dong ho thuy si <----------- */
     // dong ho movado
