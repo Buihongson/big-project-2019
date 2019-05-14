@@ -79,30 +79,25 @@ Route.post('/signup', 'User/UserController.signup');
 Route.post('/search', 'User/SearchController.search');
 
 Route.get('/thuong-hieu', 'User/DongHoController.viewThuongHieu');
-Route.get('/thuong-hieu/:id', 'User/DongHoController.viewDetailDHNam')
+Route.get('/san-pham/:id', 'User/DongHoController.viewDetailDHNam')
 
 // detail page and detail product
 Route.group(() => {
     Route.get('/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
     Route.get('/citizen-automatic', 'User/DongHoController.viewPageCitizenAuto');
 
-    Route.get('/product/:id', 'User/DongHoController.viewProductCitizenEco');
 }).prefix('/dong-ho-citizen')
 
 Route.group(() => {
     Route.get('/movado', 'User/DongHoController.viewPageMovado');
-    Route.get('/movado/:id', 'User/DongHoController.viewProductMovado');
 
     Route.get('/longines', 'User/DongHoController.viewPageLongines');
-    Route.get('/longines/:id', 'User/DongHoController.viewProductLongines');
 }).prefix('/dong-ho-thuy-si')
 
 Route.group(() => {
     Route.get('/bulova', 'User/DongHoController.viewPageBulova');
-    Route.get('/bulova/:id', 'User/DongHoController.viewProductBulova');
 
     Route.get('/caravelle', 'User/DongHoController.viewPageCaravelle');
-    Route.get('/caravelle/:id', 'User/DongHoController.viewProductCaravelle');
 }).prefix('/dong-ho-chinh-hang');
 
 // watch men
@@ -129,7 +124,6 @@ Route.group(() => {
     // caravelle
     Route.get('/caravelle', 'User/DongHoNamController.viewCaravelle')
 
-    Route.get('/:id', 'User/DongHoNamController.viewDetailDHNam');
 }).prefix('/dong-ho-nam');
 
 // watch women
@@ -156,7 +150,6 @@ Route.group(() => {
     // caravelle
     Route.get('/caravelle', 'User/DongHoNuController.viewCaravelle')
 
-    Route.get('/:id', 'User/DongHoNuController.viewDetailDHNu');
 }).prefix('/dong-ho-nu');
 
 // cart

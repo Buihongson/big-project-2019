@@ -49,10 +49,10 @@
             <div class="product__body">
                 @each(product in products)
                     <article class="box box--hidden">
-                        <div class="box__img"><a href="{{ route('User/DongHoController.viewProductCitizenEco', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 180px;"></a></div>
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 180px;"></a></div>
                         <div class="box__body">
                             <ul>
-                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewProductCitizenEco', {id: product.id}) }}">Đồng hồ {{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }}</a></li>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">Đồng hồ {{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }}</a></li>
                                 <li class="box__body__price">{{ product.gia_tien }}</li>
                             </ul>
                         </div>

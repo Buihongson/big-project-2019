@@ -11,41 +11,6 @@ class DongHoNamController {
         });
     }
 
-    async viewDetailDHNam({ params, view }) {
-        const product = await Product.find(params.id);
-        const allProducts = await Product.all();
-        const cvProductJson = product.toJSON();
-
-        if(cvProductJson.ten_san_pham.slice(0,14) === "Đồng hồ BULOVA") {
-            return view.render('user.product_detail.detail_bulova', {
-                product: cvProductJson,
-                allProducts: allProducts.toJSON()
-            });
-        } else if(cvProductJson.ten_san_pham.slice(0,14) === "Đồng hồ MOVADO") {
-            return view.render('user.product_detail.detail_movado', {
-                product: cvProductJson,
-                allProducts: allProducts.toJSON()
-            });
-        } else if(cvProductJson.ten_san_pham.slice(0,17) === "Citizen Eco-drive"){
-            return view.render('user.product_detail.detail_citizen_eco_drive', {
-                product: cvProductJson,
-                allProducts: allProducts.toJSON()
-            });
-        } else if(cvProductJson.ten_san_pham.slice(0,15) === "Đồng Hồ Longines") {
-            return view.render('user.product_detail.detail_longines', {
-                product: cvProductJson,
-                allProducts: allProducts.toJSON()
-            });
-        } else if(cvProductJson.ten_san_pham.slice(0,17) === "Đồng Hồ Caravelle") {
-            return view.render('user.product_detail.detail_caravelle', {
-                product: cvProductJson,
-                allProducts: allProducts.toJSON()
-            });
-        } else {
-            return false;
-        }
-    }
-
     async viewDH5tr({ view }) {
         //query all product <= 4999999
         const products = await Product.query().where('gia_tien', '<=', 4999999).where('gioi_tinh', '=', 'Nam').fetch();

@@ -27,17 +27,6 @@ class DongHoController {
         });
     }
 
-    async viewProductCitizenEco({ params, view }) {
-        // query product
-        const product = await Product.find(params.id);
-        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 4).fetch();
-
-        return view.render('user.product_detail.detail_citizen_eco_drive', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
-        });
-    }
-
     async viewPageCitizenAuto({ view }) {
         const products = await Product.query().where('nha_san_xuat_id', '=', 5).fetch();
 
@@ -57,34 +46,12 @@ class DongHoController {
         });
     }
 
-    // view detail 1 product movado
-    async viewProductMovado({ params, view }) {
-        // query product
-        const product = await Product.find(params.id);
-        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 7).fetch();
-
-        return view.render('user.product_detail.detail_movado', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
-        });
-    }
-
     // dong ho longines
     async viewPageLongines({ view }) {
         const products = await Product.query().where('nha_san_xuat_id', '=', 8).fetch();
 
         return view.render('user.pages.longines', {
             products: products.toJSON()
-        });
-    }
-
-    async viewProductLongines({ params, view }) {
-        const product = await Product.find(params.id);
-        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 8).fetch();
-
-        return view.render('user.product_detail.detail_longines', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
         });
     }
     /*-----------> end dh thuy si <----------- */
@@ -99,35 +66,12 @@ class DongHoController {
         });
     }
 
-    // view detail 1 product
-    async viewProductBulova({ params, view }) {
-        // query product
-        const product = await Product.find(params.id);
-        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 12).fetch();
-
-        return view.render('user.product_detail.detail_bulova', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
-        });
-    }
-
     // dong ho caravelle
     async viewPageCaravelle({ view }) {
         const products = await Product.query().where('nha_san_xuat_id', '=', 13).fetch();
 
         return view.render('user.pages.caravelle', {
             products: products.toJSON()
-        });
-    }
-
-    async viewProductCaravelle({ params, view }) {
-        // query product
-        const product = await Product.find(params.id);
-        const allProducts = await Product.query().where('nha_san_xuat_id', '=', 13).fetch();
-
-        return view.render('user.product_detail.detail_caravelle', {
-            product: product.toJSON(),
-            allProducts: allProducts.toJSON()
         });
     }
     /*-----------> end dh chinh hang <----------- */
