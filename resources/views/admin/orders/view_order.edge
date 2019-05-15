@@ -50,10 +50,14 @@
                             <td>{{ order.id }}</td>
                             <td>{{ order.users.ten }}</td>
                             <td>{{ order.tong_tien }}</td>
-                            <td>{{ order.tinh_trang }}</td>
+                            @if(order.tinh_trang == 1)
+                              <td>aaa</td>
+                            @elseif(order.tinh_trang == 0)
+                              <td>bbb</td>
+                            @endif
                             <td>{{ order.ghi_chu }}</td>
                             <td class="center">
-                              {{--  <a href="{{ route('Admin/ProducerController.editProducer', {id: producer.id})}}" class="btn btn-primary btn-mini">Edit</a>  --}}
+                              <a href="{{ route('Admin/ProducerController.editProducer', {id: order.id})}}" class="btn btn-primary btn-mini">Edit</a>
                               <a href="{{ route('Admin/ProducerController.deleteProducer', {id: order.id})}}" class="btn btn-danger btn-mini">Delete</a>
                             </td>
                         </tr>
