@@ -76,12 +76,25 @@ Route.get('/logoutUser', async ({ auth, response }) => {
 Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');
 
+// account user
+Route.group(() => {
+    Route.get('', 'User/UserController.account');
+
+    Route.get('/cap-nhap-tt', 'User/UserController.viewAccountUpdate');
+    Route.post('/cap-nhap-tt', 'User/UserController.accountUpdate')
+
+    Route.get('/doi-mat-khau', 'User/UserController.viewPasswordChange');
+    Route.post('/doi-mat-khau', 'User/UserController.passwordChange')
+}).prefix('/khach-hang/tai-khoan');
+
+// search product
 Route.post('/search', 'User/SearchController.search');
 
 Route.get('/thuong-hieu', 'User/DongHoController.viewThuongHieu');
+// view detail product
 Route.get('/san-pham/:id', 'User/DongHoController.viewDetailDHNam')
 
-// detail page and detail product
+// detail page
 Route.group(() => {
     Route.get('/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
     Route.get('/citizen-automatic', 'User/DongHoController.viewPageCitizenAuto');

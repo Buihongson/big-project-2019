@@ -63,6 +63,44 @@ class UserController {
             return response.redirect('/signin');
         }
     }
+
+    // view account setting
+    async account({ view, auth }) {
+        // console.log(auth.user.toJSON())
+
+        return view.render('user.account.my_account', {
+            inforUser: auth.user.toJSON()
+        });
+    }
+
+    // view account update
+    async viewAccountUpdate({ auth, view }) {
+        return view.render('user.account.update_account', {
+            inforUser: auth.user.toJSON()
+        })
+    }
+
+    // account update
+    async accountUpdate({ request, response, session, auth }) {
+        const user = await User.find(auth.user.id);
+
+        user.ten = request.input('user_name');
+        user.email = request.input('user_email');
+        user.dia_chi = request.input('user_address');
+        user.so_dien_thoai = request.input('user_tel');
+
+        await user.save();
+
+        // notify when update success
+        session.flash({ update_notification: 'Cập nhập thành công'});
+
+        return response.redirect('/khach-hang/tai-khoan');
+    }
+
+    // view password change
+    async viewPasswordChange({ view }) {
+        return view.render('user.account.change_password')
+    }
 }
 
 module.exports = UserController

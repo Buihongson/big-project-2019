@@ -65,9 +65,9 @@ class UserController {
     }
 
     // update user
-    async updateUser({ request, response, session }) {
+    async updateUser({ request, response, session, params }) {
         // get user by id
-        const user = await User.find(parent.id);
+        const user = await User.find(params.id);
 
         // get value from input
         user.ten = request.input('user_name');
