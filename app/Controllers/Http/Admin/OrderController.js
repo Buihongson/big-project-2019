@@ -17,10 +17,25 @@ class OrderController {
         });
     }
 
+    // delete order
+    async deleteOrder({ response, session, params }) {
+        // get catalog by id
+        const order = await Order.find(params.id);
+
+        // delete catalog
+        await order.delete();
+
+        // notify when delete success
+        session.flash({ delete_notification: 'Xóa thành công'});
+
+        return response.redirect('/admin/orders/view-order');
+    }
+
     async viewOrderDetail ({ view }) {
         const details = await Order
             .query()
             .with('san_phams')
+            .with('users')
             .fetch();
 
         console.log(details.toJSON());

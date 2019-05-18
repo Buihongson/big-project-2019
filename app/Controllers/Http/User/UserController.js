@@ -1,6 +1,7 @@
 'use strict'
 
 const User = use('App/Models/User');
+const Order = use('App/Models/DonHang')
 const Product = use('App/Models/SanPham');
 
 const Hash = use('Hash');
@@ -100,6 +101,41 @@ class UserController {
     // view password change
     async viewPasswordChange({ view }) {
         return view.render('user.account.change_password')
+    }
+
+    // change password
+    async changePassword({ request, response, auth, session }) {
+        const user = await User.find(auth.user.id);
+
+        const oddPassword = request.input('password');
+        const passwordVerifyed = await Hash.verify(oddPassword, user.password);
+        if(passwordVerifyed) {
+            user.password = request.input('new-password');
+
+            user.save();
+
+            session.flash({ update_notification: 'Đổi mật khẩu thành công.'});
+            return response.redirect('/khach-hang/tai-khoan');
+        } else {
+            session.flash({ error_notification: 'Mật khẩu cữ không chính xác.'});
+
+            return response.redirect('/khach-hang/tai-khoan/doi-mat-khau');
+        }
+    }
+
+    // view bill of account
+    async viewBillAccount({ view, auth }) {
+        const orders = await Order
+            .query()
+            .whereHas('users', (builder) => {
+                builder.where('id', auth.user.id)
+            })
+            .with('san_phams')
+            .fetch();
+
+        return view.render('user.account.bill_account', {
+            orders: orders.toJSON()
+        })
     }
 }
 

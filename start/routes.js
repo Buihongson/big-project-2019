@@ -56,10 +56,14 @@ Route.group(() => {
     Route.get('/user/view-user', 'Admin/UserController.viewAllUser');
     Route.get('/user/delete-user/:id', 'Admin/UserController.deleteUser');
     Route.get('/user/edit-user/:id', 'Admin/UserController.viewEditUser');
-    Route.post('/user/edit-iser/:id', 'Admin/UserController.updateUser');
+    Route.post('/user/edit-user/:id', 'Admin/UserController.updateUser');
 
     // Order (Amin)
     Route.get('/order/view-order', 'Admin/OrderController.viewOrder');
+    Route.get('/order/delete-order/:id', 'Admin/OrderController.deleteOrder');
+    Route.get('/user/edit-user/:id', 'Admin/OrderController.viewEditOrder');
+    Route.post('/user/edit-user/:id', 'Admin/OrderController.updateOrder');
+
     Route.get('/order/view-order-detail', 'Admin/OrderController.viewOrderDetail');
 
     // Statistical
@@ -84,7 +88,9 @@ Route.group(() => {
     Route.post('/cap-nhap-tt', 'User/UserController.accountUpdate')
 
     Route.get('/doi-mat-khau', 'User/UserController.viewPasswordChange');
-    Route.post('/doi-mat-khau', 'User/UserController.passwordChange')
+    Route.post('/doi-mat-khau', 'User/UserController.changePassword')
+
+    Route.get('/don-hang', 'User/UserController.viewBillAccount')
 }).prefix('/khach-hang/tai-khoan');
 
 // search product

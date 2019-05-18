@@ -14,12 +14,12 @@ class CartController {
         });
     }
 
-    async checkOut({ request, response, auth, view }) {
+    async checkOut({ request, response, auth }) {
         const order = new Order();
 
         order.user_id = auth.user.id
-        order.tong_tien = request.input('tong_tien')
         order.so_luong = request.input('so_luong')
+        order.tong_tien = request.input('tong_tien')
         order.ghi_chu = request.input('ghi_chu')
 
         await order.save();

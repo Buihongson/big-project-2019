@@ -1,0 +1,80 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <div class="container account">
+            <section class="section account__top">
+                <h1 class="account__title">Tài khoản của tôi</h1>
+                <div class="account__top__content">
+                    <nav>
+                        <ul class="account__sidebar">
+                            <li><a href="/khach-hang/tai-khoan">Tài khoản</a></li>
+                            <li><a href="/khach-hang/tai-khoan/don-hang">Đơn hàng</a></li>
+                            <li><a href="/khach-hang/tai-khoan/cap-nhap-tt">Cập nhập thông tin</a></li>
+                            <li><a href="/khach-hang/tai-khoan/doi-mat-khau">Đổi mật khẩu</a></li>
+                        </ul>
+                    </nav>
+                    <select name="" id="" class="account__top__selection">
+                        <option value="javascript:void(0);" selected="selected">Tổng quan</option>
+                        <option value="https://www.jomashop.com/customer/paymentinfo/">Đơn hàng</option>
+                        <option value="https://www.jomashop.com/sales/order/history/">Cập nhập thông tin</option>
+                        <option value="https://www.jomashop.com/customer/paymentinfo/">Đổi mật khẩu</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="section account__bottom">
+                <div class="account__dashboard">
+                    <div class="account__dashboard__page">
+                        <h2 class="account__dashboard__page__title">Đơn hàng</h2>
+                    </div>
+
+                    <form action="{{ route('User/UserController.accountUpdate', {id: inforUser.id}) }}" method="POST">
+                        {{ csrfField() }}
+                        <div class="account__dashboard__content">
+                            <h2 class="account__dashboard__content__title">Thông tin đơn hàng</h2>
+                            
+                                <div class="account__box">
+                                    <table class="account__box__table">
+                                        <thead>
+                                            <tr>
+                                                <td>STT</td>
+                                                <td>Tên sản phẩm</td>
+                                                <td>Số lượng</td>
+                                                <td>Tổng tiền</td>
+                                                <td>Tình trạng</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                @each(order in orders)
+                                                <tr>
+                                                    <td class="counterCell"></td>
+                                                    <td>
+                                                        @each(product in order.san_phams)
+                                                            <p>{{ product.ten_san_pham }} {{ product.ma_san_pham }}</p>
+                                                        @endeach
+                                                    </td>
+                                                    <td>{{ order.so_luong }}</td>
+                                                    <td>{{ order.tong_tien }}</td>
+                                                    @if(order.tinh_trang == 1)
+                                                        <td>Đã thanh toán</td>
+                                                    @elseif(order.tinh_trang == 0)
+                                                        <td>Chưa thanh toán</td>
+                                                    @endif
+                                                    <td class="account__box__table__link"><a href="#">Chi tiết</a></td>
+                                                </tr>
+                                                @endeach
+                                        </tbody>
+                                    </table>
+                                <div class="account__box__btn">
+                                    <a href="/khach-hang/tai-khoan/cap-nhap-tt">Cập nhập thông tin tài khoản</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+@endsection

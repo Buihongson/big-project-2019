@@ -1,9 +1,8 @@
 @layout('layouts.frontLayout.user_design')
 
 @section('content')
-    <!-- main -->
 
-    <main class="main">
+<main class="main">
         <section class="container section signup">
             <h1 class="signup__title">Xác nhận thanh toán</h1>
             <div class="signup__content">
@@ -36,12 +35,12 @@
                         </div>
                         <div class="row">
                             <label for="">Số lượng</label>
-                            <input disabled type="text" placeholder="Số lượng" class="input-text" id="amount"
+                            <input type="text" placeholder="Tổng tiền" class="input-text" id="amount"
                                 name="so_luong">
                         </div>
                         <div class="row">
                             <label for="">Số tiền</label>
-                            <input disabled type="text" placeholder="Tổng tiền" class="input-text" id="paycheck"
+                            <input type="text" placeholder="Tổng tiền" class="input-text" id="paycheck"
                                 name="tong_tien">
                         </div>
                         <div class="row">
@@ -59,5 +58,5 @@
         </section>
     </main>
 
-    <!-- end main -->
+
 @endsection
