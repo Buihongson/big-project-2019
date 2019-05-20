@@ -77,11 +77,11 @@
                     @each(sameProduct in allProducts)
                         <article class="box">
                             <div class="box__img">
-                                <a href="{{ route('User/DongHoController.viewProductCaravelle', {id: sameProduct.id}) }}"><img src="{{ sameProduct.hinh_anh }}" alt=""></a>
+                                <a href="{{ route('User/DongHoController.viewDetailDHNam', {id: sameProduct.id}) }}"><img src="{{ sameProduct.hinh_anh }}" alt=""></a>
                             </div>
                             <div class="box__body">
                                 <ul>
-                                    <li class="box__body__name"><a href="{{ route('User/DongHoController.viewProductCaravelle', {id: sameProduct.id}) }}">{{ sameProduct.ten_san_pham }}</a></li>
+                                    <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: sameProduct.id}) }}">{{ sameProduct.ten_san_pham }}</a></li>
                                     <li class="box__body__price">{{ sameProduct.gia_tien }}</li>
                                 </ul>
                             </div>

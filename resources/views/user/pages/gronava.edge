@@ -1,0 +1,62 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title" >Đồng hồ GROVANA</h1>
+                <div class="info__banner"><img src="#" alt=""></div>
+                <div class="info__content">
+                    <p>Đồng hồ Grovana cao cấp là 1 làn gió mới đến từ đất nước của những chiếc đồng hồ Thụy Sỹ. Đồng hồ Grovana chính hãng mang phong cách cổ điển, nhẹ nhàng nhưng cực kỳ lịch lãm, sang trọng và tinh tế. Những chiếc đồng hồ cao cấp của Grovana đem đến cho người sở hữu chúng một phong cách mới thu hút mọi ánh nhìn.</p>
+                    <p>Xem thêm mẫu đồng hồ Thụy Sĩ: <a href="/dong-ho-thuy-si/omega">Đồng hồ Omega</a>, <a href="/dong-ho-thuy-si/longines">Đồng hồ Longines</a>, <a href="/dong-ho-thuy-si/tissot">Đồng hồ Tissot</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dưới 5 Triệu</a></li>
+                    <li><a href="#">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="#">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="#">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Nam</a></li>
+                    <li><a href="#">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Loại Dây </div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dây da</a></li>
+                    <li><a href="#">Dây kim loại</a></li>
+                    <li><a href="#">Thép không rỉ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in products)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection

@@ -14,11 +14,11 @@
                             <li><a href="/khach-hang/tai-khoan/doi-mat-khau">Đổi mật khẩu</a></li>
                         </ul>
                     </nav>
-                    <select name="" id="" class="account__top__selection">
+                   <select name="" id="" class="account__top__selection">
                         <option value="javascript:void(0);" selected="selected">Tổng quan</option>
-                        <option value="https://www.jomashop.com/sales/order/history/">Đơn hàng</option>
-                        <option value="https://www.jomashop.com/sales/order/history/">Cập nhập thông tin</option>
-                        <option value="https://www.jomashop.com/customer/paymentinfo/">Đổi mật khẩu</option>
+                        <option value="http://127.0.0.1:3333/khach-hang/tai-khoan/don-hang">Đơn hàng</option>
+                        <option value="http://127.0.0.1:3333/khach-hang/tai-khoan/cap-nhap-tt">Cập nhập thông tin</option>
+                        <option value="http://127.0.0.1:3333/khach-hang/tai-khoan/doi-mat-khau">Đổi mật khẩu</option>
                     </select>
                 </div>
             </section>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="row">
                                     <label for="address">Địa chỉ</label>
-                                    <input required type="text" placeholder="Email" id="address" name="user_address"
+                                    <input required type="text" placeholder="Địa chỉ" id="address" name="user_address"
                                         class="input-text" onfocus="this.style.backgroundColor='#fbfbfb'"
                                         value="{{ inforUser.dia_chi ? inforUser.dia_chi : old('dia_chi', '')}}"
                                         onblur="this.style.backgroundColor='#ffffff'">
@@ -52,6 +52,7 @@
                                 <div class="row">
                                     <label for="tel">Số điện thoại</label>
                                     <input required type="text" class="input-text" placeholder="Số điện thoại" id="tel"
+                                        pattern="[0-9]*" title="Số điện thoại không đúng định dạng."
                                         name="user_tel" onfocus="this.style.backgroundColor='#fbfbfb'"
                                         value="{{ inforUser.so_dien_thoai ? inforUser.so_dien_thoai : old('so_dien_thoai', '')}}"
                                         onblur="this.style.backgroundColor='#ffffff'">

@@ -1,8 +1,11 @@
 'use strict'
 
 const Admin = use('App/Models/Admin')
+const User = use('App/Models/User')
+const Order = use('App/Models/DonHang')
 
 const Hash = use('Hash')
+const moment = require('moment')
 
 class AdminController {
     async showFormLogin({ view }) {
@@ -10,7 +13,41 @@ class AdminController {
     }
 
     async showDashboard({ view }) {
-        return view.render('admin.dashboard');
+        // get total all user
+        const countAllUser = await User
+            .query()
+            .count('* as total');
+        const totalAllUser = countAllUser[0].total;
+
+        // get total all user registered 7 days ago or before
+        const yesterday = moment().subtract(7, 'days').format('YYYY-MM-DD HH:mm:ss')
+        const user = await User
+            .query()
+            .count('* as total')
+            .where('created_at', '<', yesterday)
+
+        const userRecentRegis = totalAllUser-user[0].total;
+
+        // get total order payed
+        const countAllOrderPay = await Order
+            .query()
+            .count('* as total')
+            .where('tinh_trang', '=', '1');
+        const totalOrderPayed = countAllOrderPay[0].total;
+
+        // get total order not pay
+        const countAllOrderNotPay = await Order
+            .query()
+            .count('* as total')
+            .where('tinh_trang', '=', '0');
+        const totalOrderNotPay = countAllOrderNotPay[0].total;
+
+        return view.render('admin.dashboard', {
+            totalAllUser,
+            userRecentRegis,
+            totalOrderPayed,
+            totalOrderNotPay
+        });
     }
 
     async showSettings({ view }) {

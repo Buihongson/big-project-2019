@@ -61,13 +61,14 @@ Route.group(() => {
     // Order (Amin)
     Route.get('/order/view-order', 'Admin/OrderController.viewOrder');
     Route.get('/order/delete-order/:id', 'Admin/OrderController.deleteOrder');
-    Route.get('/user/edit-user/:id', 'Admin/OrderController.viewEditOrder');
-    Route.post('/user/edit-user/:id', 'Admin/OrderController.updateOrder');
+    Route.get('/order/edit-order/:id', 'Admin/OrderController.viewEditOrder');
+    Route.post('/order/edit-order/:id', 'Admin/OrderController.updateOrder');
 
     Route.get('/order/view-order-detail', 'Admin/OrderController.viewOrderDetail');
 
     // Statistical
     Route.get('/statistic/product', 'Admin/StatisticController.product')
+    Route.get('/statistic/order', 'Admin/StatisticController.order')
 }).prefix('/admin');
 
 Route.on('/signin').render('user.signin');
@@ -80,7 +81,7 @@ Route.get('/logoutUser', async ({ auth, response }) => {
 Route.on('/signup').render('user.signup');
 Route.post('/signup', 'User/UserController.signup');
 
-// account user
+/*--> account user <--*/
 Route.group(() => {
     Route.get('', 'User/UserController.account');
 
@@ -91,35 +92,82 @@ Route.group(() => {
     Route.post('/doi-mat-khau', 'User/UserController.changePassword')
 
     Route.get('/don-hang', 'User/UserController.viewBillAccount')
+
+    /*--> password reset <--*/
+    Route.get('/quen-mat-khau', 'User/PasswordResetController.viewFormForgotPass')
+    Route.post('/email', 'User/PasswordResetController.sendResetLink')
 }).prefix('/khach-hang/tai-khoan');
 
 // search product
 Route.post('/search', 'User/SearchController.search');
 
-Route.get('/thuong-hieu', 'User/DongHoController.viewThuongHieu');
 // view detail product
 Route.get('/san-pham/:id', 'User/DongHoController.viewDetailDHNam')
 
-// detail page
+/*--> detail page <--*/
+/*-->  thuong hieu <--*/
+Route.group(() => {
+    Route.get('', 'User/DongHoController.viewThuongHieu');
+
+    // price
+    Route.get('/min_price=0000000&max_price=4999999', 'User/DongHoController.viewDH5tr');
+    Route.get('/min_price=5000000&max_price=15000000', 'User/DongHoController.viewDH5tr_15tr');
+    Route.get('/min_price=15000001&max_price=30000000', 'User/DongHoController.viewDH15tr_30tr');
+    Route.get('/max_price=30000001', 'User/DongHoController.viewDH30tr');
+
+    // gender
+    Route.get('/nam', 'User/DongHoController.viewNam')
+    Route.get('/nu', 'User/DongHoController.viewNu')
+
+    // albert
+    Route.get('/day-da', 'User/DongHoController.viewDayDa')
+    Route.get('/day-kim-loai', 'User/DongHoController.viewDayKimLoai')
+    Route.get('/thep-khong-ri', 'User/DongHoController.viewThepKhongRi')
+}).prefix('/thuong-hieu')
+
+/*--> dong ho citizen <--*/
 Route.group(() => {
     Route.get('/citizen-eco-drive', 'User/DongHoController.viewPageCitizenEco');
     Route.get('/citizen-automatic', 'User/DongHoController.viewPageCitizenAuto');
 
 }).prefix('/dong-ho-citizen')
 
+/*--> dong ho thuy sy <--*/
 Route.group(() => {
+    // movado
     Route.get('/movado', 'User/DongHoController.viewPageMovado');
+    // price
+    Route.get('/movado/min_price=0000000&max_price=4999999', 'User/DongHoController.viewMovadoDH5tr');
+    Route.get('/movado/min_price=5000000&max_price=15000000', 'User/DongHoController.viewMovadoDH5tr_15tr');
+    Route.get('/movado/min_price=15000001&max_price=30000000', 'User/DongHoController.viewMovadoDH15tr_30tr');
+    Route.get('/movado/max_price=30000001', 'User/DongHoController.viewMovadoDH30tr');
+
+    // gender
+    Route.get('/movado/nam', 'User/DongHoController.viewMovadoNam')
+    Route.get('/movado/nu', 'User/DongHoController.viewMovadoNu')
+
+    // albert
+    Route.get('/movado/day-da', 'User/DongHoController.viewMovadoDayDa')
+    Route.get('/movado/day-kim-loai', 'User/DongHoController.viewMovadoDayKimLoai')
+    Route.get('/movado/thep-khong-ri', 'User/DongHoController.viewMovadoThepKhongRi')
 
     Route.get('/longines', 'User/DongHoController.viewPageLongines');
+    Route.get('/gronava', 'User/DongHoController.viewPageGronava');
+    Route.get('/omega', 'User/DongHoController.viewPageOmega');
+    Route.get('/tissot', 'User/DongHoController.viewPageTissot');
 }).prefix('/dong-ho-thuy-si')
 
+/*--> dong ho chinh hang <--*/
 Route.group(() => {
     Route.get('/bulova', 'User/DongHoController.viewPageBulova');
-
     Route.get('/caravelle', 'User/DongHoController.viewPageCaravelle');
+    Route.get('/alfex', 'User/DongHoController.viewPageAlfex');
+    Route.get('/seiko', 'User/DongHoController.viewPageSeiko');
+    Route.get('/lacoste', 'User/DongHoController.viewPageLacoste');
 }).prefix('/dong-ho-chinh-hang');
+/*-------*/
 
-// watch men
+/*--> watch men <--*/
 Route.group(() => {
     Route.get('', 'User/DongHoNamController.viewDHNam')
 
@@ -145,7 +193,7 @@ Route.group(() => {
 
 }).prefix('/dong-ho-nam');
 
-// watch women
+/*--> watch women <--*/
 Route.group(() => {
     Route.get('', 'User/DongHoNuController.viewDHNu')
 
@@ -171,13 +219,14 @@ Route.group(() => {
 
 }).prefix('/dong-ho-nu');
 
-// cart
+/*--> cart <--*/
 Route.group(() => {
     Route.get('', 'User/CartController.viewCart');
     Route.get('/thanh-toan', 'User/CartController.viewCheckOut').middleware(['auth']);
     Route.post('/thanh-toan', 'User/CartController.checkOut');
     Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
 }).prefix('/gio-hang');
+
 
 Route.get('/sua-chua', 'User/UserController.viewRepair')
 Route.get('/lien-he', 'User/UserController.viewContact')

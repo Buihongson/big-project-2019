@@ -1,0 +1,64 @@
+@layout('layouts.frontLayout.user_design')
+
+@section('content')
+    <main class="main">
+        <section class="section info">
+            <div class="container">
+                <h1 class="info__title" >Đồng hồ Omega</h1>
+                <div class="info__banner"><img src="../images/banner_image/omega-ban.jpg" alt=""></div>
+                <div class="info__content">
+                    <p>Thành lập năm 1848, thương hiệu <strong><a href="#">đồng hồ Omega</a></strong>, với những chiếc đồng hồ có độ chính xác nhất thế giới, máy cực bền, vỏ cực chắc, thiết kế hàng đầu Thụy Sỹ; chịu đựng tốt trong nhiều điều kiện thời tiết khắc nghiệt.</p>
+                    <p>Thương hiệu Omega được biết đến do sự chế tác tinh xảo và hoàn hảo đến từng chi tiết. Được giới chơi đồng hồ Thụy Sỹ xem là món quà tặng hoàn hảo.</p>
+                    <p>Từ 1932 đến nay, Omega là nhà cung cấp dụng cụ đo thời gian chính thức và độc quyền cho thế vận hội Olympic. Năm 1917, Omega được chọn làm “vũ khí thời gian” số 1 của quân đội Anh và Mỹ. Được sử dụng cho phi công & hạm đội tác chiến trên biển và trên bờ. Ngoài ra, Omega luôn là sự lựa chọn số một của các phi hành gia kể từ chiếc đồng hồ đầu tiên, chiếc Omega Speedmaster, chinh phục mặt trăng năm 1969.</p>
+                    <p>Xem thêm mẫu đồng hồ Thụy Sĩ: <a href="/dong-ho-thuy-si/longines">Đồng hồ Longines</a>, <a href="/dong-ho-thuy-si/tissot">Đồng hồ Tissot</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container section filter">
+            <div class="filter__item">
+                <div class="filter__item__title">Lọc Giá</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dưới 5 Triệu</a></li>
+                    <li><a href="#">5 Triệu – 15 Triệu</a></li>
+                    <li><a href="#">3 Triệu - 30 Triệu</a></li>
+                    <li><a href="#">Trên 30 Triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Giới Tính</div>
+                <ul class="filter--hover">
+                    <li><a href="#">Nam</a></li>
+                    <li><a href="#">Nữ</a></li>
+                </ul>
+            </div>
+            <div class="filter__item">
+                <div class="filter__item__title">Loại Dây </div>
+                <ul class="filter--hover">
+                    <li><a href="#">Dây da</a></li>
+                    <li><a href="#">Dây kim loại</a></li>
+                    <li><a href="#">Thép không rỉ</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container section product">
+            <div class="product__body">
+                @each(product in products)
+                    <article class="box box--hidden">
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__body">
+                            <ul>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li>
+                                <li class="box__body__price">{{ product.gia_tien }}</li>
+                            </ul>
+                        </div>
+                    </article>
+                @endeach
+            </div>
+            <div class="btn__loadmore">
+                <a href="#" id="loadMore" class="btn__load">Xem thêm</a>
+            </div>
+        </section>
+    </main>
+@endsection

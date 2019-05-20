@@ -3,8 +3,8 @@
 @section('content')
 <div id="content">
     <div id="content-header">
-        <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Order</a> <a href="#" class="current">View order</a> </div>
-        <h1>Đơn Hàng</h1>
+        <div id="breadcrumb"> <a href="/admin/dashboard" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Statistical</a> <a href="#" class="current">View statistical</a> </div>
+        <h1>Thống Kê Đơn Hàng</h1>
         @if(old('add_notification'))
             <div class="alert alert-success alert-block">
               <button type="button" class="close" data-dismiss="alert">x</button>
@@ -30,40 +30,33 @@
         <div class="span12">
           <div class="widget-box">
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-              <h5>Đơn Hàng</h5>
+              <h5>Thống Kê Chung</h5>
             </div>
             <div class="widget-content nopadding">
               <table class="table table-bordered data-table">
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Tên</th>
+                    <th>Loại thống kê</th>
                     <th>Số lượng</th>
-                    <th>Tổng tiền</th>
-                    <th>Tình trạng</th>
-                    <th>Ghi chú</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    @each(order in orders)
                         <tr class="gradeX">
-                            <td>{{ order.id }}</td>
-                            <td>{{ order.users.ten }}</td>
-                            <td>{{ order.so_luong }}</td>
-                            <td>{{ order.tong_tien }}</td>
-                            @if(order.tinh_trang == 1)
-                              <td>Đã thanh toán</td>
-                            @elseif(order.tinh_trang == 0)
-                              <td>Chưa thanh toán</td>
-                            @endif
-                            <td>{{ order.ghi_chu }}</td>
+                            <td>1</td>
+                            <td>Hóa đơn đã thanh toán</td>
+                            <td>{{ totalOrderPayed }}</td>
                             <td class="center">
-                              <a href="{{ route('Admin/OrderController.viewEditOrder', {id: order.id}) }}" class="btn btn-primary btn-mini">Edit</a>
-                              <a href="{{ route('Admin/OrderController.deleteOrder', {id: order.id}) }}" class="btn btn-danger btn-mini">Delete</a>
                             </td>
                         </tr>
-                    @endeach
+                        <tr class="gradeX">
+                            <td>2</td>
+                            <td>Hóa đơn chưa thanh toán</td>
+                            <td>{{ totalOrderNotPay }}</td>
+                            <td class="center">
+                            </td>
+                        </tr>
                 </tbody>
               </table>
             </div>

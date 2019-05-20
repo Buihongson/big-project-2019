@@ -17,6 +17,33 @@ class OrderController {
         });
     }
 
+    // view edit order
+    async viewEditOrder({ view, params }) {
+        const order = await Order
+            .query()
+            .where('id', "=", params.id)
+            .with('users')
+            .fetch();
+
+        return view.render('admin.orders.view_edit_order', {
+            order: order.toJSON()
+        });
+    }
+
+    // update order
+    async updateOrder({ request, response, session, params }) {
+        const order = await Order.find(params.id);
+
+        order.tinh_trang = request.input('status');
+
+        await order.save();
+
+        session.flash({ update_notification: 'Cập nhập thành công'});
+
+        return response.redirect('/admin/order/view-order');
+    }
+
+
     // delete order
     async deleteOrder({ response, session, params }) {
         // get catalog by id
@@ -37,8 +64,10 @@ class OrderController {
             .with('san_phams')
             .with('users')
             .fetch();
+        
+        const test = await OrderDetail.all()
 
-        console.log(details.toJSON());
+        console.log(test.toJSON());
 
         return view.render('admin.orders.view_order_detail', {
             details: details.toJSON()

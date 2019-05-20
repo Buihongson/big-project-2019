@@ -5,13 +5,13 @@
         <section class="container section signin">
             <h1 class="signin__title">Đăng nhập hoặc đăng ký</h1>
             <div class="signin__body">
-                <form action="{{ route('User/UserController.signin') }}" method="POST">
+                <form action="{{ route('User/PasswordResetController.sendResetLink') }}" method="POST">
                     {{ csrfField() }}
                     <div class="signin__body__content signin__body__content--left">
                         <h3 class="signin__title__column">
-                            Đăng nhập
+                            Quên mật khẩu
                         </h3>
-                        <div class="signin__info">Nếu bạn đã có tài khoản, đăng nhập bằng email của bạn.</div>
+                        <div class="signin__info"></div>
                         @if(old('loginError'))
                             <div style="display: flex;
                                 justify-content: center;
@@ -26,6 +26,18 @@
                                     <strong>{{ old('loginError') }}</strong>
                             </div>
                         @endif
+                        @if(old('success_notification'))
+                        <div style="display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 20px 0;
+                        background: rgb(16,163,13);
+                        background: linear-gradient(90deg, rgba(16,163,13,0.6951155462184874) 18%, rgba(12,232,41,0.7259278711484594) 41%);
+                        height: 60px;
+                        color: #fff;">
+                            <strong>{{ old('success_notification') }}</strong>
+                        </div>
+                    @endif
                         <div class="row">
                             <label for="">Email</label>
                             <input required type="email" placeholder="Email"
@@ -33,14 +45,7 @@
                                 class="input-text" onfocus="this.style.backgroundColor='#fbfbfb'"
                                 onblur="this.style.backgroundColor='#ffffff'" name="email" value="{{ old('email'), '' }}">
                         </div>
-                        <div class="row">
-                            <label for="">Mật khẩu</label>
-                            <input required type="password" placeholder="Mật khẩu" class="input-text" pattern=".{6,}"
-                                title="Mật khẩu phải trên 6 ký tự" onfocus="this.style.backgroundColor='#fbfbfb'"
-                                onblur="this.style.backgroundColor='#ffffff'" name="password">
-                        </div>
-                        <div class="signin__link"><a href="/khach-hang/tai-khoan/quen-mat-khau">Quên mật khẩu?</a></div>
-                        <div class="signin__btn"><button type="submit">Đăng nhập</button></div>
+                        <div class="signin__btn"><button type="submit">Tiếp tục</button></div>
                     </div>
                 </form>
                 <div class="signin__body__content signin__body__content--right">

@@ -155,7 +155,7 @@ $(document).ready(function () {
         + '<td class=\'product__top__name item\'>' + cartArray[i].name + '</td>'
         + '<td class=\'product__top__price item\'>' + cartArray[i].price + '<span class=\'price__currencySymbol\'>&nbsp;₫</span></td>'
         + '<td class=\'product__top__quantity item\'><div class=\'product__top__quantity--body\'><button class=\'minus-item value__button\' id=\'decrease\' value=\'Decrease Value\' data-name=\'' + cartArray[i].name + '\'>-</button>'
-        + '<input class=\'input-text item-count\' type=\'number\' min=\'1\' max=\'99\' step=\'1\' id=\'item-count\' data-name=\'' + cartArray[i].name + '\' value=\'' + cartArray[i].count + '\'>'
+        + '<input class=\'input-text item-count\' type=\'number\' min=\'1\' max=\'99\' step=\'5\' id=\'item-count\' data-name=\'' + cartArray[i].name + '\' value=\'' + cartArray[i].count + '\'>'
         + '<button class=\'plus-item value__button\' id=\'increase\' value=\'Decrease Value\' data-name=\'' + cartArray[i].name + '\'>+</button></div></td>'
         + '<td class=\'product__top__subtotal item\'><span class=\'price__amount amount\'>' + cartArray[i].total + '</span><span class=\'price__currencySymbol\'>&nbsp;₫</span></span></td>'
         + '</tr>';
@@ -201,15 +201,20 @@ $(document).ready(function () {
     displayCart();
   });
 
-  $('#item-count').on('input', function (e) {
-    var value = $(this).val();
-
-    if ((value !== '') && (value.indexOf('.') === -1)) {
-      $(this).val(Math.max(Math.min(value, 99), 1));
-    }
-  });
-
   displayCart();
+
+  $(".item-count").on('change', function() {
+    var max = parseInt($(this).attr('max'));
+    var min = parseInt($(this).attr('min'));
+    if ($(this).val() > max)
+    {
+        $(this).val(max);
+    }
+    else if ($(this).val() < min)
+    {
+        $(this).val(min);
+    }
+  }); 
 
   // $('#checkOut').on('click', function(e) {
   //   e.preventDefault();

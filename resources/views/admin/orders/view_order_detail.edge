@@ -37,24 +37,34 @@
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Tên</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
                     <th>Tổng tiền</th>
                     <th>Tình trạng</th>
-                    <th>Ghi chú</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    @each(order in orders)
+                    @each(order in details)
                         <tr class="gradeX">
+                            <td></td>
                             <td>{{ order.id }}</td>
-                            <td>{{ order.users.ten }}</td>
+                            <td>
+                              @each(product in order.san_phams)
+                                <p> {{ product.ten_san_pham }} </p>
+                              @endeach
+                            </td>
+                            <td>{{ order.so_luong }}</td>
                             <td>{{ order.tong_tien }}</td>
-                            <td>{{ order.tinh_trang }}</td>
-                            <td>{{ order.ghi_chu }}</td>
+                            @if(order.tinh_trang == 1)
+                              <td>Đã thanh toán</td>
+                            @elseif(order.tinh_trang == 0)
+                              <td>Chưa thanh toán</td>
+                            @endif
                             <td class="center">
-                              {{--  <a href="{{ route('Admin/ProducerController.editProducer', {id: producer.id})}}" class="btn btn-primary btn-mini">Edit</a>  --}}
-                              {{--  <a href="{{ route('Admin/ProducerController.deleteProducer', {id: order.id})}}" class="btn btn-danger btn-mini">Delete</a>  --}}
+                              <a href="{{ route('Admin/OrderController.viewEditOrderDetail', {id: order.id}) }}" class="btn btn-primary btn-mini">Edit</a>
+                              <a href="{{ route('Admin/OrderController.deleteOrderDetail', {id: order.id}) }}" class="btn btn-danger btn-mini">Delete</a>
                             </td>
                         </tr>
                     @endeach

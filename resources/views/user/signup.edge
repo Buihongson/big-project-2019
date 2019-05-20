@@ -66,6 +66,7 @@
                         <div class="row">
                             <label for="">Mật khẩu</label>
                             <input required type="password" class="input-text" placeholder=" "
+                                pattern="^[a-zA-Z0-9äöüÄÖÜ]*$" title="Mật khẩu không được chứa ký tự đặc biệt"
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
                                 onblur="this.style.backgroundColor='#ffffff'" id="password" value="{{ old('password'), '' }}"
                                 name="password">
@@ -84,8 +85,8 @@
                                 name="dia_chi">
                         </div>
                         <div class="row">
-                            <label for="">Số điện thoại</label>
-                            <input required type="text" placeholder="Số Điện Thoại" class="input-text"
+                            <label for="tel">Số điện thoại</label>
+                            <input required type="tel" placeholder="Số Điện Thoại" class="input-text" id="tel"
                                 onfocus="this.style.backgroundColor='#fbfbfb'"
                                 onblur="this.style.backgroundColor='#ffffff'" value="{{ old('so_dien_thoai'), '' }}"
                                 name="so_dien_thoai">

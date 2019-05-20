@@ -15,12 +15,16 @@ class CartController {
     }
 
     async checkOut({ request, response, auth }) {
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+
         const order = new Order();
 
-        order.user_id = auth.user.id
-        order.so_luong = request.input('so_luong')
-        order.tong_tien = request.input('tong_tien')
-        order.ghi_chu = request.input('ghi_chu')
+        order.user_id = auth.user.id;
+        order.so_luong = request.input('so_luong');
+        order.tong_tien = request.input('tong_tien');
+        order.ghi_chu = request.input('ghi_chu').capitalize();
 
         await order.save();
 

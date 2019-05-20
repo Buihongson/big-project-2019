@@ -2,15 +2,8 @@
   <div class="container">
     <section class="section header__top">
       <div class="header__toggle">
-        <i class="fas fa-bars"></i>
-        <div class="header__nav__mb">
-          <ul>
-            <li>Thương hiệu</li>
-            <li>Đồng hồ nam</li>
-            <li>Đồng hồ nữ</li>
-            <li>Liên hệ</li>
-          </ul>
-        </div>
+        <i class="fas fa-bars" id="toggle-main-menu"></i>
+        <i class="fas fa-times hidden" id="toggle-active-main"></i>
       </div>
       <div class="header__logo">
         <a href="/">
@@ -28,7 +21,7 @@
         </form>
       </div>
       <div class="header__info">
-        <div class="header__info__right">
+        <div class="header__info__right header__info--hidden">
           <ul>
             @loggedIn
               <li class="header__info__item header__info__item--bold header__info__item--hover"><a class="header__link"
@@ -62,7 +55,138 @@
       <a href="#"><i class="fas fa-search"></i></a>
     </form>
   </div>
-  <nav class="menu header__bottom">
+  <nav class="menu menu--mb header__bottom hidden" id="menu--mb">
+      <ul class="menu--mb__main">
+          @loggedIn
+            <li class="menu--mb__main__item"><a class="header__link" href="/khach-hang/tai-khoan">Tài khoản <div class="menu--mb__icon"><i id="toggle-account" class="fas fa-chevron-down"></i><i id="toggle-active-account" class="hidden fas fa-times"></i></div></a>
+              <ul class="menu--mb__sub menu--mb__sub--one hidden" id="menu--mb__sub--account">
+                <li class="menu--mb__sub__item"><a href="/khach-hang/tai-khoan">Thông tin tài khoản</a></li>
+                <li class="menu--mb__sub__item"><a href="/khach-hang/tai-khoan/doi-mat-khau">Đổi mật khẩu</a></li>
+                <li class="menu--mb__sub__item"><a href="/logoutUser">Thoát</a></li>
+              </ul>
+            </li>
+          @else
+            <li class="menu--mb__main__item"><a class="header__link" href="/signin">Tài khoản</a>
+            </li>
+          @endloggedIn
+          <li class="menu--mb__main__item"><a class="header__link" href="/thuong-hieu">Thương hiệu <div class="menu--mb__icon"><i id="toggle-one" class="fas fa-chevron-down"></i><i id="toggle-active-one" class="hidden fas fa-times"></i></div></a>
+            <ul class="menu--mb__sub menu--mb__sub--one hidden" id="menu--mb__sub--one">
+              <li class="menu--mb__sub__item"><a href="#" class="header__link">Đồng hồ citizen</a>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-citizen/citizen-eco-drive">Citizen Eco-Drive</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-citizen/citizen-automatic">Citizen Automatic</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-citizen/citizen-quartz">Citizen Quartz</a></li>
+                </ul>
+              </li>
+              <li class="menu--mb__sub__item"><a href="#" class="header__link">Đồng hồ thụy sĩ</a>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-thuy-si/movado">Đồng hồ Movado</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-thuy-si/longines">Đồng hồ Longines</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-thuy-si/gronava">Đồng hồ Grovana</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-thuy-si/omega">Đồng hồ Omega</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-thuy-si/tissot">Đồng hồ Tissot</a></li>
+                </ul>
+              </li>
+              <li class="menu--mb__sub__item"><a href="#" class="header__link">Đồng hồ chính hãng</a>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-chinh-hang/bulova">Đồng hồ Bulova</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-chinh-hang/seiko">Đồng hồ Seiko</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-chinh-hang/caravelle">Đồng hồ Caravelle</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-chinh-hang/alfex">Đồng hồ Alfex</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-chinh-hang/lacoste">Đồng hồ Lacoste</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="menu--mb__main__item"><a class="header__link" href="/dong-ho-nam">Đồng hồ nam<div class="menu--mb__icon"><i id="toggle-two" class="fas fa-chevron-down"></i><i id="toggle-active-two" class="hidden fas fa-times"></i></div></i></a>
+            <ul class="menu--mb__sub menu--mb__sub--two hidden" id="menu--mb__sub--two">
+              <li class="menu--mb__sub__item">
+                  <p class="header__link">Loại dây</p>
+                  <ul class="menu--mb__sub__sub">
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/day-da">Dây da</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/day-kim-loai">Dây kim loại</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/thep-khong-ri">Thép không rỉ</a></li>
+                  </ul>
+                </li>
+                <li class="menu--mb__sub__item">
+                  <p class="header__link">Giá tiền</p>
+                  <ul class="menu--mb__sub__sub">
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/min_price=0000000&max_price=4999999">Dưới 5 Triệu</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/min_price=5000000&max_price=15000000">5 Triệu – 15 Triệu</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/min_price=15000001&max_price=30000000">15 Triệu - 30 Triệu</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/max_price=30000001">Trên 30 Triệu</a></li>
+                  </ul>
+                </li>
+                <li class="menu--mb__sub__item">
+                  <p class="header__link">Thụy sĩ</p>
+                  <ul class="menu--mb__sub__sub">
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/movado">Movado</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/longines">Longines</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Grovana</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Omega</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Tissot</a></li>
+                  </ul>
+                </li>
+                <li class="menu--mb__sub__item">
+                  <p class="header__link">Thương hiệu</p>
+                  <ul class="menu--mb__sub__sub">
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/bulova">Bulova</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nam/caravelle">Caravelle</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Alfex</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Seiko</a></li>
+                    <li class="menu--mb__sub__sub__item"><a href="#">Lacoste</a></li>
+                  </ul>
+                </li>
+            </ul>
+          </li>
+          <li class="menu--mb__main__item"><a class="header__link" href="/dong-ho-nu">Đồng hồ nữ <div class="menu--mb__icon"><i id="toggle-three" class="fas fa-chevron-down"></i><i id="toggle-active-three" class="hidden fas fa-times"></i></div></a>
+            <ul class="menu--mb__sub menu--mb__sub--three hidden" id="menu--mb__sub--three">
+              <li class="menu--mb__sub__item">
+                <p class="header__link">Loại dây<p>
+                    <ul class="menu--mb__sub__sub">
+                      <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/day-da">Dây da</a></li>
+                      <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/day-kim-loai">Dây kim loại</a></li>
+                      <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/thep-khong-ri">Thép không rỉ</a></li>
+                    </ul>
+              </li>
+              <li class="menu--mb__sub__item">
+                <p class="header__link">Giá tiền</p>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/min_price=0000000&max_price=4999999">Dưới 5 Triệu</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/min_price=5000000&max_price=15000000">5 Triệu – 15 Triệu</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/min_price=15000001&max_price=30000000">15 Triệu - 30 Triệu</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/max_price=30000001">Trên 30 Triệu</a></li>
+                </ul>
+              </li>
+              <li class="menu--mb__sub__item">
+                <p class="header__link">Thụy sĩ</p>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/movado">Movado</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/longines">Longines</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Grovana</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Omega</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Tissot</a></li>
+                </ul>
+              </li>
+              <li class="menu--mb__sub__item">
+                <p class="header__link">Thương hiệu</p>
+                <ul class="menu--mb__sub__sub">
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/bulova">Bulova</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="/dong-ho-nu/caravelle">Caravelle</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Alfex</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Seiko</a></li>
+                  <li class="menu--mb__sub__sub__item"><a href="#">Lacoste</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="menu--mb__main__item"><a class="header__link" href="/sua-chua">Sữa chữa</i></a>
+          </li>
+          <li class="menu--mb__main__item"><a class="header__link" href="/lien-he">Liên hệ</i></a>
+          </li>
+        </ul>
+    </nav>
+  <nav class="menu menu--pc header__bottom">
     <ul class="menu__main">
       <li class="menu__main__item"><a class="header__link" href="/thuong-hieu">Thương hiệu<i class="fas fa-chevron-down"></i></a>
         <ul class="menu__sub menu__sub--one">
@@ -77,17 +201,17 @@
             <ul class="menu__sub__sub">
               <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/movado">Đồng hồ Movado</a></li>
               <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/longines">Đồng hồ Longines</a></li>
-              <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/grovana">Đồng hồ Grovana</a></li>
+              <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/gronava">Đồng hồ Grovana</a></li>
               <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/omega">Đồng hồ Omega</a></li>
-              <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/tisst">Đồng hồ Tissot</a></li>
+              <li class="menu__sub__sub__item"><a href="/dong-ho-thuy-si/tissot">Đồng hồ Tissot</a></li>
             </ul>
           </li>
           <li class="menu__sub__item"><a href="#" class="header__link">Đồng hồ chính hãng</a>
             <ul class="menu__sub__sub">
               <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/bulova">Đồng hồ Bulova</a></li>
+              <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/seiko">Đồng hồ Seiko</a></li>
               <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/caravelle">Đồng hồ Caravelle</a></li>
               <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/alfex">Đồng hồ Alfex</a></li>
-              <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/seiko">Đồng hồ Seiko</a></li>
               <li class="menu__sub__sub__item"><a href="/dong-ho-chinh-hang/lacoste">Đồng hồ Lacoste</a></li>
             </ul>
           </li>

@@ -37,7 +37,7 @@ class User extends Model {
 
   don_hangs () {
     return this.hasMany('App/Models/DonHang')
-}
+  }
 }
 
 module.exports = User

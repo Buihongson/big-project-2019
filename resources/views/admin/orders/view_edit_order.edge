@@ -1,0 +1,64 @@
+@layout('layouts.adminLayout.admin_design')
+
+@section('content')
+<div id="content">
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="/admin/dashboard" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="/admin/order/view-order">Order</a> <a href="/admin/catalog/edit-catalog/:id" class="current">Edit order</a> </div>
+      <h1>Đơn hơn</h1>
+    </div>
+    <div class="container-fluid"><hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
+              <h5>Cập nhập đơn hàng</h5>
+            </div>
+            <div class="widget-content nopadding">
+            @each(order in order)
+            <form class="form-horizontal" method="POST" action="{{ route('Admin/OrderController.updateOrder', {id: order.id}) }}" name="update_order" id="update_order" novalidate="novalidate">
+                {{ csrfField() }}
+                <div class="control-group">
+                    <label class="control-label" for="name_order">Tên</label>
+                    <div class="controls">
+                        <input disabled type="text" type="text" name="name_order" id="name_order" value="{{ order.users.ten ? order.users.ten  : old('order.users.ten', '') }}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="amount">Số lượng</label>
+                    <div class="controls">
+                      <input disabled type="text" name="amount" id="amount" value="{{ order.so_luong ? order.so_luong : old('so_luong', '') }}" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="price">Thông tin thương hiệu</label>
+                    <div class="controls">
+                      <input disabled type="text" name="price" id="price" value="{{ order.tong_tien ? order.tong_tien : old('tong_tien', '') }}" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="status">Ghi chú</label>
+                    <div class="controls">
+                      <input disabled type="text" name="status" id="status" value="{{ order.ghi_chu ? order.ghi_chu : old('ghi_chu', '') }}" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="note">Tình trạng</label>
+                    <div class="controls">
+                        <select name="status" style="width: 220px">
+                            <option value="0">&nbsp;--&nbsp;Chưa thanh toán</option>
+                            <option value="1">&nbsp;--&nbsp;Đã thanh toán</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                  <input type="submit" value="Cập nhập" class="btn btn-success">
+                </div>
+              </form>
+              @endeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+@endsection
