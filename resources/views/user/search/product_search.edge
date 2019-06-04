@@ -26,12 +26,11 @@
                 </ul>
             </div>
             <div class="filter__item">
-                <div class="filter__item__title">Giới Tính</div>
+                <div class="filter__item__title">Loại dây</div>
                 <ul class="filter--hover">
-                    <li>a</li>
-                    <li>b</li>
-                    <li>c</li>
-                    <li>d</li>
+                    <li>Dây da</li>
+                    <li>Dây kim loại</li>
+                    <li>Thép không rỉ</li>
                 </ul>
             </div>
         </section>
@@ -40,10 +39,10 @@
             <div class="product__body">
                 @each(product in product)
                     <article class="box box--hidden">
-                        <div class="box__img"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
+                        <div class="box__img"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}"><img src="{{ product.hinh_anh }}" alt="{{ product.ten_san_pham }}" style="width: 240px;"></a></div>
                         <div class="box__body">
                             <ul>
-                                <li class="box__body__name"><a href="{{ route('User/UserController.viewProductMovado', {id: product.id}) }}">Đồng hồ {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
+                                <li class="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.ten_san_pham }}</a></li>
                                 <li class="box__body__price">{{ product.gia_tien }}</li>
                             </ul>
                         </div>

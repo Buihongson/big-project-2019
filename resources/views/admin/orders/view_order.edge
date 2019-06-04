@@ -37,6 +37,7 @@
                 <thead>
                   <tr>
                     <th>STT</th>
+                    <th>ID đơn hàng</th>
                     <th>Tên</th>
                     <th>Số lượng</th>
                     <th>Tổng tiền</th>
@@ -48,6 +49,7 @@
                 <tbody>
                     @each(order in orders)
                         <tr class="gradeX">
+                            <td class="counterCell"></td>
                             <td>{{ order.id }}</td>
                             <td>{{ order.users.ten }}</td>
                             <td>{{ order.so_luong }}</td>

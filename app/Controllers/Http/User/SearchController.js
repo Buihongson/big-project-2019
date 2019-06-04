@@ -11,7 +11,11 @@ class SearchController {
         const valueInput = request.input('search');
 
         // query with database
-        const resultSearch = await Product.query().where('ten_san_pham', 'like' , '%'+valueInput.trimEnd().trimStart()+'%').fetch();
+        const resultSearch = await Product
+            .query()
+            .where('ten_san_pham', 'like' , '%'+valueInput.trimEnd().trimStart()+'%')
+            .orWhere('ma_san_pham', 'like', '%'+valueInput.trimEnd().trimStart()+'%')
+            .fetch();
 
         if(resultSearch.toJSON().length > 0 ) {
             return view.render('user.search.product_search', {

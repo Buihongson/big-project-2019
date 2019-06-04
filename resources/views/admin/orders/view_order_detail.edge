@@ -48,11 +48,11 @@
                 <tbody>
                     @each(order in details)
                         <tr class="gradeX">
-                            <td></td>
+                            <td class="counterCell"></td>
                             <td>{{ order.id }}</td>
                             <td>
                               @each(product in order.san_phams)
-                                <p> {{ product.ten_san_pham }} </p>
+                                <p> {{ product.ten_san_pham }} {{ product.ma_san_pham }} </p>
                               @endeach
                             </td>
                             <td>{{ order.so_luong }}</td>

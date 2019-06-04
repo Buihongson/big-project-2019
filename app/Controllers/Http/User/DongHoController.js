@@ -386,6 +386,13 @@ class DongHoController {
                 product: cvProductJson,
                 allProducts: allProducts.toJSON()
             });
+        } else if(cvProductJson.ten_san_pham.slice(0,14) === "Đồng hồ Tissot"){
+            const allProducts = await Product.query().where('nha_san_xuat_id', '=', 16).fetch()
+
+            return view.render('user.product_detail.detail_tissot', {
+                product: cvProductJson,
+                allProducts: allProducts.toJSON()
+            });
         } else {
             return view.render('user.error');
         }

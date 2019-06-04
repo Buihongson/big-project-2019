@@ -55,7 +55,7 @@ class OrderController {
         // notify when delete success
         session.flash({ delete_notification: 'Xóa thành công'});
 
-        return response.redirect('/admin/orders/view-order');
+        return response.redirect('/admin/order/view-order');
     }
 
     async viewOrderDetail ({ view }) {
@@ -65,9 +65,9 @@ class OrderController {
             .with('users')
             .fetch();
         
-        const test = await OrderDetail.all()
+        // const test = await OrderDetail.all()
 
-        console.log(test.toJSON());
+        // console.log(test.toJSON());
 
         return view.render('admin.orders.view_order_detail', {
             details: details.toJSON()

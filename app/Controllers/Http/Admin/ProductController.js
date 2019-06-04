@@ -58,6 +58,7 @@ class ProductController {
             product.gia_tien = request.input('price_product');
             product.bao_hanh = request.input('guarantee_product') + " năm";
             product.tinh_trang = request.input('status_product');
+            product.so_luong = request.input('amount_product')
             product.mo_ta = request.input('desc_product');
             product.hinh_anh = cloudinaryResponse.secure_url;
 
@@ -111,6 +112,7 @@ class ProductController {
             product.gia_tien = request.input('price_product');
             product.bao_hanh = request.input('guarantee_product');
             product.tinh_trang = request.input('status_product');
+            product.so_luong = request.input('amount_product')
             product.mo_ta = request.input('desc_product');
             product.hinh_anh = cloudinaryResponse.secure_url;
 

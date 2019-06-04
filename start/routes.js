@@ -93,10 +93,11 @@ Route.group(() => {
 
     Route.get('/don-hang', 'User/UserController.viewBillAccount')
 
-    /*--> password reset <--*/
+    // password reset
     Route.get('/quen-mat-khau', 'User/PasswordResetController.viewFormForgotPass')
     Route.post('/email', 'User/PasswordResetController.sendResetLink')
 }).prefix('/khach-hang/tai-khoan');
+/*--> end account user <--*/
 
 // search product
 Route.post('/search', 'User/SearchController.search');
@@ -226,7 +227,6 @@ Route.group(() => {
     Route.post('/thanh-toan', 'User/CartController.checkOut');
     Route.get('/thanh-toan-thanh-cong', 'User/CartController.checkOutSuccess');
 }).prefix('/gio-hang');
-
 
 Route.get('/sua-chua', 'User/UserController.viewRepair')
 Route.get('/lien-he', 'User/UserController.viewContact')

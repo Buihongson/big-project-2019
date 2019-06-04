@@ -115,6 +115,12 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label" for="amount_product">Số lượng</label>
+                    <div class="controls">
+                        <input type="text" name="amount_product" id="amount_product" value="{{ product.so_luong ? product.so_luong : old('so_luong'), '' }}">
+                    </div>
+                </div>
+                <div class="control-group">
                     <label class="control-label" for="image_product">Hình ảnh</label>
                     <div class="controls">
                         <input type="file" name="image_product" id="image_product" value="{{ product.hinh_anh ? product.hinh_anh : old('hinh_anh'), '' }}">
@@ -123,7 +129,8 @@
                     </div>
                 </div>
                 <div class="form-actions">
-                  <input type="submit" value="Cập nhập" class="btn btn-success">
+                    <a href="/admin/product/view-product" class="btn btn-primary">Quay lại</a>
+                    <input type="submit" value="Cập nhập" class="btn btn-success">
                 </div>
               </form>
             </div>

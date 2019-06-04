@@ -88,6 +88,39 @@
           </div>
         </div>
       </div>
+
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Thống Kê Từng Loại Sản Phẩm</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>Số lượng</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @each(product in allProduct)
+                        <tr class="gradeX">
+                            <td class="counterCell"></td>
+                            <td>{{ product.ten_san_pham }} {{ product.ma_san_pham }}</td>
+                            <td>{{ product.so_luong }}</td>
+                            <td class="center">
+                            </td>
+                        </tr>
+                    @endeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 @endsection

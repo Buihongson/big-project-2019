@@ -36,10 +36,9 @@
               <table class="table table-bordered data-table">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>STT</th>
                     <th>Tên khách hàng</th>
                     <th>Email</th>
-                    <th>Mật khẩu</th>
                     <th>Địa chỉ</th>
                     <th>Số điện thoại</th>
                     <th></th>
@@ -48,10 +47,9 @@
                 <tbody>
                     @each(user in users)
                         <tr class="gradeX">
-                            <td>{{ user.id }}</td>
+                            <td class="counterCell"></td>
                             <td>{{ user.ten }}</td>
                             <td>{{ user.email }}</td>
-                            <td>{{ user.password }}</td>
                             <td>{{ user.dia_chi }}</td>
                             <td>{{ user.so_dien_thoai }}</td>
                             <td class="center">

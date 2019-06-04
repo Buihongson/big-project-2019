@@ -36,9 +36,12 @@ class StatisticController {
             cvTotalEverProductToJSON.push(totalEverProduct[i][0]);
         }
 
+        const allProduct = await Product.all()
+
         return view.render('admin.statistic.product', {
             total,
-            cvTotalEverProductToJSON
+            cvTotalEverProductToJSON,
+            allProduct: allProduct.toJSON()
         });
     }
 
