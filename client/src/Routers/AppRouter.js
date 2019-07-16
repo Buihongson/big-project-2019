@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import HomePage from "../Components/Pages/HomePage";
-import ContactPage from "../Components/Pages/ContactPage";
+import ErrorPage from "../PureComponents/ErrorPage/ErrorPage"
 
-export class AppRouter extends Component {
-  render() {
-    return (
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/contact" component={ContactPage} />
-      </Switch>
-    );
-  }
-}
+let UserLayout,
+  AdminLayout = null;
 
-export default AppRouter;
+UserLayout = require("../Components/User/Home").default;
+AdminLayout = require("../Components/Admin/Dashboard/Dashboard").default;
+
+export default () => (
+  <Switch>
+    <Route path="/admin" component={AdminLayout} />
+    <Route path="/" component={UserLayout} />
+    <Route component={ErrorPage}></Route>
+  </Switch>
+);

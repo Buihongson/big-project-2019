@@ -302,4 +302,5 @@ Route.get("/lien-he", "User/UserController.viewContact");
 // Rest API
 Route.group(() => {
   Route.get("/products", "Api/ProductController.getAllProducts");
+  Route.get("/catelogs", "Api/ProductController.getAllCatelogs");
 }).prefix("/api");

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 
-import Banner from "../../PureComponents/BannerHomepage/Banner";
-import SlideShowTop from "../../PureComponents/SlideShow/SlideShowTop";
-import SectionTitleHP1 from "../../PureComponents/SectionTitle/SectionTitleHP1";
-import SectionTitleHP2 from "../../PureComponents/SectionTitle/SectionTitleHP2";
-import SectionTitleHP3 from "../../PureComponents/SectionTitle/SectionTitleHP3";
-import SectionTitleHP4 from "../../PureComponents/SectionTitle/SectionTitleHP4";
-import LogoHP1 from "../../PureComponents/LogoHompage/LogoHP1";
-import LogoHP2 from "../../PureComponents/LogoHompage/LogoHP2";
-import LogoHP3 from "../../PureComponents/LogoHompage/LogoHP3";
-import Service from "../../PureComponents/ServiceHompage/Service";
+import Banner from "../../../PureComponents/BannerHomepage/Banner";
+import SlideShowTop from "../../../PureComponents/SlideShow/SlideShowTop";
+import SectionTitleHP1 from "../../../PureComponents/SectionTitle/SectionTitleHP1";
+import SectionTitleHP2 from "../../../PureComponents/SectionTitle/SectionTitleHP2";
+import SectionTitleHP3 from "../../../PureComponents/SectionTitle/SectionTitleHP3";
+import SectionTitleHP4 from "../../../PureComponents/SectionTitle/SectionTitleHP4";
+import LogoHP1 from "../../../PureComponents/LogoHompage/LogoHP1";
+import LogoHP2 from "../../../PureComponents/LogoHompage/LogoHP2";
+import LogoHP3 from "../../../PureComponents/LogoHompage/LogoHP3";
+import Service from "../../../PureComponents/ServiceHompage/Service";
 
 export class HomePage extends Component {
   render() {

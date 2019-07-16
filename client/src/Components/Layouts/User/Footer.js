@@ -10,7 +10,7 @@ export class Footer extends Component {
                     <h3 className="footer__title">HỖ TRỢ KHÁCH HÀNG</h3>
                     <div className="footer__divider--small"></div>
                     <div className="footer__logo">
-                        <a href="">
+                        <a href="/#">
                             <img src="/images/frontend_image/ft-logo.png" />
                         </a>
                     </div>

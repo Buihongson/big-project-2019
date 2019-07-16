@@ -1853,7 +1853,7 @@ a {
   }
   .main .contact__repair__content {
     float: left;
-    width: calc(30%);
+    width: calc(50% - 20px);
   }
   .main .contact__repair--left {
     padding-right: 40px;

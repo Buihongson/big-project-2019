@@ -27,7 +27,6 @@ export class Header extends Component {
                     type="text"
                     placeholder="Tìm kiếm…"
                     name="search"
-                    value=""
                   />
                   <button
                     type="submit"
