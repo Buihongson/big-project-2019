@@ -302,5 +302,9 @@ Route.get("/lien-he", "User/UserController.viewContact");
 // Rest API
 Route.group(() => {
   Route.get("/products", "Api/ProductController.getAllProducts");
+
   Route.get("/catelogs", "Api/ProductController.getAllCatelogs");
+  Route.post("/catelogs", "Api/ProductController.addNewCatelog");
+  Route.put("/catelogs/:id", "Api/ProductController.updateCatelog")
+  Route.delete("/catelogs/:id", "Api/ProductController.deleteCatelog");
 }).prefix("/api");
