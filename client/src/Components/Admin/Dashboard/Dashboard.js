@@ -1,21 +1,42 @@
 import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb, Icon } from "antd";
-
-import AdminRouter from "../../../Routers/AdminRouter";
-import Sider from "../../Layouts/Admin/Sider";
+import history from "../../../history";
 
 import "antd/dist/antd.css";
 
+import { getToken } from "../../../Utils/token";
+
+import AdminRouter from "../../../Routers/AdminRouter";
+import Sider from "../../Layouts/Admin/Sider";
+import Header from "../../Layouts/Admin/Header";
+
 export class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data : []
+    }
+  }
+
+  componentDidMount() {
+    const token = getToken();
+
+    if (!token) {
+      history.push("/admin/login");
+    } else {
+
+    }
+  }
+
   render() {
-    const { SubMenu } = Menu;
-    const { Header, Content, Footer } = Layout;
+    const { Content, Footer } = Layout;
 
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Sider />
         <Layout>
-          <Header style={{ background: "#fff", padding: 0 }} />
+          <Header />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>

@@ -38,7 +38,7 @@ class ProductController {
       });
     } else {
       return response.status(404).json({
-        message: "Successly deteled a catelog",
+        message: "Not found catelog",
         id
       });
     }
@@ -68,7 +68,7 @@ class ProductController {
       });
     } else {
       return response.status(404).json({
-        message: "Successly deteled a catelog",
+        message: "Not found catelog",
         id
       });
     }
@@ -78,7 +78,10 @@ class ProductController {
   async getAllProducts({ response }) {
     const products = await Products.all();
 
-    return response.status(200).json(products);
+    return response.status(200).json({
+      message: "Successly geted all products",
+      data: products
+    });
   }
 }
 

@@ -301,10 +301,18 @@ Route.get("/lien-he", "User/UserController.viewContact");
 
 // Rest API
 Route.group(() => {
+  // Products
   Route.get("/products", "Api/ProductController.getAllProducts");
 
+  // Catelogs
   Route.get("/catelogs", "Api/ProductController.getAllCatelogs");
   Route.post("/catelogs", "Api/ProductController.addNewCatelog");
-  Route.put("/catelogs/:id", "Api/ProductController.updateCatelog")
+  Route.put("/catelogs/:id", "Api/ProductController.updateCatelog");
   Route.delete("/catelogs/:id", "Api/ProductController.deleteCatelog");
+
+  // Auth
+  Route.post("/token", "Api/AuthencationController.store");
+  Route.get("/auth/logout", async ({ auth, response }) => {
+    await auth.logout();
+  });
 }).prefix("/api");

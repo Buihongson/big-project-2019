@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import {
   Table,
   Divider,
@@ -9,8 +8,11 @@ import {
   message,
   Form,
   Input,
-  Select
+  Select,
+  Spin
 } from "antd";
+
+import callApi from "../../../../Services/ApiServices";
 
 class CatelogPage extends Component {
   constructor(props) {
@@ -18,7 +20,6 @@ class CatelogPage extends Component {
 
     this.state = {
       catelogs: [],
-      idCatelogDeleted: "",
       columns: [
         {
           title: "ID",
@@ -49,7 +50,7 @@ class CatelogPage extends Component {
                 <Popconfirm
                   title="Are you sure delete this catelog?"
                   onConfirm={() => this.onDeleteCatelog(record)}
-                  onCancel={this.onCancel}
+                  onCancel={this.onCancelOfBtnDel}
                   okText="Yes"
                   cancelText="No"
                 >
@@ -67,18 +68,19 @@ class CatelogPage extends Component {
         ten_th: "",
         parent_id: "",
         mo_ta_th: ""
-      }
+      },
+      isLoading: false
     };
   }
 
   // Get all catelog from server
   componentDidMount() {
-    axios({
-      method: "GET",
-      url: "http://localhost:3333/api/catelogs"
-    })
-      .then(res => this.setState({ catelogs: res.data }))
-      .catch(error => console.log(error));
+    this.setState({ isLoading: true });
+    setTimeout(() => {
+      callApi("api/catelogs", "GET", null).then(res =>
+        this.setState({ catelogs: res.data, isLoading: false })
+      );
+    }, 1000);
   }
 
   // Add new catelog
@@ -87,29 +89,22 @@ class CatelogPage extends Component {
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         if (this.state.isUpdate === false) {
-          await axios({
-            method: "POST",
-            url: "http://localhost:3333/api/catelogs",
-            data: values
-          })
-            .then(res =>
-              this.setState({
-                catelogs: [...this.state.catelogs, res.data.data]
-              })
-            )
-            .catch(error => console.log(error));
+          await callApi("api/catelogs", "POST", values).then(res =>
+            this.setState({
+              catelogs: [...this.state.catelogs, res.data.data]
+            })
+          );
+
+          this.handleCancel();
         } else {
           const idCatelog = this.state.dataForm.id;
 
-          await axios({
-            method: "PUT",
-            url: `http://localhost:3333/api/catelogs/${idCatelog}`,
-            data: values
-          })
-            .then(res => this.setState({ catelogs: res.data.data }))
-            .catch(error => console.log(error));
+          await callApi(`api/catelogs/${idCatelog}`, "PUT", values).then(res =>
+            this.setState({ catelogs: res.data.data })
+          );
 
           this.onSuccess();
+          this.handleCancel();
         }
       }
     });
@@ -117,10 +112,7 @@ class CatelogPage extends Component {
 
   // Delete 1 catelog
   onDeleteCatelog = async record => {
-    await axios({
-      method: "DELETE",
-      url: `http://localhost:3333/api/catelogs/${record.id}`
-    }).then(res =>
+    await callApi(`api/catelogs/${record.id}`, "DELETE", null).then(es =>
       this.setState({
         catelogs: this.state.catelogs.filter(catelog => {
           return catelog.id !== record.id;
@@ -154,20 +146,14 @@ class CatelogPage extends Component {
     }
   };
 
-  onCancel = e => {
+  onCancelOfBtnDel = e => {
     message.error("Click on No");
   };
 
   showModal = () => {
     this.setState({
       visible: true,
-      isUpdate: false,
-      dataForm: {
-        id: "",
-        ten_th: "",
-        parent_id: "",
-        mo_ta_th: ""
-      }
+      isUpdate: false
     });
   };
 
@@ -178,13 +164,21 @@ class CatelogPage extends Component {
   };
 
   handleCancel = e => {
+    this.props.form.resetFields();
     this.setState({
-      visible: false
+      visible: false,
+      isUpdate: false,
+      dataForm: {
+        id: "",
+        ten_th: "",
+        parent_id: "",
+        mo_ta_th: ""
+      }
     });
   };
 
   render() {
-    const { catelogs, columns, isUpdate } = this.state;
+    const { catelogs, columns, isUpdate, isLoading } = this.state;
 
     const { getFieldDecorator } = this.props.form;
     const { Option } = Select;
@@ -220,7 +214,12 @@ class CatelogPage extends Component {
         >
           Add a catelog
         </Button>
-        <Table columns={columns} dataSource={catelogs} rowKey="id" />
+        <Table
+          columns={columns}
+          dataSource={catelogs}
+          rowKey="id"
+          loading={isLoading}
+        />
         <Modal
           title={isUpdate === false ? "Add a new catelog" : "Edit catelog"}
           visible={this.state.visible}
@@ -232,7 +231,7 @@ class CatelogPage extends Component {
               key="submit"
               type="primary"
               htmlType="submit"
-              // onClick={this.handleOk}
+              onClick={this.handleOk}
             >
               Submit
             </Button>,

@@ -44,7 +44,7 @@ export default class Sider extends Component {
           <Menu.Item key="2">
             <Link to="/admin/catelogs">
               <Icon type="appstore" />
-              <span>Catalog</span>
+              <span>Catelogs</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
