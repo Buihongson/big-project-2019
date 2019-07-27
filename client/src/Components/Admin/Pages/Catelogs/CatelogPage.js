@@ -8,8 +8,7 @@ import {
   message,
   Form,
   Input,
-  Select,
-  Spin
+  Select
 } from "antd";
 
 import callApi from "../../../../Services/ApiServices";
@@ -95,6 +94,7 @@ class CatelogPage extends Component {
             })
           );
 
+          this.onSuccessAdd();
           this.handleCancel();
         } else {
           const idCatelog = this.state.dataForm.id;
@@ -112,7 +112,7 @@ class CatelogPage extends Component {
 
   // Delete 1 catelog
   onDeleteCatelog = async record => {
-    await callApi(`api/catelogs/${record.id}`, "DELETE", null).then(es =>
+    await callApi(`api/catelogs/${record.id}`, "DELETE", null).then(res =>
       this.setState({
         catelogs: this.state.catelogs.filter(catelog => {
           return catelog.id !== record.id;
@@ -123,7 +123,15 @@ class CatelogPage extends Component {
     this.onSuccess();
   };
 
-  // show modal edit
+  // Show modal add
+  showModal = () => {
+    this.setState({
+      visible: true,
+      isUpdate: false
+    });
+  };
+
+  // Show modal edit
   onEditCatelog = record => {
     this.setState({
       dataForm: record,
@@ -132,6 +140,7 @@ class CatelogPage extends Component {
     });
   };
 
+  // Notify after updated or delete
   onSuccess = e => {
     if (!this.state.isUpdate) {
       Modal.success({
@@ -145,16 +154,15 @@ class CatelogPage extends Component {
       });
     }
   };
+  onSuccessAdd = e => {
+    Modal.success({
+      title: "Successly add a catelog",
+      content: ""
+    });
+  };
 
   onCancelOfBtnDel = e => {
     message.error("Click on No");
-  };
-
-  showModal = () => {
-    this.setState({
-      visible: true,
-      isUpdate: false
-    });
   };
 
   handleOk = e => {
@@ -211,6 +219,7 @@ class CatelogPage extends Component {
           type="primary"
           onClick={this.showModal}
           style={{ marginBottom: "10px" }}
+          loading={isLoading}
         >
           Add a catelog
         </Button>
@@ -231,7 +240,6 @@ class CatelogPage extends Component {
               key="submit"
               type="primary"
               htmlType="submit"
-              onClick={this.handleOk}
             >
               Submit
             </Button>,

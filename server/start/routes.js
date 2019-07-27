@@ -303,6 +303,10 @@ Route.get("/lien-he", "User/UserController.viewContact");
 Route.group(() => {
   // Products
   Route.get("/products", "Api/ProductController.getAllProducts");
+  Route.get("/products/:id", "Api/ProductController.getDetailsProduct")
+  Route.post("/products", "Api/ProductController.addNewProduct")
+  Route.delete("/products/:id", "Api/ProductController.deleteProduct")
+  Route.delete("/test/:id", "Api/ProductController.testDelete")
 
   // Catelogs
   Route.get("/catelogs", "Api/ProductController.getAllCatelogs");

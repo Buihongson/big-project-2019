@@ -23,11 +23,7 @@ export class Header extends Component {
             <div className="header__input header__input--pc">
               <form>
                 <div>
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm…"
-                    name="search"
-                  />
+                  <input type="text" placeholder="Tìm kiếm…" name="search" />
                   <button
                     type="submit"
                     style={{ position: "absolute", top: 0, right: 0 }}
@@ -212,10 +208,10 @@ export class Header extends Component {
         <nav className="menu menu--pc header__bottom">
           <ul className="menu__main">
             <li className="menu__main__item">
-              <a className="header__link" href="/thuong-hieu">
+              <Link to="/brand" className="header__link">
                 Thương hiệu
                 <i className="fa fa-chevron-down" />
-              </a>
+              </Link>
               <ul className="menu__sub menu__sub--one">
                 <li className="menu__sub__item">
                   <a href="#" className="header__link">

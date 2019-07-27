@@ -37,6 +37,8 @@ class ProductController {
         const product = new Product();
         const file = request.file('image_product');
 
+        console.log(file);
+
         // method uppercase first char in string
         String.prototype.capitalize = function() {
             return this.charAt(0).toUpperCase() + this.slice(1);
@@ -45,7 +47,7 @@ class ProductController {
         // get value from input
         try {
             const cloudinaryResponse = await CloudinaryService.v2.uploader.upload(file.tmpPath, { folder: 'images-for-product-2019' });
-
+            console.log(cloudinaryResponse.secure_url);
             product.nha_san_xuat_id = request.input('parent_id');
             product.ten_san_pham = request.input('name_product');
             product.ma_san_pham = request.input('code_product');
@@ -63,7 +65,7 @@ class ProductController {
             product.mo_ta = request.input('desc_product');
             product.hinh_anh = cloudinaryResponse.secure_url;
 
-            await product.save();
+            // await product.save();
 
             // notify when add success
             session.flash({ add_notification: 'Thêm thành công.' });

@@ -1,25 +1,41 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class ProductItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      product: props.product
+    };
+  }
+
   render() {
+    const { product } = this.state;
+
     return (
-      <article className="box box--hidden">
+      <div className="box box--hidden">
         <div className="box__img">
-          <a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">
+          <Link to={`/product/details/${product.id}`}>
             <img
-              src="{{ product.hinh_anh }}"
-              alt="{{ product.ten_san_pham }}"
-              style="width: 240px;"
+              src={product.hinh_anh}
+              alt={product.ten_san_pham}
+              style={{ width: "180px" }}
             />
-          </a>
+          </Link>
         </div>
         <div className="box__body">
           <ul>
-            {/* <li className="box__body__name"><a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">{{ product.ten_san_pham }} {{ product.ma_san_pham }} {{ product.gioi_tinh }} {{ product.loai_day }} </a></li> */}
-            {/* <li className="box__body__price">{{ product.gia_tien }}</li> */}
+            <li className="box__body__name">
+              <Link to={`/product/details/${product.id}`}>
+                {product.ten_san_pham} {product.ma_san_pham} {product.gioi_tinh}{" "}
+                {product.loai_day}
+              </Link>
+            </li>
+            <li className="box__body__price">{product.gia_tien}</li>
           </ul>
         </div>
-      </article>
+      </div>
     );
   }
 }

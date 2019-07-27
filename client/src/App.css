@@ -691,13 +691,13 @@ a {
   }
   .header .menu__sub {
     position: absolute;
-    min-width: 595px;
-    height: 250px;
+    min-width: 605px;
+    height: 290px;
     border: 2px solid #ddd;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 20px;
-    top: 34px;
+    top: 40px;
     display: none;
     -webkit-box-shadow: 1px 1px 15px rgba(0,0,0,0.15);
     box-shadow: 1px 1px 15px rgba(0,0,0,0.15);
@@ -709,7 +709,7 @@ a {
   .header .menu__sub--one:before {
     content: "";
     position: absolute;
-    top: -7%;
+    top:-6%;
     left: 7%;
     height: 0;
     width: 0;
@@ -718,13 +718,13 @@ a {
     clear: both;
   }
   .header .menu__sub--two {
-    min-width: 621px;
+    min-width: 630px;
     left: -170px;
   }
   .header .menu__sub--two:before {
     content: "";
     position: absolute;
-    top: -7%;
+    top:-6%;
     left: 33%;
     height: 0;
     width: 0;
@@ -733,13 +733,13 @@ a {
     clear: both;
   }
   .header .menu__sub--three {
-    min-width: 621px;
+    min-width: 630px;
     left: -280px;
   }
   .header .menu__sub--three:before {
     content: "";
     position: absolute;
-    top: -7%;
+    top:-6%;
     left: 50%;
     height: 0;
     width: 0;
@@ -1145,7 +1145,7 @@ a {
 }
 .main .product__body .box {
   float: left;
-  width: calc(10%);
+  width: calc(50% - 40px);
   margin: 20px;
 }
 .main .product__body .box__img {
@@ -1175,7 +1175,7 @@ a {
   padding-bottom: 8px;
 }
 .main .product__body .box--hidden {
-  display: none;
+  /* display: none; */
 }
 .main .product .btn__loadmore {
   text-align: center;
@@ -1242,8 +1242,8 @@ a {
   }
   .main .product .box {
     float: left;
-    width: calc(5%);
-    margin: 15px 10px;
+    width: calc(25% - 20px);
+    margin: 10px 10px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }

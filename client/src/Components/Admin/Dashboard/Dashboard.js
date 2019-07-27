@@ -15,17 +15,18 @@ export class Dashboard extends Component {
     super(props);
 
     this.state = {
-      data : []
-    }
+      data: [],
+      isLoading: false
+    };
   }
 
+  // Check
   componentDidMount() {
     const token = getToken();
 
     if (!token) {
       history.push("/admin/login");
     } else {
-
     }
   }
 
@@ -35,7 +36,7 @@ export class Dashboard extends Component {
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Sider />
-        <Layout>
+        <Layout >
           <Header />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
