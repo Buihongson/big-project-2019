@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import HomePage from "../Components/User/Pages/HomePage";
 import ContactPage from "../Components/User/Pages/ContactPage";
-import BrandPage from "../Components/User/Pages/BrandPage";
+import BrandPage from "../Components/User/Pages/BrandPage/BrandPage";
 import ProductDetails from "../Components/User/ProductDetails/ProductDetails";
 
 export default () => (

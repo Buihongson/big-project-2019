@@ -21,7 +21,7 @@ export class Footer extends Component {
                     </div>
                 </article>
                 <article className="footer__box">
-                    <h3 className="footer__title">CHÍNH SÁCH TÂN TÂN</h3>
+                    <h3 className="footer__title">CHÍNH SÁCH</h3>
                     <div className="footer__divider--small"></div>
                     <div className="footer__nav">
                         <ul>

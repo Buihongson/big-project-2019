@@ -6,3 +6,17 @@ export function getAllCatelog() {
     method: "GET"
   });
 }
+
+export function loginByUsername(data) {
+  // const formData = new formData();
+
+  // formData.append("username", username);
+  // formData.append("password", password);
+
+  return request({
+    url: "/api/token",
+    method: "POST",
+    data: data,
+    pgtype: "LOGIN"
+  });
+}

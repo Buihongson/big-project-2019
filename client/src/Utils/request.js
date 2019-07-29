@@ -48,7 +48,17 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log(error);
+    if (error.response && error.response.status === 403) {
+      switch (error.response.message) {
+        case "Username not valid":
+          message.error("Username not valid");
+          break;
+        case "Password not valid":
+          message.error("Password not valid");
+          break;
+      }
+    }
+    return Promise.reject(error);
   }
 );
 

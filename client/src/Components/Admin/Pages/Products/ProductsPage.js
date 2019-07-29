@@ -163,10 +163,54 @@ class ProductsPage extends Component {
 
           // Request post into server
           callApi("api/products", "POST", data, config).then(res =>
-            this.setState({ products: [...this.state.products, res.data.data] })
+            this.setState({
+              products: [...this.state.products, res.data.data]
+            })
           );
+
+          this.onSuccessAdd();
           this.handleCancel();
         } else {
+          const id = this.state.dataForm.id;
+
+          // Generate form
+          let data = new FormData();
+          data.append("nha_san_xuat_id", values.nha_san_xuat_id);
+          data.append("ten_san_pham", values.ten_san_pham);
+          data.append("ma_san_pham", values.ma_san_pham);
+          data.append("gioi_tinh", values.gioi_tinh);
+          data.append("kinh", values.kinh);
+          data.append("loai_day", values.loai_day);
+          data.append("duong_kinh_vo", values.duong_kinh_vo);
+          data.append("do_day_vo", values.do_day_vo);
+          data.append("ap_suat_nuoc", values.ap_suat_nuoc);
+          data.append("xuat_su", values.xuat_su);
+          data.append("gia_tien", values.gia_tien);
+          data.append("bao_hanh", values.bao_hanh);
+          data.append("tinh_trang", values.tinh_trang);
+          data.append("so_luong", values.so_luong);
+          data.append("mo_ta", values.mo_ta);
+          data.append(
+            "hinh_anh",
+            this.state.fileList === null
+              ? this.state.dataForm.hinh_anh
+              : this.state.fileList[0].originFileObj
+          );
+
+          // Generate config for "axios"
+          const config = {
+            header: {
+              "Content-Type": "multipart/form-data"
+            }
+          };
+
+          // Request put into server
+          this.setState({ isLoading: true });
+          setTimeout(() => {
+            callApi(`api/products/${id}`, "PUT", data, config).then(res =>
+              this.setState({ products: res.data.data, isLoading: false })
+            );
+          }, 1500);
           this.onSuccess();
           this.handleCancel();
         }
@@ -218,7 +262,12 @@ class ProductsPage extends Component {
       });
     }
   };
-
+  onSuccessAdd = e => {
+    Modal.success({
+      title: "Successly add a product",
+      content: ""
+    });
+  };
 
   handleOk = e => {
     this.setState({
@@ -230,7 +279,25 @@ class ProductsPage extends Component {
     this.props.form.resetFields();
     this.setState({
       visible: false,
-      isUpdate: false
+      isUpdate: false,
+      dataForm: {
+        nha_san_xuat_id: "",
+        ten_san_pham: "",
+        ma_san_pham: "",
+        gioi_tinh: "",
+        kinh: "",
+        loai_day: "",
+        duong_kinh_vo: "",
+        do_day_vo: "",
+        ap_suat_nuoc: "",
+        xuat_su: "",
+        gia_tien: "",
+        bao_hanh: "",
+        tinh_trang: "",
+        so_luong: "",
+        mo_ta: "",
+        hinh_anh: ""
+      }
     });
   };
 
@@ -299,18 +366,21 @@ class ProductsPage extends Component {
         title: "CITIZEN",
         value: "0-0",
         key: "0-0",
+        disabled: true,
         children: elmOption1
       },
       {
         title: "Thụy Sĩ",
         value: "0-1",
         key: "0-1",
+        disabled: true,
         children: elmOption2
       },
       {
         title: "Chính Hãng",
         value: "0-2",
         key: "0-2",
+        disabled: true,
         children: elmOption3
       }
     ];
@@ -342,7 +412,7 @@ class ProductsPage extends Component {
               key="submit"
               type="primary"
               htmlType="submit"
-              // onClick={this.handleOk}
+              // loading={isLoading}
             >
               Submit
             </Button>,

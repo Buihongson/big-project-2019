@@ -7,7 +7,7 @@ import LoginAdmin from "../Components/Admin/Login/Login"
 let UserLayout,
   AdminLayout = null;
 
-UserLayout = require("../Components/User/Home").default;
+UserLayout = require("../Components/User/HomeDesign/Home").default;
 AdminLayout = require("../Components/Admin/Dashboard/Dashboard").default;
 
 export default () => (

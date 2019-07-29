@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Form, Icon, Input, Button, Spin } from "antd";
+import { Form, Icon, Input, Button, message } from "antd";
 
 import history from "../../../history";
 import "./login.css";
 
 import { setToken, getToken } from "../../../Utils/token";
-import { loginByUsername, callApi } from "../../../Services/AuthServices";
+// import { loginByUsername, callApi } from "../../../Services/AuthServices";
+import { loginByUsername } from "../../../Services/TestServices";
 
 class Login extends Component {
   constructor(props) {
@@ -27,17 +28,26 @@ class Login extends Component {
       this.props.form.validateFields(async (err, values) => {
         if (!err) {
           try {
-            JSON.stringify(values);
-            await callApi("api/token", "POST", values).then(res =>
-              setToken(res.data.token)
-            );
+            // JSON.stringify(values);
+            // await callApi("api/token", "POST", values).then(res =>
+            //   setToken(res.data.token)
+            // );
+            const data = await loginByUsername(values);
 
-            setTimeout(() => {
-              history.push("/admin");
-            }, 1000);
+            if(data.token) {
+              setToken(data.token)
+  
+              setTimeout(() => {
+                history.push("/admin");
+              }, 1000);
+            } else {
+              message.error("Username or password is not valid")
+            }
           } catch (e) {
             this.setState({ isLogin: false, isLoading: false });
           }
+        } else {
+          this.setState({ isLogin: false, isLoading: false })
         }
       });
     }

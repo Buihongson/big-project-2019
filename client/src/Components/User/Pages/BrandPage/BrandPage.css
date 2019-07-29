@@ -1,0 +1,32 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.btn__load {
+  padding: 20px 50px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid #777;
+  background: #777;
+  transition: 0.4s;
+  outline: none;
+}
+
+.btn__load:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #777;
+  transition: 0.4s;
+  transform: scale(1.1);
+}

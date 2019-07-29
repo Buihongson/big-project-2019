@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 
-import callApi from "../../../Services/ApiServices";
+import callApi from "../../../../Services/ApiServices";
+import "./BrandPage.css";
 
-import SectionTitleHP1 from "../../../PureComponents/SectionTitle/SectionTitleHP1";
-import SectionTitleHP3 from "../../../PureComponents/SectionTitle/SectionTitleHP3";
-import LogoHP1 from "../../../PureComponents/LogoHompage/LogoHP1";
-import LogoHP2 from "../../../PureComponents/LogoHompage/LogoHP2";
-import LogoHP3 from "../../../PureComponents/LogoHompage/LogoHP3";
-import ProductItem from "../ProductItem/ProductItem";
+import SectionTitleHP1 from "../../../../PureComponents/SectionTitle/SectionTitleHP1";
+import SectionTitleHP3 from "../../../../PureComponents/SectionTitle/SectionTitleHP3";
+import LogoHP1 from "../../../../PureComponents/LogoHompage/LogoHP1";
+import LogoHP2 from "../../../../PureComponents/LogoHompage/LogoHP2";
+import LogoHP3 from "../../../../PureComponents/LogoHompage/LogoHP3";
+import ProductItem from "../../ProductItem/ProductItem";
 
 export default class BrandPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      products: []
+      products: [],
+      visible: 8
     };
   }
 
@@ -30,10 +32,17 @@ export default class BrandPage extends Component {
     );
   };
 
-  render() {
-    const { products } = this.state;
+  // Func load more products
+  onLoadMore = prev => {
+    this.setState(prev => {
+      return { visible: prev.visible + 4 };
+    });
+  };
 
-    const elmProduct = products.map((product, index) => {
+  render() {
+    const { products, visible } = this.state;
+
+    const elmProduct = products.slice(0, visible).map((product, index) => {
       return <ProductItem key={product.id} product={product} />;
     });
 
@@ -45,13 +54,11 @@ export default class BrandPage extends Component {
               <h1 className="info__title">Thương hiệu</h1>
             </div>
           </section>
-
           <SectionTitleHP1 />
           <LogoHP1 />
           <LogoHP2 />
           <SectionTitleHP3 />
           <LogoHP3 />
-
           <section className="container section filter">
             <div className="filter__item">
               <div className="filter__item__title">Lọc Giá</div>
@@ -102,13 +109,18 @@ export default class BrandPage extends Component {
               </ul>
             </div>
           </section>
-
           <section className="container section product">
             <div className="product__body">{elmProduct}</div>
             <div className="btn__loadmore">
-              <a href="#" id="loadMore" className="btn__load">
-                Xem thêm
-              </a>
+              {visible < products.length && (
+                <button
+                  type="button"
+                  className="btn__load"
+                  onClick={this.onLoadMore}
+                >
+                  Xem thêm
+                </button>
+              )}
             </div>
           </section>
         </main>

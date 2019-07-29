@@ -3,7 +3,7 @@ import { Menu, Icon, Avatar, message } from "antd";
 
 import history from "../../../history";
 
-import { getToken, clearToken } from "../../../Utils/token"
+import { getToken, clearToken } from "../../../Utils/token";
 
 export default class Header extends Component {
   constructor(props) {
@@ -23,12 +23,12 @@ export default class Header extends Component {
 
   // Logout
   onLogout = e => {
-    if(getToken() !== null) {
+    if (getToken() !== null) {
       clearToken();
-      message.success('Successly logout');
-      setTimeout(() => {
-        history.push("/admin/login")
-      }, 1500);
+      history.push("/admin/login");
+      message.success("Successly logout");
+    //   setTimeout(() => {
+    // }, 1500);
     }
   };
 
@@ -60,7 +60,9 @@ export default class Header extends Component {
           style={{ float: "right" }}
         >
           <Menu.Item key="setting:1">Setting</Menu.Item>
-          <Menu.Item key="setting:2" onClick={this.onLogout}>Logout</Menu.Item>
+          <Menu.Item key="setting:2" onClick={this.onLogout}>
+            Logout
+          </Menu.Item>
         </SubMenu>
       </Menu>
     );

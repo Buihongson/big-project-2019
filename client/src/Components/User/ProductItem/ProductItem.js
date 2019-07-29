@@ -14,8 +14,15 @@ class ProductItem extends Component {
     const { product } = this.state;
 
     return (
-      <div className="box box--hidden">
-        <div className="box__img">
+      <div className="box fade-in">
+        <div
+          className="box__img"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           <Link to={`/product/details/${product.id}`}>
             <img
               src={product.hinh_anh}
@@ -24,7 +31,7 @@ class ProductItem extends Component {
             />
           </Link>
         </div>
-        <div className="box__body">
+        <div className="box__body" style={{ textAlign: "center" }}>
           <ul>
             <li className="box__body__name">
               <Link to={`/product/details/${product.id}`}>

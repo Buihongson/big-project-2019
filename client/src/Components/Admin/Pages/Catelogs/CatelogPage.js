@@ -8,10 +8,14 @@ import {
   message,
   Form,
   Input,
-  Select
+  Select,
+  Upload,
+  Icon
 } from "antd";
 
 import callApi from "../../../../Services/ApiServices";
+
+import ModalDetailsCatelog from "./ModalDetailsCatelog";
 
 class CatelogPage extends Component {
   constructor(props) {
@@ -43,9 +47,10 @@ class CatelogPage extends Component {
           render: (text, record) => {
             return (
               <div style={{ display: "flex" }}>
+                <ModalDetailsCatelog catelog={record} />
+                <Divider type="vertical" style={{ height: "35px" }} />
                 <Button onClick={() => this.onEditCatelog(record)}>Edit</Button>
                 <Divider type="vertical" style={{ height: "35px" }} />
-
                 <Popconfirm
                   title="Are you sure delete this catelog?"
                   onConfirm={() => this.onDeleteCatelog(record)}
@@ -68,7 +73,9 @@ class CatelogPage extends Component {
         parent_id: "",
         mo_ta_th: ""
       },
-      isLoading: false
+      isLoading: false,
+      previewImage: "",
+      fileList: null
     };
   }
 
@@ -85,12 +92,22 @@ class CatelogPage extends Component {
   // Add new catelog
   handleSubmit = e => {
     e.preventDefault();
+    this.setState({ isLoading: true})
     this.props.form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         if (this.state.isUpdate === false) {
-          await callApi("api/catelogs", "POST", values).then(res =>
+          // Create form data with file
+          let data = new FormData();
+          data.append("ten_th", values.ten_th);
+          data.append("parent_id", values.parent_id);
+          data.append("mo_ta_th", values.mo_ta_th);
+          data.append("hinh_anh_infor", this.state.fileList === null ? "" : this.state.fileList[0].originFileObj);
+
+          // Request into server
+          await callApi("api/catelogs", "POST", data).then(res =>
             this.setState({
-              catelogs: [...this.state.catelogs, res.data.data]
+              catelogs: [...this.state.catelogs, res.data.data],
+              isLoading: false
             })
           );
 
@@ -99,8 +116,16 @@ class CatelogPage extends Component {
         } else {
           const idCatelog = this.state.dataForm.id;
 
-          await callApi(`api/catelogs/${idCatelog}`, "PUT", values).then(res =>
-            this.setState({ catelogs: res.data.data })
+          // Create form data with file
+          let data = new FormData();
+          data.append("ten_th", values.ten_th);
+          data.append("parent_id", values.parent_id);
+          data.append("mo_ta_th", values.mo_ta_th);
+          data.append("hinh_anh_infor", this.state.fileList === null ? "" : this.state.fileList[0].originFileObj);
+
+          // Request into server
+          await callApi(`api/catelogs/${idCatelog}`, "PUT", data).then(res =>
+            this.setState({ catelogs: res.data.data, isLoading: false })
           );
 
           this.onSuccess();
@@ -185,8 +210,13 @@ class CatelogPage extends Component {
     });
   };
 
+   // Handle image
+   handleUpload = info => {
+    this.setState({ fileList: info.fileList });
+  };
+
   render() {
-    const { catelogs, columns, isUpdate, isLoading } = this.state;
+    const { catelogs, columns, isUpdate, isLoading, fileList } = this.state;
 
     const { getFieldDecorator } = this.props.form;
     const { Option } = Select;
@@ -240,6 +270,7 @@ class CatelogPage extends Component {
               key="submit"
               type="primary"
               htmlType="submit"
+              loading={isLoading}
             >
               Submit
             </Button>,
@@ -286,6 +317,28 @@ class CatelogPage extends Component {
               {getFieldDecorator("mo_ta_th", {
                 initialValue: this.state.dataForm.mo_ta_th
               })(<Input />)}
+            </Form.Item>
+
+            <Form.Item
+              {...formItemLayout}
+              hasFeedback
+              label="Image"
+              beforeUpload={() => false}
+            >
+              <Upload
+                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                fileList={fileList}
+                onPreview={this.handlePreview}
+                onChange={this.handleUpload}
+              >
+                {getFieldDecorator("hinh_anh", {
+                  initialValue: this.state.dataForm.hinh_anh
+                })(
+                  <Button>
+                    <Icon type="upload" /> Click to Upload
+                  </Button>
+                )}
+              </Upload>
             </Form.Item>
           </Form>
         </Modal>

@@ -32,7 +32,7 @@ export class HomePage extends Component {
                 <a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">
                   <img
                     src="{{ product.hinh_anh }}"
-                    alt="{{ product.ten_san_pham }}"
+                    alt="{ product.ten_san_pham }"
                   />
                 </a>
               </div>
@@ -69,7 +69,7 @@ export class HomePage extends Component {
                 <a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">
                   <img
                     src="{{ product.hinh_anh }}"
-                    alt="{{ product.ten_san_pham }}"
+                    alt="{ product.ten_san_pham }"
                     style={{ width: "55%" }}
                   />
                 </a>
@@ -103,7 +103,7 @@ export class HomePage extends Component {
                 <a href="{{ route('User/DongHoController.viewDetailDHNam', {id: product.id}) }}">
                   <img
                     src="{{ product.hinh_anh }}"
-                    alt="{{ product.ten_san_pham }}"
+                    alt="{ product.ten_san_pham }"
                   />
                 </a>
               </div>

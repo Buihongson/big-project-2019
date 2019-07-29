@@ -13,24 +13,29 @@ class AuthencationController {
       .where("username", username)
       .first();
 
-    const passwordValid = await Hash.verify(password, user.password);
-    if (!passwordValid) {
+    if(user) {
+      const passwordValid = await Hash.verify(password, user.password);
+      if (!passwordValid) {
+        return response.status(403).json({
+          message: "Password is not valid",
+          user
+        });
+      }
+  
+      const token = jwt.sign({ user }, "secretkey");
+  
+      const userToken = Object.assign(user, {token: token});
+  
+      return response.status(200).json({
+        message: "Successly created token",
+        token,
+      });
+    } else {
       return response.status(403).json({
-        message: "Password not valid",
+        message: "Username is not valid",
         user
       });
     }
-
-    const token = jwt.sign({ user }, "secretkey");
-
-    const userToken = Object.assign(user, {token: token});
-
-    return response.status(200).json({
-      message: "Successly created token",
-      user,
-      token,
-      userToken
-    });
   }
 }
 
